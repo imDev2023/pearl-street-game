@@ -11,9 +11,9 @@ Successor in spirit to Crabada, with an economy designed so the TUS-style death 
 - `docs/ARCHITECTURE.md` is the system map: which prototype contract each ticket starts from (they are the starting point, not throwaway), money flows, the launch sequence, frozen decisions, and the user's open decisions. Read it before code.
 - Economy phase outputs: `docs/ECONOMY-STRESS-REPORT.md`, `docs/ECONOMY-PROTOTYPE-REPORT.md`, `docs/PEARL-TOKENOMICS.md` (incl. the pre-sale matrix), `docs/BURN-CAP-DESIGN.md` (ideas + sim results; not decided, not in scope).
 - Prototype processes (testnet bot fleet, dashboard) are stopped; not needed for the build. Bot keys in gitignored `packages/proto/.env.bots`; testnet deployment record in `.scratch/economy-prototype/assets/`.
-- User externalities still open: GitHub remote + push (CI has never run remotely), pearlstreet domains near launch. Legal review is NOT a gate (risk disclosure covers everything, decision 2026-08-16); external audit is optional, not a gate.
+- User externalities still open: pearlstreet domains and hosting near launch. Legal review is NOT a gate (risk disclosure covers everything, decision 2026-08-16); external audit is optional, not a gate.
 - Art is CLOSED until a final pass at project end (`docs/ART-DIRECTION.md`). Published artifacts (republish the same file path with the `url` param): site https://claude.ai/code/artifact/17686ae1-2f0d-4c80-87c2-8d9133d8bcb4 · art sheet https://claude.ai/code/artifact/448c773a-6985-4b8c-b879-4e3786ab8638. The whitepaper's PEARL pledge chapter must be rewritten to the decided sequence before the site goes public (T-016 criterion).
-- Repo directory renamed to `pearlstreet/` (2026-08-15); GitHub target `imDev2023/pearl-street-game` (public), not yet pushed; no agent attribution trailers.
+- Remote: github.com/imDev2023/pearl-street-game (public now, private at launch); first commit 2026-08-16, CI green; no agent attribution trailers.
 - Deploy key: operator's Trezor via `forge script --trezor`; treasury/ops addresses are deploy-time env parameters.
 
 ## Traps found the hard way (keep)

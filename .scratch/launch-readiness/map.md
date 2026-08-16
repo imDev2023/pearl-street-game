@@ -10,7 +10,7 @@ Every decision and external dependency that could cause a contract failure or a 
 - Planning only: this map resolves decisions; execution stays in `docs/tickets/` (the build index) and each resolution updates the affected ticket file.
 - Operator style: short questions, short answers; ship as soon as possible; no external dependency (audit, legal, funding) is allowed to gate launch.
 - Consult: `CLAUDE.md`, `docs/PRD.md`, `docs/ARCHITECTURE.md`, `docs/ECONOMY.md`, `docs/reference/ROBINHOOD-CHAIN.md`, `CONTEXT.md`; evm-security and solidity-security skills for contract questions.
-- Tracker: local markdown (this directory); no git remote yet (ticket 11).
+- Tracker: local markdown (this directory); remote github.com/imDev2023/pearl-street-game.
 - Readiness gates agreed 2026-08-16: all Foundry tests and the invariant campaign green in remote CI; Anvil replay matches the simulator; internal security review + bug bounty; testnet drills for reserve alert, feed outage, sequencer outage; contracts verified on Blockscout; risk disclosure live; incident runbook written; deploy key rehearsed. Testnet playtest and launch dry run are counted as done by the operator (ticket 07).
 
 ## Decisions so far
@@ -29,6 +29,7 @@ Every decision and external dependency that could cause a contract failure or a 
 - [Fee routing split](issues/21-fee-routing.md) - ALL protocol fees 100% to the prize pool (operator, twice confirmed); applied to ECONOMY.md, GameConstants, sim, tests.
 - [ETH-to-CLAM swap](issues/16-eth-to-clam-swap.md) - Uniswap v3 live on 4663 with ~$9M WETH/USDG depth; keep ETH-via-swap plus direct USDG; addresses in the ticket.
 - [Doc reconciliation](issues/20-doc-reconciliation.md) - PRD/TOKENOMICS/ECONOMY/CONTEXT/contract comments/reports/site copy brought to the decided values; whitepaper PEARL chapter left for T-016.
+- [GitHub remote](issues/11-github-remote.md) - github.com/imDev2023/pearl-street-game, first commit pushed, CI green.
 - [Equity feeds: weekends and tickers](issues/13-equity-feeds-at-launch.md) - voyages run 24/7, stale feed = base haul ("calm seas"); 35 tickers, timelocked changes (default).
 - [Off-chain operations](issues/14-offchain-operations.md) - Cloudflare Worker cron keeper + revealer + alerts, anyone-can-poke fallback (default).
 - [Leaderboard settlement](issues/15-leaderboard-settlement.md) - one capped merkle root per season, claim-based; ops-posted lists removed (default).
