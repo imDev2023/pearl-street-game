@@ -1,0 +1,1444 @@
+<title>Pearl Street</title>
+<style>
+  :root {
+    --water0: #bfe9f5;
+    --water1: #7fcbe0;
+    --page-ink: #22303c;
+    --page-muted: #3d5a68;
+    --card: #fdf8ec;
+    --card-deep: #f5ecd8;
+    --ink: #22303c;
+    --muted: #5d7180;
+    --outline: #22303c;
+    --sand: #f0dfae;
+    --gold: #ffb020;
+    --gold-deep: #e69a10;
+    --teal: #0e8fa8;
+    --green: #2e9e57;
+    --blue: #2f8de0;
+    --coral: #ff5e6c;
+    --chunky: 0 6px 0 rgba(34, 48, 60, 0.22);
+    --round: ui-rounded, "Hiragino Maru Gothic ProN", "Arial Rounded MT Bold", "Trebuchet MS", -apple-system, sans-serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  :root[data-scheme="deep"] {
+    --water0: #0d3a4d;
+    --water1: #051f2b;
+    --page-ink: #eef7f4;
+    --page-muted: #a8cbd6;
+    --sand: #123c4c;
+  }
+  :root[data-scheme="sunset"] {
+    --water0: #ffd9a0;
+    --water1: #ff9a7e;
+    --page-ink: #4a2a2e;
+    --page-muted: #7a4a48;
+    --sand: #f5c97e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: linear-gradient(180deg, var(--water0), var(--water1));
+    color: var(--page-ink);
+    font-family: var(--sans);
+    font-size: 16.5px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--gold); color: var(--ink); }
+  a { color: var(--teal); text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+  #ocean { position: fixed; inset: 0; z-index: -1; }
+  #progress { position: fixed; top: 0; left: 0; height: 4px; width: 0%; background: var(--gold); border-radius: 0 4px 4px 0; z-index: 90; }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .prose { max-width: 68ch; }
+  .muted { color: var(--page-muted); }
+
+  .icon { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; vertical-align: -3px; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--round); font-weight: 800; font-size: 13px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--card); color: var(--ink);
+    border: 3px solid var(--outline); border-radius: 999px;
+    padding: 6px 16px; box-shadow: var(--chunky);
+  }
+  .eyebrow .icon { width: 15px; height: 15px; }
+
+  h1, h2, h3 { font-family: var(--round); font-weight: 800; text-wrap: balance; }
+  h2 { font-size: clamp(30px, 4.4vw, 44px); line-height: 1.12; margin: 18px 0 16px; }
+  h2 em, h1 em { font-style: normal; color: var(--coral); }
+  :root[data-scheme="deep"] h2 em, :root[data-scheme="deep"] h1 em { color: var(--gold); }
+  p { margin-bottom: 14px; }
+
+  .rv { transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.4, 0.5, 1); }
+  .js .rv { opacity: 0; transform: translateY(24px) scale(0.98); }
+  .js .rv.in { opacity: 1; transform: none; }
+  .rv[data-d="1"] { transition-delay: 0.07s; } .rv[data-d="2"] { transition-delay: 0.14s; }
+  .rv[data-d="3"] { transition-delay: 0.21s; } .rv[data-d="4"] { transition-delay: 0.28s; }
+  .rv[data-d="5"] { transition-delay: 0.35s; }
+
+  /* ------ nav ------ */
+  nav {
+    position: sticky; top: 12px; z-index: 80;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    margin: 12px 18px 0;
+    padding: 10px 18px;
+    background: var(--card);
+    border: 3px solid var(--outline); border-radius: 999px;
+    box-shadow: var(--chunky);
+    color: var(--ink);
+  }
+  nav .brand { display: flex; align-items: center; gap: 10px; font-family: var(--round); font-size: 20px; font-weight: 800; color: var(--ink); margin-right: auto; }
+  nav .brand svg { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  nav .brand:hover svg { transform: rotate(-10deg) scale(1.15); }
+  nav a.link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--muted); font-family: var(--round); font-weight: 700; font-size: 13.5px;
+    padding: 6px 12px; border-radius: 999px; border: 2.5px solid transparent;
+    transition: all 0.2s ease;
+  }
+  nav a.link:hover { color: var(--ink); background: var(--card-deep); border-color: var(--outline); transform: translateY(-2px); }
+
+  /* ------ ticker tape ------ */
+  .tape {
+    overflow: hidden; white-space: nowrap;
+    margin: 16px 18px 0;
+    background: var(--card); border: 3px solid var(--outline); border-radius: 14px;
+    box-shadow: var(--chunky);
+    font-family: var(--mono); font-size: 12.5px; font-weight: 700; padding: 9px 0;
+    color: var(--ink);
+  }
+  .tape-inner { display: inline-block; padding-left: 100%; animation: tape 44s linear infinite; }
+  .tape:hover .tape-inner { animation-play-state: paused; }
+  @keyframes tape { to { transform: translateX(-100%); } }
+  .tape .up { color: var(--green); } .tape .down { color: var(--coral); }
+  .tape span.pair { margin-right: 36px; }
+
+  /* ------ hero ------ */
+  header.hero { padding: 80px 0 60px; position: relative; }
+  .hero h1 { font-size: clamp(42px, 6.4vw, 74px); line-height: 1.03; max-width: 14ch; }
+  .hero h1 .line { display: block; overflow: hidden; }
+  .hero h1 .line span { display: inline-block; transform: translateY(115%); animation: rise 0.8s cubic-bezier(0.34, 1.3, 0.5, 1) forwards; }
+  .hero h1 .line:nth-child(2) span { animation-delay: 0.12s; }
+  .hero h1 .line:nth-child(3) span { animation-delay: 0.24s; }
+  @keyframes rise { to { transform: none; } }
+  .hero .sub { margin-top: 22px; font-size: 18.5px; color: var(--page-muted); max-width: 50ch; opacity: 0; animation: fade 0.8s ease 0.5s forwards; }
+  @keyframes fade { to { opacity: 1; } }
+  .cta-row { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; opacity: 0; animation: fade 0.8s ease 0.7s forwards; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--round); font-weight: 800; font-size: 15px;
+    padding: 13px 26px; border-radius: 999px; cursor: pointer;
+    color: var(--ink); background: var(--gold);
+    border: 3px solid var(--outline);
+    box-shadow: 0 6px 0 var(--outline);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    will-change: transform;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 var(--outline); }
+  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--outline); }
+  .btn.ghost { background: var(--card); }
+  .note-tag { font-family: var(--round); font-weight: 700; font-size: 12px; color: var(--page-muted); max-width: 34ch; }
+
+  .hero-stage { position: absolute; right: -10px; top: 30px; width: 400px; max-width: 37vw; }
+  @media (max-width: 820px) { .hero-stage { display: none; } }
+  .mascot { animation: float 5s ease-in-out infinite; transform-origin: 50% 45%; }
+  @keyframes float { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-16px) rotate(2deg); } }
+  .chartline { stroke-dasharray: 620; stroke-dashoffset: 620; animation: draw 2s cubic-bezier(0.65, 0, 0.35, 1) 0.5s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .bob { animation: bob 3.4s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+
+  /* ------ sections & wave dividers ------ */
+  section { padding: 64px 0 76px; position: relative; }
+  .wave { display: block; width: 100%; height: 42px; margin-bottom: -6px; }
+  .wave path { fill: var(--sand); opacity: 0.55; }
+
+  .panel {
+    background: var(--card); color: var(--ink);
+    border: 3px solid var(--outline); border-radius: 22px;
+    box-shadow: var(--chunky);
+    padding: clamp(24px, 4vw, 44px);
+  }
+  .panel .muted, .panel p, .panel li { color: var(--muted); }
+  .panel h2, .panel h3, .panel strong { color: var(--ink); }
+
+  /* ------ reef species cards ------ */
+  .reef { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-top: 30px; }
+  .sp {
+    background: var(--card); border: 3px solid var(--outline); border-radius: 18px;
+    box-shadow: var(--chunky);
+    padding: 12px 12px 16px; text-align: center; color: var(--ink);
+    transition: transform 0.2s ease;
+    transform-style: preserve-3d; will-change: transform;
+  }
+  .sp:hover { transform: translateY(-6px) rotate(-1deg); }
+  .sp .win { border-radius: 12px; overflow: hidden; border: 2.5px solid var(--outline); }
+  .sp .win svg { display: block; width: 100%; height: auto; }
+  .sp .fig { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: center; }
+  .sp.shark:hover .fig { transform: translateX(9px) rotate(-4deg); }
+  .sp.turtle:hover .fig { transform: rotate(-7deg) scale(1.05); }
+  .sp.octo:hover .fig { transform: translateY(-6px); }
+  .sp.seahorse:hover .fig { transform: translateY(-7px) rotate(5deg); }
+  .sp.puffer:hover .fig { transform: scale(1.22); }
+  .sp h3 { font-size: 18px; margin: 10px 0 1px; }
+  .sp .role {
+    display: inline-block; font-family: var(--round); font-weight: 800; font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #fff;
+    background: var(--teal); border-radius: 999px; padding: 3px 10px; margin-top: 4px;
+  }
+  .sp p { font-size: 13px; color: var(--muted); margin: 9px 0 0; }
+
+  /* ------ steps ------ */
+  .steps { margin-top: 28px; display: grid; gap: 14px; counter-reset: step; }
+  .step {
+    display: grid; grid-template-columns: 54px 48px 1fr; gap: 16px; align-items: center;
+    background: var(--card); color: var(--ink);
+    border: 3px solid var(--outline); border-radius: 18px; box-shadow: var(--chunky);
+    padding: 18px 20px;
+    transition: transform 0.2s ease;
+  }
+  .step:hover { transform: translateX(8px); }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    font-family: var(--round); font-weight: 800; font-size: 26px; color: #fff;
+    background: var(--coral); border: 3px solid var(--outline); border-radius: 50%;
+    width: 46px; height: 46px; display: grid; place-items: center;
+  }
+  .step .s-icon {
+    width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+    background: var(--water0); border: 2.5px solid var(--outline);
+    transition: transform 0.3s ease;
+  }
+  .step:hover .s-icon { transform: rotate(-8deg) scale(1.08); }
+  .step .s-icon .icon { width: 24px; height: 24px; color: var(--ink); }
+  .step h3 { margin: 0 0 3px; font-size: 18px; }
+  .step p { color: var(--muted); margin: 0; font-size: 14.5px; max-width: 62ch; }
+
+  /* ------ counters ------ */
+  .counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 32px 0 8px; }
+  .counter {
+    background: var(--card); color: var(--ink); border: 3px solid var(--outline); border-radius: 18px;
+    box-shadow: var(--chunky); padding: 18px; text-align: center;
+    transition: transform 0.2s ease;
+  }
+  .counter:hover { transform: translateY(-4px) rotate(1deg); }
+  .counter .n { font-family: var(--round); font-weight: 800; font-size: 36px; color: var(--teal); font-variant-numeric: tabular-nums; }
+  .counter .n small { font-size: 20px; }
+  .counter .l { font-family: var(--round); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+
+  /* ------ economy table ------ */
+  .tablewrap { overflow-x: auto; margin: 26px 0 8px; border: 3px solid var(--outline); border-radius: 18px; background: var(--card); box-shadow: var(--chunky); }
+  table { border-collapse: collapse; width: 100%; min-width: 660px; font-size: 14.5px; color: var(--ink); }
+  th, td { text-align: left; padding: 14px 16px; border-bottom: 2px dashed rgba(34, 48, 60, 0.2); vertical-align: top; }
+  th { font-family: var(--round); font-weight: 800; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  tr:last-child td { border-bottom: none; }
+  td { color: var(--muted); }
+  td:first-child { color: var(--ink); white-space: nowrap; }
+  td.cur { font-family: var(--round); font-weight: 800; color: var(--ink); }
+  td.cur .icon { color: var(--gold-deep); margin-right: 6px; }
+  td .no { color: var(--green); font-family: var(--round); font-weight: 800; font-size: 12.5px; }
+  td .yes { color: var(--coral); font-family: var(--round); font-weight: 800; font-size: 12.5px; }
+
+  .diagram { margin: 28px 0 6px; background: var(--card); border: 3px solid var(--outline); border-radius: 18px; box-shadow: var(--chunky); padding: 18px; overflow-x: auto; }
+  .diagram svg { display: block; margin: 0 auto; min-width: 560px; }
+  .pulse-arrow { animation: nudge 2s ease-in-out infinite; }
+  @keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+
+  /* ------ presale ------ */
+  .presale-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 28px; }
+  .stat {
+    border: 3px solid var(--outline); background: var(--card); color: var(--ink);
+    border-radius: 18px; box-shadow: var(--chunky); padding: 18px;
+    transition: transform 0.2s ease;
+  }
+  .stat:hover { transform: translateY(-5px) rotate(-1deg); }
+  .stat .k { display: flex; align-items: center; gap: 7px; font-family: var(--round); font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .stat .k .icon { width: 16px; height: 16px; color: var(--gold-deep); }
+  .stat .v { font-family: var(--round); font-weight: 800; font-size: 28px; margin-top: 6px; color: var(--teal); }
+  .stat .d { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+  /* ------ whitepaper ------ */
+  .wp-version { font-family: var(--round); font-weight: 700; font-size: 12px; color: var(--muted); }
+  .wp-chapter { margin-top: 46px; }
+  .wp-num {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--round); font-weight: 800; font-size: 12px; letter-spacing: 0.12em;
+    color: #fff; background: var(--teal); border-radius: 999px; padding: 4px 14px;
+  }
+  .wp-chapter h3 { font-size: 24px; margin: 12px 0 12px; }
+  .wp-chapter ul { padding-left: 22px; margin-bottom: 14px; }
+  .wp-chapter li { margin-bottom: 7px; }
+  blockquote {
+    background: var(--water0);
+    border: 3px solid var(--outline); border-radius: 16px;
+    padding: 14px 20px; margin: 22px 0;
+    font-family: var(--round); font-weight: 700; color: var(--ink); font-size: 17px;
+  }
+
+  /* ------ roadmap ------ */
+  .phases { margin-top: 28px; display: grid; gap: 14px; }
+  .phase {
+    display: grid; grid-template-columns: 48px 120px 1fr; gap: 16px; align-items: center;
+    border: 3px solid var(--outline); background: var(--card); color: var(--ink);
+    border-radius: 18px; box-shadow: var(--chunky); padding: 16px 20px;
+    transition: transform 0.2s ease;
+  }
+  .phase:hover { transform: translateX(8px); }
+  .phase .p-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--water0); border: 2.5px solid var(--outline); }
+  .phase .p-icon .icon { width: 22px; height: 22px; color: var(--ink); }
+  .phase .tag { font-family: var(--round); font-weight: 800; font-size: 13px; color: var(--coral); }
+  .phase p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .phase strong { color: var(--ink); }
+  @media (max-width: 620px) { .phase { grid-template-columns: 48px 1fr; } .phase .tag { grid-column: 2; } .phase p { grid-column: 1 / -1; } }
+
+  /* ------ scheme picker ------ */
+  .schemes {
+    position: fixed; bottom: 18px; right: 18px; z-index: 85;
+    display: flex; align-items: center; gap: 9px;
+    background: var(--card); color: var(--muted);
+    border: 3px solid var(--outline); border-radius: 999px; padding: 8px 14px;
+    font-family: var(--round); font-weight: 800; font-size: 10.5px;
+    box-shadow: var(--chunky);
+  }
+  .schemes button {
+    width: 24px; height: 24px; border-radius: 50%; border: 2.5px solid var(--outline);
+    cursor: pointer; padding: 0; transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .schemes button[aria-pressed="true"] { outline: 3px solid var(--gold); outline-offset: 1px; }
+  .schemes button:hover { transform: scale(1.25); }
+  .sw-sunny  { background: linear-gradient(135deg, #bfe9f5 50%, #ffb020 50%); }
+  .sw-deep   { background: linear-gradient(135deg, #0d3a4d 50%, #ffb020 50%); }
+  .sw-sunset { background: linear-gradient(135deg, #ffd9a0 50%, #ff5e6c 50%); }
+
+  footer { padding: 40px 0 100px; }
+  footer .panel h3 { font-size: 16px; margin-bottom: 8px; }
+  footer .panel p { font-size: 12.5px; color: var(--muted); max-width: 92ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    .rv, .js .rv { opacity: 1; transform: none; }
+    .hero h1 .line span { transform: none; }
+    .hero .sub, .cta-row { opacity: 1; }
+    .chartline { stroke-dashoffset: 0; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+<div id="progress"></div>
+<canvas id="ocean" aria-hidden="true"></canvas>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="lu-fish" viewBox="0 0 24 24"><svg
+  class="lucide lucide-fish"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z" />
+  <path d="M18 12v.5" />
+  <path d="M16 17.93a9.77 9.77 0 0 1 0-11.86" />
+  <path d="M7 10.67C7 8 5.58 5.97 2.73 5.5c-1 1.5-1 5 .23 6.5-1.24 1.5-1.24 5-.23 6.5C5.58 18.03 7 16 7 13.33" />
+  <path d="M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 0 1 1.98 1.67l.23 1.4" />
+  <path d="m16.01 17.93-.23 1.4A2 2 0 0 1 13.8 21H9.5a5.96 5.96 0 0 0 1.49-3.98" /></symbol>
+  <symbol id="lu-trending-up" viewBox="0 0 24 24"><svg
+  class="lucide lucide-trending-up"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 7h6v6" />
+  <path d="m22 7-8.5 8.5-5-5L2 17" /></symbol>
+  <symbol id="lu-landmark" viewBox="0 0 24 24"><svg
+  class="lucide lucide-landmark"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 18v-7" />
+  <path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z" />
+  <path d="M14 18v-7" />
+  <path d="M18 18v-7" />
+  <path d="M3 22h18" />
+  <path d="M6 18v-7" /></symbol>
+  <symbol id="lu-coins" viewBox="0 0 24 24"><svg
+  class="lucide lucide-coins"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13.744 17.736a6 6 0 1 1-7.48-7.48" />
+  <path d="M15 6h1v4" />
+  <path d="m6.134 14.768.866-.5 2 3.464" />
+  <circle cx="16" cy="8" r="6" /></symbol>
+  <symbol id="lu-file-text" viewBox="0 0 24 24"><svg
+  class="lucide lucide-file-text"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M10 9H8" />
+  <path d="M16 13H8" />
+  <path d="M16 17H8" /></symbol>
+  <symbol id="lu-map" viewBox="0 0 24 24"><svg
+  class="lucide lucide-map"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" />
+  <path d="M15 5.764v15" />
+  <path d="M9 3.236v15" /></symbol>
+  <symbol id="lu-sparkles" viewBox="0 0 24 24"><svg
+  class="lucide lucide-sparkles"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" /></symbol>
+  <symbol id="lu-badge-check" viewBox="0 0 24 24"><svg
+  class="lucide lucide-badge-check"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+  <path d="m9 12 2 2 4-4" /></symbol>
+  <symbol id="lu-users" viewBox="0 0 24 24"><svg
+  class="lucide lucide-users"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" /></symbol>
+  <symbol id="lu-sailboat" viewBox="0 0 24 24"><svg
+  class="lucide lucide-sailboat"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 2v15" />
+  <path d="M7 22a4 4 0 0 1-4-4 1 1 0 0 1 1-1h16a1 1 0 0 1 1 1 4 4 0 0 1-4 4z" />
+  <path d="M9.159 2.46a1 1 0 0 1 1.521-.193l9.977 8.98A1 1 0 0 1 20 13H4a1 1 0 0 1-.824-1.567z" /></symbol>
+  <symbol id="lu-trophy" viewBox="0 0 24 24"><svg
+  class="lucide lucide-trophy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" />
+  <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" />
+  <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" />
+  <path d="M4 22h16" />
+  <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" />
+  <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></symbol>
+  <symbol id="lu-shell" viewBox="0 0 24 24"><svg
+  class="lucide lucide-shell"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 11a2 2 0 1 1-4 0 4 4 0 0 1 8 0 6 6 0 0 1-12 0 8 8 0 0 1 16 0 10 10 0 1 1-20 0 11.93 11.93 0 0 1 2.42-7.22 2 2 0 1 1 3.16 2.44" /></symbol>
+  <symbol id="lu-gem" viewBox="0 0 24 24"><svg
+  class="lucide lucide-gem"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10.5 3 8 9l4 13 4-13-2.5-6" />
+  <path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z" />
+  <path d="M2 9h20" /></symbol>
+  <symbol id="lu-shield" viewBox="0 0 24 24"><svg
+  class="lucide lucide-shield"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></symbol>
+  <symbol id="lu-pie-chart" viewBox="0 0 24 24"><svg
+  class="lucide lucide-pie-chart"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" />
+  <path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></symbol>
+  <symbol id="lu-clock" viewBox="0 0 24 24"><svg
+  class="lucide lucide-clock"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 6v6l4 2" /></symbol>
+  <symbol id="lu-telescope" viewBox="0 0 24 24"><svg
+  class="lucide lucide-telescope"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44" />
+  <path d="m13.56 11.747 4.332-.924" />
+  <path d="m16 21-3.105-6.21" />
+  <path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z" />
+  <path d="m6.158 8.633 1.114 4.456" />
+  <path d="m8 21 3.105-6.21" />
+  <circle cx="12" cy="13" r="2" /></symbol>
+  <symbol id="lu-skull" viewBox="0 0 24 24"><svg
+  class="lucide lucide-skull"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m12.5 17-.5-1-.5 1h1z" />
+  <path d="M15 22a1 1 0 0 0 1-1v-1a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20v1a1 1 0 0 0 1 1z" />
+  <circle cx="15" cy="12" r="1" />
+  <circle cx="9" cy="12" r="1" /></symbol>
+  <symbol id="lu-circle-dollar-sign" viewBox="0 0 24 24"><svg
+  class="lucide lucide-circle-dollar-sign"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+  <path d="M12 18V6" /></symbol>
+  <symbol id="lu-link" viewBox="0 0 24 24"><svg
+  class="lucide lucide-link"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></symbol>
+  <symbol id="lu-ticket" viewBox="0 0 24 24"><svg
+  class="lucide lucide-ticket"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+  <path d="M13 5v2" />
+  <path d="M13 17v2" />
+  <path d="M13 11v2" /></symbol>
+  <symbol id="lu-alert-triangle" viewBox="0 0 24 24"><svg
+  class="lucide lucide-alert-triangle"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" /></symbol>
+  <symbol id="lu-anchor" viewBox="0 0 24 24"><svg
+  class="lucide lucide-anchor"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 6v16" />
+  <path d="m19 13 2-1a9 9 0 0 1-18 0l2 1" />
+  <path d="M9 11h6" />
+  <circle cx="12" cy="4" r="2" /></symbol>
+  <symbol id="lu-shield-check" viewBox="0 0 24 24"><svg
+  class="lucide lucide-shield-check"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" /></symbol>
+  <symbol id="lu-castle" viewBox="0 0 24 24"><svg
+  class="lucide lucide-castle"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 5V3" />
+  <path d="M14 5V3" />
+  <path d="M15 21v-3a3 3 0 0 0-6 0v3" />
+  <path d="M18 3v8" />
+  <path d="M18 5H6" />
+  <path d="M22 11H2" />
+  <path d="M22 9v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9" />
+  <path d="M6 3v8" /></symbol>
+</svg>
+
+<nav>
+  <a class="brand" href="#top" aria-label="Pearl Street home">
+    <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M24 52 a26 25 0 0 1 52 0 v8 q0 4 -4 4 h-44 q-4 0 -4 -4 z" fill="#f2708a" stroke="#233150" stroke-width="4"/>
+      <path d="M28 64 q-6 10 -14 12 q10 2 15 -4 M40 66 q-3 11 -10 14 q9 1 13 -6 M52 66 q0 12 -4 16 q8 -1 9 -9 M62 66 q4 10 12 12 q-9 3 -15 -3" fill="#f2708a" stroke="#233150" stroke-width="4" stroke-linejoin="round"/>
+      <ellipse cx="40" cy="45" rx="7" ry="8" fill="#fff" stroke="#233150" stroke-width="3"/>
+      <ellipse cx="60" cy="45" rx="7" ry="8" fill="#fff" stroke="#233150" stroke-width="3"/>
+      <circle cx="41.5" cy="46" r="3.4" fill="#233150"/><circle cx="61.5" cy="46" r="3.4" fill="#233150"/>
+      <circle cx="60" cy="45" r="11" fill="none" stroke="#e6a417" stroke-width="3"/>
+      <path d="M68 53 l5 9" stroke="#e6a417" stroke-width="3" stroke-linecap="round"/>
+      <path d="M43 60 q7 6 14 0" fill="none" stroke="#233150" stroke-width="3.4" stroke-linecap="round"/>
+    </svg>
+    Pearl Street
+  </a>
+  <a class="link" href="#reef"><svg class="icon"><use href="#lu-fish"/></svg>The Reef</a>
+  <a class="link" href="#game"><svg class="icon"><use href="#lu-trending-up"/></svg>The Game</a>
+  <a class="link" href="#economy"><svg class="icon"><use href="#lu-landmark"/></svg>Economy</a>
+  <a class="link" href="#presale"><svg class="icon"><use href="#lu-coins"/></svg>Gen-0</a>
+  <a class="link" href="#whitepaper"><svg class="icon"><use href="#lu-file-text"/></svg>Whitepaper</a>
+  <a class="link" href="#roadmap"><svg class="icon"><use href="#lu-map"/></svg>Roadmap</a>
+</nav>
+
+<div class="tape" aria-hidden="true">
+  <div class="tape-inner">
+    <span class="pair">NVDA <span class="up">▲ voyage bonus active</span></span>
+    <span class="pair">AAPL <span class="up">▲ calm waters</span></span>
+    <span class="pair">TSLA <span class="down">▼ storm surge</span></span>
+    <span class="pair">SPY <span class="up">▲ steady current</span></span>
+    <span class="pair">MSFT <span class="up">▲ voyage bonus active</span></span>
+    <span class="pair">AMZN <span class="down">▼ choppy seas</span></span>
+    <span class="pair">GOOGL <span class="up">▲ clear skies</span></span>
+    <span class="pair">META <span class="up">▲ tailwind</span></span>
+    <span class="pair">AMD <span class="down">▼ undertow</span></span>
+    <span class="pair">NFLX <span class="up">▲ high tide</span></span>
+    <span class="pair">NVDA <span class="up">▲ voyage bonus active</span></span>
+    <span class="pair">AAPL <span class="up">▲ calm waters</span></span>
+    <span class="pair">TSLA <span class="down">▼ storm surge</span></span>
+    <span class="pair">SPY <span class="up">▲ steady current</span></span>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap" style="position: relative;">
+    <p class="eyebrow"><svg class="icon"><use href="#lu-sparkles"/></svg>The first game on Robinhood Chain</p>
+    <h1>
+      <span class="line"><span>The market</span></span>
+      <span class="line"><span>never sleeps</span></span>
+      <span class="line"><span><em>under the sea.</em></span></span>
+    </h1>
+    <p class="sub">
+      Pearl Street is an idle creature game where crews from every corner of the reef sail trading voyages keyed to real stock tickers.
+      When the market moves, your fortunes move with it - live Chainlink price feeds, settled on-chain.
+    </p>
+    <div class="cta-row">
+      <a class="btn magnetic" href="#presale"><svg class="icon"><use href="#lu-coins"/></svg>Gen-0 Creature Sale</a>
+      <a class="btn ghost magnetic" href="#whitepaper"><svg class="icon"><use href="#lu-file-text"/></svg>Read the whitepaper</a>
+      <span class="note-tag">Waitlist opening soon · testnet first · no payments accepted anywhere yet</span>
+    </div>
+    <svg class="hero-stage" viewBox="0 0 360 320" aria-hidden="true">
+      <polyline class="chartline" points="18,220 66,178 104,196 144,132 182,152 228,92 268,112 330,48"
+        fill="none" stroke="#233150" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+      <circle class="bob" cx="330" cy="48" r="9" fill="#ffb020" stroke="#233150" stroke-width="3.5"/>
+      <g class="mascot" transform="translate(96,120)">
+        <ellipse cx="70" cy="158" rx="58" ry="10" fill="rgba(8,24,40,0.15)"/>
+        <path d="M18 74 a52 50 0 0 1 104 0 v16 q0 8 -8 8 h-88 q-8 0 -8 -8 z" fill="#f2708a" stroke="#233150" stroke-width="6"/>
+        <path d="M36 82 a34 24 0 0 1 68 0 v12 h-68 z" fill="#ffd2de"/>
+        <path d="M26 98 q-12 20 -28 24 q20 4 30 -8 M50 102 q-6 22 -20 28 q18 2 26 -12 M74 102 q0 24 -8 32 q16 -2 18 -18 M94 102 q8 20 24 24 q-18 6 -30 -6" fill="#f2708a" stroke="#233150" stroke-width="6" stroke-linejoin="round"/>
+        <ellipse cx="50" cy="60" rx="13" ry="14.5" fill="#fff" stroke="#233150" stroke-width="5"/>
+        <ellipse cx="90" cy="60" rx="13" ry="14.5" fill="#fff" stroke="#233150" stroke-width="5"/>
+        <circle cx="53" cy="62" r="6.2" fill="#233150"/><circle cx="93" cy="62" r="6.2" fill="#233150"/>
+        <circle cx="55.5" cy="58.5" r="2.4" fill="#fff"/><circle cx="95.5" cy="58.5" r="2.4" fill="#fff"/>
+        <circle cx="90" cy="60" r="20" fill="none" stroke="#e6a417" stroke-width="5"/>
+        <path d="M104 76 l9 15" stroke="#e6a417" stroke-width="4.5" stroke-linecap="round"/>
+        <circle cx="30" cy="76" r="6.5" fill="#ff9db8" opacity="0.85"/>
+        <circle cx="110" cy="76" r="6.5" fill="#ff9db8" opacity="0.85"/>
+        <path d="M56 84 q14 11 28 0" fill="none" stroke="#233150" stroke-width="5.5" stroke-linecap="round"/>
+        <g transform="translate(70,10)">
+          <rect x="-26" y="-4" width="52" height="9" rx="4.5" fill="#2b3a5c" stroke="#233150" stroke-width="4"/>
+          <rect x="-17" y="-32" width="34" height="29" rx="5" fill="#33436b" stroke="#233150" stroke-width="4"/>
+          <rect x="-17" y="-14" width="34" height="7" fill="#ffb020"/>
+        </g>
+      </g>
+      <g class="bob" fill="#ffffff" opacity="0.65">
+        <circle cx="44" cy="70" r="5"/><circle cx="66" cy="44" r="3.2"/>
+        <circle cx="322" cy="160" r="4.4"/><circle cx="296" cy="186" r="2.8"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 Q75 2 150 22 T300 22 T450 22 T600 22 T750 22 T900 22 T1050 22 T1200 22 V40 H0 Z"/></svg>
+
+<section id="reef">
+  <div class="wrap">
+    <p class="eyebrow rv"><svg class="icon"><use href="#lu-fish"/></svg>The Reef</p>
+    <h2 class="rv">Five species. Five ways to <em>work the street.</em></h2>
+    <p class="prose rv" style="color: var(--page-muted);">
+      Your class is your species. Every creature on Pearl Street belongs to one of the reef's five trading houses, each with its own role in the game - and its own personality on the water.
+    </p>
+    <p class="prose rv" style="color: var(--page-muted); font-size: 13.5px;">
+      The art shown is the working prototype, drawn by the same generator the on-chain renderer will implement. Final Gen-0 art is locked and published before mint.
+    </p>
+    <div class="reef">
+      <div class="sp octo tilt rv" data-d="1">
+        <div class="win"><svg viewBox="0 0 100 92"><rect width="100" height="92" fill="#bfe9f5"/><path d="M0 82 q14 -5 26 0 t26 0 t26 0 t26 0 v10 h-104 z" fill="#f0dfae"/><g class="fig">
+          <path d="M24 48 a26 25 0 0 1 52 0 v8 q0 4 -4 4 h-44 q-4 0 -4 -4 z" fill="#f2708a" stroke="#233150" stroke-width="3.2"/>
+          <path d="M33 52 a17 12 0 0 1 34 0 v6 h-34 z" fill="#ffd2de"/>
+          <path d="M28 60 q-6 10 -14 12 q10 2 15 -4 M40 62 q-3 11 -10 14 q9 1 13 -6 M52 62 q0 12 -4 16 q8 -1 9 -9 M62 62 q4 10 12 12 q-9 3 -15 -3" fill="#f2708a" stroke="#233150" stroke-width="3.2" stroke-linejoin="round"/>
+          <ellipse cx="40" cy="41" rx="6.4" ry="7.2" fill="#fff" stroke="#233150" stroke-width="2.6"/><ellipse cx="60" cy="41" rx="6.4" ry="7.2" fill="#fff" stroke="#233150" stroke-width="2.6"/>
+          <circle cx="41.2" cy="42" r="3" fill="#233150"/><circle cx="61.2" cy="42" r="3" fill="#233150"/>
+          <path d="M43 56 q7 6 14 0" fill="none" stroke="#233150" stroke-width="3" stroke-linecap="round"/>
+        </g></svg></div>
+        <h3>Octopus</h3><span class="role">Strategist</span>
+        <p>Versatile all-rounder. Bonus reinforcement options and flexible sector affinity.</p>
+      </div>
+      <div class="sp shark tilt rv" data-d="2">
+        <div class="win"><svg viewBox="0 0 100 92"><rect width="100" height="92" fill="#bfe9f5"/><path d="M0 82 q14 -5 26 0 t26 0 t26 0 t26 0 v10 h-104 z" fill="#f0dfae"/><g class="fig">
+          <path d="M10 54 q4 -4 12 -6 l-6 -8 q10 -1 16 4 q10 -10 30 -8 l8 -14 q6 6 6 16 q10 4 8 12 q-4 12 -30 14 q-20 2 -34 -6 q-8 2 -12 6 q-2 -6 2 -10 z" fill="#6fa8dc" stroke="#233150" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M34 56 q18 8 40 -1 q-2 6 -12 8 q-18 3 -28 -7 z" fill="#e4f1fa"/>
+          <ellipse cx="64" cy="42" rx="6" ry="6.8" fill="#fff" stroke="#233150" stroke-width="2.6"/><circle cx="65" cy="43" r="2.8" fill="#233150"/>
+          <path d="M52 54 l3 4 3 -4 3 4 3 -4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+        </g></svg></div>
+        <h3>Shark</h3><span class="role">Raider</span>
+        <p>Built to loot. Attack bonuses in raids and a shorter looting cooldown.</p>
+      </div>
+      <div class="sp turtle tilt rv" data-d="3">
+        <div class="win"><svg viewBox="0 0 100 92"><rect width="100" height="92" fill="#bfe9f5"/><path d="M0 82 q14 -5 26 0 t26 0 t26 0 t26 0 v10 h-104 z" fill="#f0dfae"/><g class="fig">
+          <path d="M24 54 a26 21 0 0 1 52 0 z" fill="#4e9a5e" stroke="#233150" stroke-width="3.2"/>
+          <path d="M36 42 h12 M52 42 h12 M44 34 h12 M30 49 h12 M48 49 h12" stroke="#a8dcae" stroke-width="3" stroke-linecap="round"/>
+          <path d="M22 54 h56 q3 0 3 3 t-3 3 h-56 q-3 0 -3 -3 t3 -3 z" fill="#f0e3b2" stroke="#233150" stroke-width="2.6"/>
+          <circle cx="80" cy="46" r="9" fill="#68c47a" stroke="#233150" stroke-width="3.2"/>
+          <ellipse cx="81" cy="44" rx="4" ry="4.6" fill="#fff" stroke="#233150" stroke-width="2.2"/><circle cx="81.8" cy="44.8" r="1.9" fill="#233150"/>
+          <path d="M30 60 l-5 8 q7 2 10 -4 M50 60 v9 q6 0 6 -6 M66 60 l5 8 q-7 2 -10 -4" fill="#68c47a" stroke="#233150" stroke-width="2.8" stroke-linejoin="round"/>
+        </g></svg></div>
+        <h3>Turtle</h3><span class="role">Defender</span>
+        <p>The steady miner. Defense bonuses and a tougher shell against raids.</p>
+      </div>
+      <div class="sp seahorse tilt rv" data-d="4">
+        <div class="win"><svg viewBox="0 0 100 92"><rect width="100" height="92" fill="#bfe9f5"/><path d="M0 82 q14 -5 26 0 t26 0 t26 0 t26 0 v10 h-104 z" fill="#f0dfae"/><g class="fig">
+          <g transform="translate(12 11) scale(0.135)">
+            <path d="M96.208,206.832c-5.281,3-8.547,8.609-8.547,14.688v20.672c0,9.219,7.406,16.75,16.625,16.891l75.766,1.234 v-13.422l-66.844-39.891C107.989,203.895,101.504,203.816,96.208,206.832z" fill="#ffe0b3" stroke="#233150" stroke-width="20" stroke-linejoin="round"/>
+            <path d="M87.661,285.332v20.672c0,6.078,3.266,11.703,8.547,14.703c5.297,3,11.781,2.938,17-0.188l66.844-39.891 v-13.406l-75.766,1.219C95.067,268.598,87.661,276.113,87.661,285.332z" fill="#ffe0b3" stroke="#233150" stroke-width="20" stroke-linejoin="round"/>
+            <path d="M260.536,141.082c20.656,23.25,35.766,29.813,65.578,29.813c14.297,0,87.406-1.203,87.406-1.203 s9.547-21.453,10.734-26.219c1.203-4.766-10.734-5.969-10.734-5.969c-67.953-11.922-72.984-61.328-87.047-76.266 c-4.344-6.594-17.266-61.234-17.266-61.234l-16.891,0.984c0,0,4.969,24.844-4.969,31.797s-42.719,0-51.656-25.828 c-4.969,0-13.906,3.969-13.906,3.969s16.891,24.844-6.953,43.719s-42.719-1-42.719-1l-7.953,15.906c0,0,25.828,8.938,24.828,33.781 c-0.984,24.828-29.797,24.844-29.797,24.844l0.984,12.906c0,0,27.828-2.984,27.828,40.734c0,2.125,0.172,3.797,0.5,5.078v90.813 v64.563v49.469v24.734v3.547c0.016,1.375,0.078,2.719,0.141,4.094c0.172,2.719,0.438,5.422,0.813,8.109 c0.766,5.391,1.969,10.703,3.609,15.844c3.25,10.313,8.188,20.016,14.406,28.672c1.578,2.172,3.219,4.266,4.922,6.281 c1.719,2.063,3.75,4.266,5.797,6.25c4.141,4.031,8.766,7.656,13.75,10.734c9.953,6.188,21.328,10.078,32.781,11.406 c11.469,1.375,23.031,0.297,33.922-2.906c10.875-3.203,21.125-8.578,30-15.828l1.656-1.391l1.734-1.563 c1.156-1.063,2.25-2.156,3.328-3.297c2.125-2.25,4.109-4.641,5.922-7.156c3.625-5.031,6.547-10.5,8.75-16.266 c4.375-11.5,5.828-24.328,3.391-37.109c-1.219-6.375-3.469-12.719-6.719-18.547c-1.609-2.938-3.484-5.719-5.563-8.344 c-1.047-1.313-2.125-2.578-3.266-3.781c-0.547-0.625-1.141-1.203-1.719-1.797c-0.656-0.625-1.313-1.266-2.016-1.875 c-5.5-4.938-12.109-8.656-18.906-10.891c-6.844-2.25-13.859-3.109-20.75-2.766c-6.906,0.375-13.734,1.875-20.391,4.844 c-6.594,2.969-13.203,7.422-18.625,14.266c-1.344,1.703-2.609,3.563-3.734,5.531l-0.406,0.75l-0.563,1.063l-0.344,0.703 l-0.547,1.188l-0.766,1.719c-1.594,3.906-2.766,8.188-3.172,13.031c-0.391,4.797,0.078,10,1.609,14.922 c1.516,4.922,4,9.5,7.25,13.438c1.641,1.984,3.469,3.813,5.594,5.531c2.141,1.719,4.547,3.328,7.766,4.766 c1.609,0.719,3.406,1.391,5.828,1.953l1.422,0.313l1.438,0.25l1.125,0.141c2.922,0.344,5.906,0.344,9.031-0.078 c3.109-0.438,6.391-1.281,9.922-2.969c1.797-0.875,3.641-1.969,5.547-3.438c1.922-1.5,3.922-3.422,5.75-5.984 c1.828-2.516,3.469-5.766,4.359-9.453c0.906-3.656,0.984-7.563,0.406-10.922c-1.219-6.922-4.141-11.016-6.484-13.953l-8.734,7.266 c1.469,1.969,3.141,4.563,3.75,8.578c0.281,1.953,0.188,4.172-0.375,6.234c-0.547,2.078-1.516,3.891-2.609,5.344 c-2.219,2.891-4.688,4.344-6.891,5.344c-2.234,0.953-4.328,1.422-6.359,1.594c-2.016,0.188-3.953,0.094-5.828-0.219 c-0.438-0.063-0.984-0.172-1.578-0.313c-0.703-0.141-0.734-0.203-1.031-0.281c-1.375-0.375-2.422-0.813-3.391-1.297 c-3.766-1.938-6.141-4.344-8.188-7.047c-4.016-5.344-5.625-12.375-4.688-18.531c0.453-3.094,1.391-5.875,2.625-8.422l0.531-1.031 l0.266-0.5l0.203-0.344l0.406-0.656l0.344-0.578l0.297-0.453c0.797-1.219,1.672-2.359,2.609-3.406 c3.797-4.172,8.438-6.906,13.141-8.609c4.734-1.703,9.594-2.406,14.391-2.281c9.531,0.219,18.938,4.047,25.281,10.766 c6.234,6.594,9.844,15.031,10.688,23.484c0.859,8.453-0.859,16.844-4.422,24.094c-7,14.766-21.813,23.453-36.547,26.328 c-14.844,2.891-30.141-0.656-40.781-9.109c-2.688-2.109-5.109-4.469-7.25-7.063c-1.078-1.313-2.031-2.625-3.016-4.078 c-1-1.484-1.938-2.984-2.813-4.5c-3.469-6.109-5.906-12.625-7.219-19.203c-0.656-3.297-1.016-6.594-1.094-9.875 c-0.047-1.641-0.031-3.266,0.063-4.875c0.078-1.703,0.281-2.969,0.469-5.203c0,0-1.516-11.797,5.203-24.781 c6.703-13,17.141-24.766,34.516-34.203c17.391-9.438,65.094-31.781,62.109-83.953c-2.781-48.609-38.469-68.281-67.063-96.875 C255.067,168.41,248.614,127.676,260.536,141.082z" fill="#ffa94d" stroke="#233150" stroke-width="20" stroke-linejoin="round"/>
+          </g>
+          <path d="M50 38 h4 M51.5 45 h4 M51 52 h3.5" stroke="#ffe0b3" stroke-width="2.6" stroke-linecap="round"/>
+          <ellipse cx="54" cy="25.5" rx="3.7" ry="4.2" fill="#fff" stroke="#233150" stroke-width="2"/><circle cx="54.7" cy="26.1" r="1.7" fill="#233150"/>
+        </g></svg></div>
+        <h3>Seahorse</h3><span class="role">Courier</span>
+        <p>Fastest fins on the street. Shorter voyages and a narrower loot window.</p>
+      </div>
+      <div class="sp puffer tilt rv" data-d="5">
+        <div class="win"><svg viewBox="0 0 100 92"><rect width="100" height="92" fill="#bfe9f5"/><path d="M0 82 q14 -5 26 0 t26 0 t26 0 t26 0 v10 h-104 z" fill="#f0dfae"/><g class="fig">
+          <path d="M50 22 l4 6 a22 22 0 0 1 14 8 l7 -2 -2 7 a22 22 0 0 1 0 16 l2 7 -7 -2 a22 22 0 0 1 -14 8 l-4 6 -4 -6 a22 22 0 0 1 -14 -8 l-7 2 2 -7 a22 22 0 0 1 0 -16 l-2 -7 7 2 a22 22 0 0 1 14 -8 z" fill="#ffd166" stroke="#233150" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M38 56 a13 8 0 0 0 24 0 z" fill="#fff0c2"/>
+          <ellipse cx="42" cy="43" rx="6" ry="6.8" fill="#fff" stroke="#233150" stroke-width="2.6"/><ellipse cx="58" cy="43" rx="6" ry="6.8" fill="#fff" stroke="#233150" stroke-width="2.6"/>
+          <circle cx="43" cy="44" r="2.8" fill="#233150"/><circle cx="59" cy="44" r="2.8" fill="#233150"/>
+          <path d="M45 57 q5 4 10 0" fill="none" stroke="#233150" stroke-width="2.8" stroke-linecap="round"/>
+        </g></svg></div>
+        <h3>Pufferfish</h3><span class="role">Tank</span>
+        <p>Inflates under pressure. Absorbs hits and spikes back at attackers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 Q75 2 150 22 T300 22 T450 22 T600 22 T750 22 T900 22 T1050 22 T1200 22 V40 H0 Z"/></svg>
+
+<section id="game">
+  <div class="wrap">
+    <p class="eyebrow rv"><svg class="icon"><use href="#lu-trending-up"/></svg>The Game</p>
+    <h2 class="rv">Your crew works the <em>ocean-floor trading pits.</em></h2>
+    <div class="steps">
+      <div class="step rv"><div class="s-icon"><svg class="icon"><use href="#lu-badge-check"/></svg></div><div><h3>Mint your crew</h3><p>Gen-0 creatures are a capped founding collection, purchased in CLAM. Species is your class; stats and sector affinity are rolled at reveal.</p></div></div>
+      <div class="step rv"><div class="s-icon"><svg class="icon"><use href="#lu-users"/></svg></div><div><h3>Form a party, pick a ticker</h3><p>Three creatures per party. Match sector affinity to the ticker for a stronger multiplier - a Tech-affinity crew sails harder on an NVDA voyage.</p></div></div>
+      <div class="step rv"><div class="s-icon"><svg class="icon"><use href="#lu-sailboat"/></svg></div><div><h3>Sail while the market moves</h3><p>Voyages run in fixed epochs against live Chainlink feeds. Daily energy caps every creature - no bot farm can out-grind a real roster.</p></div></div>
+      <div class="step rv"><div class="s-icon"><svg class="icon"><use href="#lu-trophy"/></svg></div><div><h3>Claim, spend, climb</h3><p>Hauls pay CLAM from the season prize pool plus soulbound Doubloons for progression. Seasons follow market quarters; top crews split the pot.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 Q75 2 150 22 T300 22 T450 22 T600 22 T750 22 T900 22 T1050 22 T1200 22 V40 H0 Z"/></svg>
+
+<section id="economy">
+  <div class="wrap">
+    <p class="eyebrow rv"><svg class="icon"><use href="#lu-landmark"/></svg>The Economy</p>
+    <h2 class="rv">One sell button. <em>That's the whole design.</em></h2>
+    <p class="prose rv" style="color: var(--page-muted);">
+      The games before us died the same death: multiple inflating tokens minted against playtime, dumped daily, backed by nothing.
+      Pearl Street's economy is built so that collapse is not merely unlikely - it is arithmetically impossible.
+    </p>
+    <div class="counters">
+      <div class="counter rv" data-d="1"><div class="n"><span data-count="1">0</span></div><div class="l">Sell button, total</div></div>
+      <div class="counter rv" data-d="2"><div class="n"><span data-count="100">0</span><small>%</small></div><div class="l">CLAM reserve backing</div></div>
+      <div class="counter rv" data-d="3"><div class="n"><span data-count="1">0</span><small>%</small></div><div class="l">Toll each way at the vault</div></div>
+      <div class="counter rv" data-d="4"><div class="n"><span data-count="0">0</span></div><div class="l">Tokens minted by gameplay</div></div>
+    </div>
+    <div class="tablewrap rv">
+      <table>
+        <tr><th>Currency</th><th>What it is</th><th>Can it inflate?</th><th>Can it be dumped?</th></tr>
+        <tr>
+          <td class="cur"><svg class="icon"><use href="#lu-shell"/></svg>CLAM</td>
+          <td>The money of the game. A fully-reserved wrapper over USDG - every CLAM is backed 1:1 in an on-chain vault, always redeemable, provable with a single RPC call.</td>
+          <td><span class="no">NO</span> - only minted against deposits</td>
+          <td><span class="no">NO</span> - hard floor via redemption</td>
+        </tr>
+        <tr>
+          <td class="cur"><svg class="icon"><use href="#lu-coins"/></svg>DOUBLOONS</td>
+          <td>The grind reward, earned by playing. Soulbound and non-transferable: spent on training, upgrades and cosmetics. No market for it can ever exist.</td>
+          <td>Emission capped by daily energy</td>
+          <td><span class="no">NO</span> - structurally unsellable</td>
+        </tr>
+        <tr>
+          <td class="cur"><svg class="icon"><use href="#lu-gem"/></svg>PEARL</td>
+          <td>The protocol token. Does not exist at launch: it arrives only after the game has real revenue, hard-capped, with emissions throttled by that revenue and a redemption floor that only rises. Locking PEARL opens Berth staking seats; staking PEARL earns fee share. At its launch event, 75% of proceeds are locked into liquidity; 25% fund operations.</td>
+          <td>Hard cap; emission ≤ f(revenue)</td>
+          <td><span class="yes">The only one</span> - and it is bounded</td>
+        </tr>
+      </table>
+    </div>
+    <div class="diagram rv">
+      <svg viewBox="0 0 720 190" width="100%" role="img" aria-label="Diagram of the CLAM vault: USDG deposits mint CLAM one to one, a one percent fee each way funds the treasury and prize pools, and redemption is always open.">
+        <g font-family="ui-monospace, Menlo, monospace" font-size="13" font-weight="700">
+          <rect x="20" y="60" width="150" height="64" rx="12" fill="#bfe9f5" stroke="#22303c" stroke-width="2.6"/>
+          <text x="95" y="88" fill="#22303c" text-anchor="middle">Your USDG</text>
+          <text x="95" y="108" fill="#5d7180" text-anchor="middle" font-size="11">in · out anytime</text>
+          <rect x="285" y="40" width="170" height="104" rx="12" fill="#ffe9b8" stroke="#22303c" stroke-width="3"/>
+          <text x="370" y="70" fill="#22303c" text-anchor="middle">CLAM VAULT</text>
+          <text x="370" y="92" fill="#22303c" text-anchor="middle" font-size="12">reserve == supply</text>
+          <text x="370" y="112" fill="#5d7180" text-anchor="middle" font-size="11">redemption unpausable</text>
+          <text x="370" y="128" fill="#5d7180" text-anchor="middle" font-size="11">reserve untouchable</text>
+          <rect x="565" y="60" width="135" height="64" rx="12" fill="#bfe9f5" stroke="#22303c" stroke-width="2.6"/>
+          <text x="632" y="88" fill="#22303c" text-anchor="middle">CLAM in game</text>
+          <text x="632" y="108" fill="#5d7180" text-anchor="middle" font-size="11">all prices in CLAM</text>
+          <g class="pulse-arrow" stroke="#2e9e57" stroke-width="3" fill="none">
+            <path d="M170 78 h108"/><path d="M272 72 l12 6 -12 6 Z" fill="#2e9e57" stroke="none"/>
+            <path d="M455 78 h103"/><path d="M552 72 l12 6 -12 6 Z" fill="#2e9e57" stroke="none"/>
+          </g>
+          <g stroke="#5d7180" stroke-width="2.4" fill="none">
+            <path d="M558 106 h-96"/><path d="M468 100 l-12 6 12 6 Z" fill="#5d7180" stroke="none"/>
+            <path d="M278 106 h-101"/><path d="M183 100 l-12 6 12 6 Z" fill="#5d7180" stroke="none"/>
+          </g>
+          <text x="225" y="66" fill="#2e9e57" text-anchor="middle" font-size="11">mint</text>
+          <text x="225" y="124" fill="#5d7180" text-anchor="middle" font-size="11">redeem</text>
+          <text x="505" y="66" fill="#2e9e57" text-anchor="middle" font-size="11">spend · earn</text>
+          <text x="505" y="124" fill="#5d7180" text-anchor="middle" font-size="11">cash out</text>
+          <path d="M370 144 v22" stroke="#e69a10" stroke-width="3"/>
+          <path d="M364 160 l6 12 6 -12 Z" fill="#e69a10"/>
+          <text x="370" y="185" fill="#b17708" text-anchor="middle" font-size="12">2% in, 5% out → all of it to the prize pool</text>
+        </g>
+      </svg>
+    </div>
+    <p class="prose rv" style="font-size: 14.5px; color: var(--page-muted);">
+      Prize pools pay only what fee revenue funds. Nothing tradable is ever minted against gameplay.
+      Play because it's fun; the good ones get paid.
+    </p>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 Q75 2 150 22 T300 22 T450 22 T600 22 T750 22 T900 22 T1050 22 T1200 22 V40 H0 Z"/></svg>
+
+<section id="presale">
+  <div class="wrap">
+    <p class="eyebrow rv"><svg class="icon"><use href="#lu-coins"/></svg>Gen-0 Creature Sale</p>
+    <h2 class="rv">The founding crews of <em>Pearl Street.</em></h2>
+    <p class="prose rv" style="color: var(--page-muted);">
+      A single capped generation of founding creatures across all five species, minted in CLAM, never re-issued.
+      A major share of mint revenue funds Season One's prize pool directly - early players compete for a large, real, on-chain pot from day one.
+      And when PEARL launches after revenue is real, <strong style="color: var(--page-ink);">75% of launch proceeds are locked into liquidity</strong> - a pledge written into this whitepaper.
+    </p>
+    <div class="presale-grid">
+      <div class="stat rv" data-d="1"><div class="k"><svg class="icon"><use href="#lu-shield"/></svg>Collection</div><div class="v">7,500</div><div class="d">1,500 per species, never re-issued; 15 per wallet</div></div>
+      <div class="stat rv" data-d="2"><div class="k"><svg class="icon"><use href="#lu-shell"/></svg>Mint price</div><div class="v">100 CLAM</div><div class="d">80 CLAM allowlist; wrap USDG in one click, gas sponsored</div></div>
+      <div class="stat rv" data-d="3"><div class="k"><svg class="icon"><use href="#lu-pie-chart"/></svg>PEARL pledge</div><div class="v">75% → LP</div><div class="d">Locked liquidity at PEARL launch; 25% to operations</div></div>
+      <div class="stat rv" data-d="4"><div class="k"><svg class="icon"><use href="#lu-clock"/></svg>Status</div><div class="v">Pre-launch</div><div class="d">Testnet playtest, then audit, then mint</div></div>
+    </div>
+    <div class="cta-row" style="margin-top: 28px; opacity: 1; animation: none;">
+      <a class="btn magnetic" href="#whitepaper"><svg class="icon"><use href="#lu-file-text"/></svg>Read the whitepaper first</a>
+      <span class="note-tag">No payments are accepted anywhere yet. Anyone selling you Pearl Street today is a scammer.</span>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 Q75 2 150 22 T300 22 T450 22 T600 22 T750 22 T900 22 T1050 22 T1200 22 V40 H0 Z"/></svg>
+
+<section id="whitepaper">
+  <div class="wrap">
+    <p class="eyebrow rv"><svg class="icon"><use href="#lu-file-text"/></svg>Whitepaper</p>
+    <h2 class="rv">Pearl Street: an honest economy for an <em>undersea market.</em></h2>
+    <p class="wp-version rv" style="color: var(--page-muted);">v0.3 · August 2026 · pre-launch draft</p>
+
+    <div class="panel rv" style="margin-top: 22px;">
+
+    <div class="wp-chapter prose" style="margin-top: 6px;">
+      <div class="wp-num"><svg class="icon"><use href="#lu-telescope"/></svg>CHAPTER I</div>
+      <h3>Vision</h3>
+      <p>
+        Millions of people check their portfolio the way other people check the weather.
+        Pearl Street turns that daily ritual into a game: an undersea Wall Street where creature crews sail trading voyages keyed to real equities, and where the market's every move - rallies, dumps, earnings storms - becomes gameplay.
+      </p>
+      <p>
+        We build on <strong>Robinhood Chain</strong>, an Ethereum Layer 2 purpose-built for tokenized equities, with sub-second blocks, negligible fees, and live Chainlink price feeds for real stocks.
+        It is a chain with real users and real dollars - and, until Pearl Street, no games at all.
+      </p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-skull"/></svg>CHAPTER II</div>
+      <h3>The lesson we refuse to repeat</h3>
+      <p>
+        Our genre's most famous ancestor let players mint its reward token endlessly against playtime.
+        Every sink depended on new players arriving; when growth stalled, emissions kept compounding and the token fell for a year straight.
+        By the end it had four tradable, inflating currencies - four sell buttons - and no floor under any of them.
+      </p>
+      <blockquote>Minting never created profit. It created tokens. The dollars always came from the next buyer.</blockquote>
+      <p>
+        Pearl Street is designed from that autopsy.
+        The average player is a net spender because playing is fun - the Fortnite half of our economy.
+        The money that flows out to winners is money other players put in, redistributed through competition with a protocol rake - the poker half.
+        Nothing tradable is minted against gameplay, ever.
+      </p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-fish"/></svg>CHAPTER III</div>
+      <h3>The reef and its five houses</h3>
+      <p>
+        Every creature belongs to one of five species, and species is class: the <strong>Octopus</strong> (strategist), the <strong>Shark</strong> (raider), the <strong>Turtle</strong> (defender), the <strong>Seahorse</strong> (courier), and the <strong>Pufferfish</strong> (tank).
+        A balanced crew mixes houses; a specialist crew leans into one playstyle and lives with its weaknesses.
+      </p>
+      <p><strong>Voyages.</strong> Parties of three sail fixed-length expeditions keyed to a real ticker. Settlement reads the ticker's Chainlink feed: the signed price move applies a bounded multiplier to a guaranteed base haul. Sector affinity between crew and ticker strengthens the multiplier.</p>
+      <p><strong>Energy.</strong> Every creature has a fixed daily energy budget - our anti-botting spine. No wallet can out-grind the cap, and industrial farms gain nothing from running around the clock.</p>
+      <p><strong>Looting.</strong> Active voyages are raidable during a vulnerability window. Combat resolves on party stats with two rounds of reinforcements and an underdog's-revenge chance for defenders. Only base hauls are stealable, and each voyage can be raided once.</p>
+      <p><strong>The Tavern.</strong> Idle creatures hire out as battle reinforcements at owner-set prices; the house takes a rake.</p>
+      <p><strong>Breeding.</strong> Supply grows only within per-season population caps, with escalating costs and lifetime breed limits. Old generations retire into cosmetic relics.</p>
+      <p><strong>Seasons.</strong> Leaderboards follow market quarters. Earnings weeks are in-game events. The market calendar is a content pipeline nobody has to build.</p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-shell"/></svg>CHAPTER IV</div>
+      <h3>The three currencies</h3>
+      <p><strong>CLAM - the money.</strong> A fully-reserved wrapper over USDG. Mint by depositing USDG (2% fee); redeem back anytime (5% fee); every fee goes to the prize pool. The vault enforces reserve = supply at all times, redemption cannot be paused by anyone, no function can withdraw the reserve, and the reserve is never lent or deployed. Proof of backing is one public RPC call.</p>
+      <p><strong>Doubloons - the grind.</strong> Earned by playing, bounded by energy, soulbound forever. Doubloons buy training, upgrades, breeding discounts and cosmetics. Because they cannot be transferred, they absorb play-to-earn pressure without creating a single unit of sell pressure.</p>
+      <p><strong>PEARL - the upside.</strong> The only speculative asset, launched only after the game generates revenue. Hard-capped. Per-epoch emissions are bounded by trailing protocol revenue: no revenue, no emission. A fixed share of revenue fills an on-chain reserve against which PEARL can always be burned at floor - a floor that can only rise. Staking PEARL earns fee-share and Doubloons, never a new uncapped token.</p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-circle-dollar-sign"/></svg>CHAPTER V</div>
+      <h3>Where the money flows</h3>
+      <ul>
+        <li><strong>In:</strong> Gen-0 and breeding mints, CLAM wrap and unwrap fees, marketplace fees, tavern rake, loot insurance premiums, team-slot purchases, cosmetics and season passes.</li>
+        <li><strong>Out:</strong> season prize pools, raffle prizes, tournament pots - all paid in CLAM, all capped by what revenue actually funded.</li>
+        <li><strong>Never:</strong> emissions of anything tradable against playtime. The printer does not exist.</li>
+      </ul>
+      <p>
+        Because fees sit on money <em>flow</em> rather than player growth, the protocol earns at any population size - the failure mode where sinks die with growth is structurally removed.
+      </p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-link"/></svg>CHAPTER VI</div>
+      <h3>The chain, and why it matters</h3>
+      <ul>
+        <li>Robinhood Chain is an Arbitrum-stack Ethereum L2 with ~0.1s blocks and fees measured in fractions of a cent - game-grade UX with Ethereum settlement.</li>
+        <li>Live Chainlink feeds for dozens of major equities give us tamper-resistant market data on-chain; voyages settle against the feed, staleness-checked, with a safe base-haul fallback.</li>
+        <li>First-come-first-served sequencing means loot raids cannot be sniped by gas auctions - a genuine fairness upgrade for PvP.</li>
+        <li>Account abstraction is native: players connect, wrap USDG, and play with sponsored gas. No ETH required, no seed-phrase hazing.</li>
+        <li>Pearl Street reads stock <em>prices</em> only. The game never holds, distributes, or touches tokenized securities.</li>
+      </ul>
+      <p><strong>And the market itself is stakeable.</strong> Because Pearl Street lives on the chain where equities are ERC-20s, staking them into the game is a native feature, not an integration. That deserves its own chapter.</p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-anchor"/></svg>CHAPTER VII</div>
+      <h3>The Berths: stake the market itself</h3>
+      <p>
+        <strong>What a Stock Token actually is.</strong>
+        Robinhood Chain's flagship assets are Stock Tokens: real US equities and ETFs carried on-chain as standard ERC-20 tokens - NVDA, AAPL, SPY and roughly ninety more - issued by Robinhood Assets (Jersey) Limited.
+        Legally they are tokenized debt instruments that track the underlying stock's economics; they confer price exposure, not shareholder rights.
+        Dividends fold straight into the token through an on-chain multiplier (the ERC-8056 scaled-amount standard), so a Stock Token tracks the stock's total return and still trades like any other token on the chain.
+        They are securities with real-world restrictions: not offered to US persons, with further limits in Canada, the UK, and Switzerland.
+      </p>
+      <p><strong>How Pearl Street uses them - two strictly separated roles:</strong></p>
+      <ul>
+        <li><strong>As prices, for everyone.</strong> The core game consumes Chainlink price feeds for the 35 feed-covered tickers. Voyages settle against the number, never the asset: the game contracts never hold, sell, or distribute a Stock Token, and nobody needs to own one to play anything.</li>
+        <li><strong>As positions, for eligible players.</strong> Where Stock Tokens are legally available, holders can put their actual portfolio to work in the game through Berths. This layer is optional, region-gated, and additive; the Gen-0 sale and the core loop stand entirely without it.</li>
+      </ul>
+      <p>
+        A <strong>Berth</strong> is a mooring on your creature's sector: deposit eligible Stock Tokens (the feed-covered tickers), and your position becomes part of your crew's strength.
+        Your actual NVDA powers your actual Tech crew.
+      </p>
+      <p><strong>How a Berth grows you:</strong></p>
+      <ul>
+        <li><strong>Deeper affinity, bigger share.</strong> The sector affinity bonus scales from the base +10% up to a hard cap of +25% with the value berthed (square-root curve, so skill stays ahead of capital). A stronger multiplier means a larger share of every daily pool release and a faster climb up the season leaderboard - the boost compounds voyage after voyage.</li>
+        <li><strong>Commitment is the strategy.</strong> Berth power ramps in over 5 days of sustained position and unstaking resets the ramp. Long-term conviction, not epoch-hopping capital, is what the game rewards - a berth is a position statement, visible on your crew.</li>
+        <li><strong>Your position keeps being yours.</strong> Berthed tokens keep their full total return: dividends and splits accrue automatically through the token's on-chain multiplier while they sit in the berth. The game adds a layer on top of your portfolio; it never takes a slice of it.</li>
+        <li><strong>The Houses.</strong> Every berth counts toward its sector's House - Tech, Energy, Finance and the rest - and each season the Houses are ranked by total berthed value. House standings unlock event modifiers, cosmetics, and bragging rights. Sector loyalty becomes a team sport played with real conviction.</li>
+        <li><strong>Seats on the exchange.</strong> Opening berths requires locking PEARL - a seat on Pearl Street, in the oldest tradition of exchanges. More seats, more berths.</li>
+      </ul>
+      <p><strong>The guarantees, same as everywhere on Pearl Street:</strong></p>
+      <ul>
+        <li>Withdrawals can never be paused, by anyone, for any reason. No function exists that can move berthed tokens anywhere but back to their owner.</li>
+        <li>If the Berths are ever retired, retirement blocks new deposits and ends boosts - withdrawals stay open until the last token has left.</li>
+        <li>Berths never mint anything. They change your share of the capped pool release; the no-printer rule holds even here.</li>
+        <li>Per-token deposit caps and issuer-upgrade monitoring contain the risks we do not control.</li>
+      </ul>
+      <p>Stock Tokens are unavailable in some jurisdictions, so Berths are a feature for eligible regions; nothing in the Gen-0 sale depends on them.</p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-ticket"/></svg>CHAPTER VIII</div>
+      <h3>The Gen-0 sale</h3>
+      <p>
+        One founding generation of <strong>7,500 creatures - 1,500 per species</strong> - minted in CLAM at <strong>100 CLAM</strong> (80 CLAM allowlist), capped at 15 per wallet, never re-issued.
+        Gen-0 creatures are the only creatures that will ever exist without breeding, and early supply governs everything downstream.
+        Terms are planned values; final terms are published at mint.
+      </p>
+      <p><strong>The pool cannot go dry, by construction.</strong> The season prize pool releases at most 1.5% of its balance per day - 80% to voyage hauls, 20% to the season-end leaderboard pot - and 100% of all ongoing protocol fees flow back into it. Every reward is a share of something real; more players means smaller shares, never a broken promise.</p>
+      <p><strong>Use of proceeds.</strong> At least 30% of the Gen-0 raise funds Season One's prize pool directly. The remainder funds development, marketing, and the treasury reserve, held in the published operations wallet with a published budget. The exact split is published before the sale opens and is verifiable on-chain afterward.</p>
+      <p><strong>The Founder's Wake.</strong> Gen-0 creatures carry a permanent founder bonus on PEARL rewards once PEARL exists - earned through play from the capped rewards allocation, vested like all PEARL rewards. It is a bonus on playing, never an airdrop for buying; final mechanics are published with the PEARL launch.</p>
+      <p><strong>The art is stored on-chain, forever.</strong> Every Gen-0 creature is deterministic SVG rendered by the contract itself, in the tradition Nouns pioneered - the next chapter explains the system in full.</p>
+      <p>
+        PEARL is not part of the Gen-0 sale. It arrives a few days after the game is live, through a short public pre-sale whose proceeds mostly seed locked PEARL/USDG liquidity - it arrives after revenue does, and that ordering is a feature, not a delay.
+      </p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-sparkles"/></svg>CHAPTER IX</div>
+      <h3>On-chain art, the Nouns way</h3>
+      <p>
+        Nouns changed what an NFT can be by making the blockchain itself the artist: the artwork is not a link to a server, it is code in the contract, and the chain draws it on demand.
+        Pearl Street adopts that architecture for every creature it will ever mint.
+      </p>
+      <ul>
+        <li><strong>The art is a program, not a file.</strong> Every Gen-0 creature is pure SVG composed from trait layers - species base, body-color tier, eyes, headgear, mouth, aura, and sector tag. The renderer lives on-chain and reproduces the art generator byte-for-byte; the token's metadata call returns the complete image with no IPFS, no image server, no link that can rot.</li>
+        <li><strong>Rarity is verifiable, not promised.</strong> Trait odds are fixed in the contract - four body tiers from Biolume at 55% down to Coral at 5%, five eye styles, six kinds of headgear, and the rest - and every creature is generated deterministically from its commit-reveal seed. Anyone can re-derive any creature from its seed and check the odds against the code.</li>
+        <li><strong>Nothing can be swapped after you buy.</strong> Because image and metadata are computed on-chain from the seed, no admin can point your token at different art later. What you reveal is what you own, for as long as the chain produces blocks.</li>
+        <li><strong>What we borrow, and what we do not.</strong> We borrow Nouns' art architecture: fully on-chain storage and rendering with a transparent trait system. We do not copy its one-per-day auction or DAO treasury model; Pearl Street's mint, seasons, and economy follow the design in the chapters above.</li>
+      </ul>
+      <p>
+        The creatures on this page are the working prototype of exactly this system, drawn by the same deterministic generator the contract will implement.
+        Final art is locked and published before mint; the guarantee that it lives on-chain is locked already.
+      </p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-pie-chart"/></svg>CHAPTER X</div>
+      <h3>PEARL: what the token actually does</h3>
+      <p>
+        PEARL is not a promise of profit bolted onto a game; it is the working capital asset of the exchange, with five concrete jobs:
+      </p>
+      <ul>
+        <li><strong>Seats.</strong> Locking PEARL opens Berths (Chapter VII). The endgame feature of the whole platform runs through the token, taking supply out of circulation as adoption grows.</li>
+        <li><strong>Fee share.</strong> Staked PEARL earns a share of protocol fee revenue - real CLAM from the vault toll, marketplace, tavern, and insurance - plus Doubloons. Never a new uncapped token; the CRAM mistake is not coming back.</li>
+        <li><strong>The floor.</strong> A fixed share of revenue fills an on-chain reserve, and anyone can burn PEARL at floor value (reserve divided by circulating supply). The floor can only rise; every panic-seller below it raises it for everyone else.</li>
+        <li><strong>Scarcity by construction.</strong> Hard cap of 1,000,000,000. Reward emissions each epoch are bounded by trailing protocol revenue - no revenue, no emission. PEARL cannot be farmed into oblivion because gameplay does not print it.</li>
+        <li><strong>The Founder's Wake.</strong> Gen-0 creatures earn a +20% bonus on play-earned PEARL, forever - the founding generation's stake in the token era.</li>
+      </ul>
+      <p>
+        <strong>The launch pledge.</strong> A few days after the game is live, PEARL launches through a single short public pre-sale - and this whitepaper fixes how every unit of the proceeds is used, in advance:
+      </p>
+      <svg viewBox="0 0 640 96" width="100%" style="max-width: 640px; margin: 6px 0 18px;" role="img" aria-label="Bar chart: 75 percent of PEARL launch proceeds go to locked liquidity, 25 percent to operations.">
+        <rect x="0" y="18" width="480" height="34" rx="10" fill="#2e9e57" stroke="#22303c" stroke-width="2.6"/>
+        <rect x="486" y="18" width="154" height="34" rx="10" fill="#ffb020" stroke="#22303c" stroke-width="2.6"/>
+        <text x="14" y="40" font-family="ui-monospace, Menlo, monospace" font-size="15" font-weight="bold" fill="#ffffff">75% → LOCKED LIQUIDITY</text>
+        <text x="498" y="40" font-family="ui-monospace, Menlo, monospace" font-size="14" font-weight="bold" fill="#22303c">25% OPS</text>
+        <text x="0" y="82" font-family="ui-monospace, Menlo, monospace" font-size="11.5" fill="#5d7180">LP tokens timelocked a minimum of 24 months - verifiable on-chain by anyone</text>
+      </svg>
+      <ul>
+        <li><strong>75% into the PEARL liquidity pool</strong>, with the LP tokens timelocked for a minimum of 24 months. The lock address is published; anyone can verify the liquidity cannot be pulled.</li>
+        <li><strong>25% to operations</strong> - development, marketing, security - through the same published operations wallet as the Gen-0 raise, with a published budget.</li>
+        <li><strong>No insider discount.</strong> The launch event price is the listing price, with per-wallet caps and vesting on large allocations. Team allocations vest longest.</li>
+        <li><strong>The throttle still holds.</strong> The launch event changes how PEARL arrives, not how it lives: emissions stay bounded by trailing revenue, and the redemption floor still only rises.</li>
+      </ul>
+      <p>
+        This ordering - game first, revenue first, then a token whose liquidity is locked by construction - is the exact inverse of the launches that killed our genre.
+        We put it in the whitepaper so you can hold us to it.
+      </p>
+    </div>
+
+    <div class="wp-chapter prose">
+      <div class="wp-num"><svg class="icon"><use href="#lu-alert-triangle"/></svg>CHAPTER XI</div>
+      <h3>Risks, plainly stated</h3>
+      <ul>
+        <li>No game economy can make every player profitable. Skilled and consistent players win money that casual players spent. If a game promises otherwise, it is lying to you.</li>
+        <li>CLAM's DEX price can float between the redeem floor (about $0.95) and the mint ceiling (about $1.02); the vault, not any pool, is the source of truth.</li>
+        <li>Robinhood Chain has permissioned validators and a sequencer operated with compliance screening; the chain's trust model is disclosed in full in our documentation.</li>
+        <li>Chainlink feeds can pause or go stale during corporate actions; voyages settle to base hauls when data is not fresh.</li>
+        <li>Berthed Stock Tokens are held by a game contract, and all Stock Tokens share one issuer-controlled upgrade mechanism outside our control. We contain this with per-token deposit caps and monitoring, and berth withdrawals can never be paused - but the underlying issuer risk is real and is yours to weigh. Stock Tokens are unavailable in some jurisdictions.</li>
+        <li>Smart contracts carry risk. The CLAM vault ships only after external audit, and its invariants are publicly testable.</li>
+      </ul>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 Q75 2 150 22 T300 22 T450 22 T600 22 T750 22 T900 22 T1050 22 T1200 22 V40 H0 Z"/></svg>
+
+<section id="roadmap">
+  <div class="wrap">
+    <p class="eyebrow rv"><svg class="icon"><use href="#lu-map"/></svg>Roadmap</p>
+    <h2 class="rv">Ship the loop, then <em>deepen it.</em></h2>
+    <div class="phases">
+      <div class="phase rv" data-d="1"><div class="p-icon"><svg class="icon"><use href="#lu-anchor"/></svg></div><span class="tag">PHASE 1</span><p><strong>Foundation.</strong> CLAM vault live on testnet with public proof-of-reserve. Gen-0 mint, voyages, energy, Doubloons, season leaderboard. Closed playtest.</p></div>
+      <div class="phase rv" data-d="2"><div class="p-icon"><svg class="icon"><use href="#lu-shield-check"/></svg></div><span class="tag">PHASE 2</span><p><strong>Mainnet launch.</strong> External audit, risk disclosures, Gen-0 sale, Season One with a fee-funded prize pool.</p></div>
+      <div class="phase rv" data-d="3"><div class="p-icon"><svg class="icon"><use href="#lu-castle"/></svg></div><span class="tag">PHASE 3</span><p><strong>The undersea city.</strong> Looting PvP, the Tavern, marketplace and creature swaps, team-slot progression, weekly raffle.</p></div>
+      <div class="phase rv" data-d="4"><div class="p-icon"><svg class="icon"><use href="#lu-gem"/></svg></div><span class="tag">PHASE 4</span><p><strong>PEARL.</strong> Once revenue is real: a public launch event with 75% of proceeds locked into liquidity for 24+ months and 25% to operations - then revenue-throttled emissions, a rising redemption floor, and fee-share staking.</p></div>
+      <div class="phase rv" data-d="5"><div class="p-icon"><svg class="icon"><use href="#lu-sparkles"/></svg></div><span class="tag">BEYOND</span><p><strong>Breeding generations, earnings-storm events, and the Berths in eligible regions: stake real Stock Tokens so your actual portfolio powers your crew, with the Houses ranking every sector's conviction.</strong></p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="panel">
+      <h3>Disclosures</h3>
+      <p>
+        Pearl Street is an independent project and is not affiliated with, endorsed by, or sponsored by Robinhood Markets, Inc. or any of its subsidiaries. "Robinhood Chain" is referenced solely to identify the network the game is deployed on.
+      </p>
+      <p>
+        Nothing on this page is financial, investment, or legal advice, and nothing here is an offer to sell or a solicitation to buy any security or financial instrument in any jurisdiction. Digital assets are volatile and you can lose everything you spend. CLAM is a game currency fully reserved by USDG deposits; it is not issued as a payment instrument. Gameplay involving real stock prices uses public price data only. Berth staking, where offered, involves depositing tokenized securities that are unavailable in some jurisdictions; availability of any feature or sale may be restricted by jurisdiction. Do your own research.
+      </p>
+      <p>© 2026 Pearl Street. Built under the sea.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="schemes" role="group" aria-label="Color scheme picker">
+  <span>SCHEME</span>
+  <button type="button" class="sw-sunny" data-scheme="sunny" title="Sunny Reef" aria-label="Sunny Reef scheme" aria-pressed="true"></button>
+  <button type="button" class="sw-deep" data-scheme="deep" title="Deep Dive" aria-label="Deep Dive scheme" aria-pressed="false"></button>
+  <button type="button" class="sw-sunset" data-scheme="sunset" title="Sunset Cove" aria-label="Sunset Cove scheme" aria-pressed="false"></button>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- scheme picker ---------- */
+  var buttons = document.querySelectorAll(".schemes button");
+  function applyScheme(name) {
+    if (name === "sunny") { delete document.documentElement.dataset.scheme; }
+    else { document.documentElement.dataset.scheme = name; }
+    buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.scheme === name)); });
+    try { localStorage.setItem("ss-scheme2", name); } catch (e) {}
+    refreshPalette();
+  }
+  buttons.forEach(function (b) { b.addEventListener("click", function () { applyScheme(b.dataset.scheme); }); });
+  var saved = null;
+  try { saved = localStorage.getItem("ss-scheme2"); } catch (e) {}
+  if (saved && saved !== "sunny") { applyScheme(saved); }
+
+  /* ---------- scroll progress ---------- */
+  var progress = document.getElementById("progress");
+  function onScrollProgress() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+  }
+  window.addEventListener("scroll", onScrollProgress, { passive: true });
+  onScrollProgress();
+
+  /* ---------- reveal on scroll ---------- */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".rv").forEach(function (el) { io.observe(el); });
+
+  /* ---------- count-up ---------- */
+  var cio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      cio.unobserve(en.target);
+      var el = en.target, target = parseInt(el.dataset.count, 10);
+      if (reduced || target === 0) { el.textContent = String(target); return; }
+      var t0 = null;
+      function tick(t) {
+        if (!t0) t0 = t;
+        var p = Math.min((t - t0) / 1000, 1);
+        el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll("[data-count]").forEach(function (el) { cio.observe(el); });
+
+  /* ---------- magnetic buttons & card tilt ---------- */
+  if (!reduced) {
+    document.querySelectorAll(".magnetic").forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        var y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+        el.style.transform = "translate(" + (x * 4) + "px," + (y * 3) + "px)";
+      });
+      el.addEventListener("mouseleave", function () { el.style.transform = ""; });
+    });
+    document.querySelectorAll(".tilt").forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = "perspective(700px) rotateY(" + (x * 7) + "deg) rotateX(" + (-y * 7) + "deg) translateY(-5px)";
+      });
+      el.addEventListener("mouseleave", function () { el.style.transform = ""; });
+    });
+  }
+
+  /* ---------- sunny ocean canvas: bubbles + god rays + cursor ripple ---------- */
+  var canvas = document.getElementById("ocean");
+  var ctx = canvas.getContext("2d");
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var pal = { w0: "#bfe9f5", w1: "#7fcbe0", ray: "#ffffff", deep: false };
+
+  function refreshPalette() {
+    if (!pal || !ctx) return;
+    var cs = getComputedStyle(document.documentElement);
+    pal.w0 = cs.getPropertyValue("--water0").trim();
+    pal.w1 = cs.getPropertyValue("--water1").trim();
+    pal.deep = document.documentElement.dataset.scheme === "deep";
+    pal.ray = pal.deep ? "#7fd8c8" : "#ffffff";
+    if (reduced) drawStatic();
+  }
+
+  function resize() {
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + "px"; canvas.style.height = H + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (reduced) drawStatic();
+  }
+  window.addEventListener("resize", resize);
+
+  var bubbles = [];
+  function seed() {
+    bubbles = [];
+    var n = Math.min(60, Math.floor(W / 22));
+    for (var i = 0; i < n; i++) {
+      bubbles.push({
+        x: Math.random() * W, y: Math.random() * H,
+        r: 1.5 + Math.random() * 4,
+        v: 0.2 + Math.random() * 0.6,
+        drift: (Math.random() - 0.5) * 0.3,
+        a: 0.15 + Math.random() * 0.3,
+        ph: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  var mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999 };
+  window.addEventListener("pointermove", function (e) { mouse.tx = e.clientX; mouse.ty = e.clientY; }, { passive: true });
+
+  function paintBase() {
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, pal.w0); g.addColorStop(1, pal.w1);
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  }
+  function drawStatic() { paintBase(); }
+
+  var t = 0;
+  function frame() {
+    t += 0.008;
+    paintBase();
+
+    ctx.save();
+    ctx.globalAlpha = pal.deep ? 0.06 : 0.16;
+    for (var s = 0; s < 3; s++) {
+      var cx = W * (0.18 + s * 0.32) + Math.sin(t * 0.6 + s * 2.2) * 70;
+      var grad = ctx.createLinearGradient(cx, 0, cx + 120, H);
+      grad.addColorStop(0, pal.ray); grad.addColorStop(1, "transparent");
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(cx - 26, 0); ctx.lineTo(cx + 70, 0);
+      ctx.lineTo(cx + 240, H); ctx.lineTo(cx - 150, H);
+      ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+
+    mouse.x += (mouse.tx - mouse.x) * 0.07;
+    mouse.y += (mouse.ty - mouse.y) * 0.07;
+    if (mouse.x > -999) {
+      var rg = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 190);
+      rg.addColorStop(0, "#ffffff"); rg.addColorStop(1, "transparent");
+      ctx.save(); ctx.globalAlpha = pal.deep ? 0.05 : 0.12;
+      ctx.fillStyle = rg; ctx.fillRect(mouse.x - 190, mouse.y - 190, 380, 380);
+      ctx.restore();
+    }
+
+    ctx.fillStyle = "#ffffff";
+    for (var i = 0; i < bubbles.length; i++) {
+      var b = bubbles[i];
+      b.y -= b.v; b.x += b.drift + Math.sin(t * 2 + b.ph) * 0.2;
+      if (b.y < -8) { b.y = H + 8; b.x = Math.random() * W; }
+      if (b.x < -8) b.x = W + 8; if (b.x > W + 8) b.x = -8;
+      ctx.globalAlpha = b.a * (pal.deep ? 0.5 : 1);
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = ctx.globalAlpha * 0.5;
+      ctx.beginPath(); ctx.arc(b.x - b.r * 0.3, b.y - b.r * 0.3, b.r * 0.35, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+
+  refreshPalette(); resize(); seed();
+  if (reduced) { drawStatic(); } else { requestAnimationFrame(frame); }
+  window.addEventListener("resize", seed);
+})();
+</script>

@@ -1,0 +1,17 @@
+{
+  "name": "@pearlstreet/proto",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Economy prototype drivers: Anvil full-horizon replay, testnet bot fleet, and the live dashboard server.",
+  "scripts": {
+    "replay": "node scripts/replay-anvil.mjs",
+    "testnet:deploy": "node scripts/testnet-deploy.mjs",
+    "testnet:bots": "node scripts/testnet-bots.mjs",
+    "dashboard": "node scripts/dashboard-server.mjs"
+  },
+  "dependencies": {
+    "@pearlstreet/sim": "*",
+    "viem": "^2.21.0"
+  }
+}

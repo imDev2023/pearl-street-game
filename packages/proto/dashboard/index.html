@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pearl Street Economy Watch</title>
+<style>
+  :root {
+    --bg: #0b1622; --panel: #12202f; --line: #1d3247; --text: #dce9f5; --dim: #7d97ad;
+    --good: #45d09e; --bad: #ff6b6b; --accent: #ffc857; --casual: #6aa9ff; --skilled: #b48cff; --bot: #ff9f6a;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--text); font: 14px/1.5 ui-monospace, "SF Mono", Menlo, monospace; padding: 24px; }
+  h1 { font-size: 18px; letter-spacing: 2px; color: var(--accent); }
+  h1 small { color: var(--dim); font-weight: normal; letter-spacing: 0; margin-left: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+  .stat .label { color: var(--dim); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .stat .value { font-size: 22px; margin-top: 4px; }
+  .stat .sub { color: var(--dim); font-size: 11px; margin-top: 2px; }
+  .ok { color: var(--good); } .alarm { color: var(--bad); }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin-bottom: 16px; overflow-x: auto; }
+  .panel h2 { font-size: 12px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+  canvas { width: 100%; height: 220px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: right; padding: 5px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--dim); font-weight: normal; } td:first-child, th:first-child { text-align: left; }
+  .tag { padding: 1px 7px; border-radius: 9px; font-size: 11px; color: #0b1622; }
+  .tag.casual { background: var(--casual); } .tag.skilled { background: var(--skilled); } .tag.bot { background: var(--bot); }
+  #status { color: var(--dim); font-size: 12px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<h1>PEARL STREET <small>economy watch - testnet 46630 - 10-minute game days</small></h1>
+<div id="status">connecting...</div>
+<div class="grid" id="stats"></div>
+<div class="panel"><h2>Prize pool (CLAM, per day boundary)</h2><canvas id="poolChart" height="220"></canvas></div>
+<div class="panel"><h2>Players - lifetime hauls vs cost of entry</h2><div id="players"></div></div>
+<script>
+const CLAM = 1e6;
+const fmt = (micro, dp = 2) => (Number(micro) / CLAM).toLocaleString("en-US", {maximumFractionDigits: dp});
+
+function stat(label, value, sub = "", cls = "") {
+  return `<div class="stat"><div class="label">${label}</div><div class="value ${cls}">${value}</div><div class="sub">${sub}</div></div>`;
+}
+
+function drawPool(history) {
+  const c = document.getElementById("poolChart");
+  const ctx = c.getContext("2d");
+  const w = c.width = c.clientWidth * devicePixelRatio;
+  const h = c.height = 220 * devicePixelRatio;
+  ctx.clearRect(0, 0, w, h);
+  if (history.length < 2) return;
+  const values = history.map(p => Number(p.pool) / CLAM);
+  const max = Math.max(...values) * 1.05, min = 0;
+  ctx.strokeStyle = "#ffc857"; ctx.lineWidth = 2 * devicePixelRatio; ctx.beginPath();
+  values.forEach((v, i) => {
+    const x = (i / (values.length - 1)) * (w - 20) + 10;
+    const y = h - 14 - ((v - min) / (max - min)) * (h - 28);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+  ctx.fillStyle = "#7d97ad"; ctx.font = `${11 * devicePixelRatio}px ui-monospace`;
+  ctx.fillText(`${values[values.length - 1].toFixed(0)} CLAM (day ${history[history.length - 1].day})`, 12, 14 * devicePixelRatio);
+}
+
+function playersTable(players) {
+  if (!players.length) return "<em>bot fleet has not reported yet</em>";
+  const rows = players.map(p => {
+    const entry = p.creatures * 100 * CLAM; // public price; the honest cost of entry
+    const haul = Number(p.claimed);
+    const payback = entry > 0 ? (haul / entry * 100) : 0;
+    return {...p, entry, haul, payback};
+  }).sort((a, b) => b.payback - a.payback);
+  const cells = rows.map(p => `<tr>
+    <td>${p.name} <span class="tag ${p.archetype}">${p.archetype}</span></td>
+    <td>${p.creatures}</td><td>${fmt(p.entry, 0)}</td><td>${fmt(p.haul)}</td>
+    <td>${fmt(p.clam)}</td><td>${p.doubloons}</td><td>${p.payback.toFixed(1)}%</td></tr>`).join("");
+  const hauls = rows.map(r => r.haul);
+  const summary = `<p style="color:var(--dim);margin-bottom:8px">
+    per-player lifetime haul - min ${fmt(Math.min(...hauls))} / avg ${fmt(hauls.reduce((s,v)=>s+v,0)/rows.length)} / max ${fmt(Math.max(...hauls))} CLAM</p>`;
+  return summary + `<table><tr><th>player</th><th>creatures</th><th>entry cost</th><th>lifetime hauls</th><th>CLAM now</th><th>doubloons</th><th>payback</th></tr>${cells}</table>`;
+}
+
+async function refresh() {
+  try {
+    const s = await (await fetch("/api/state")).json();
+    if (s.error) { document.getElementById("status").textContent = s.error; return; }
+    const c = s.chain;
+    const solvent = c.reserveSurplus === "0";
+    document.getElementById("stats").innerHTML =
+      stat("game day", c.day, `${s.deployment.dayLength}s per day`) +
+      stat("prize pool", fmt(c.pool, 0) + " CLAM", `today's haul tranche ${fmt(c.trancheToday)}`) +
+      stat("vault invariant", solvent ? "reserve == supply" : "BROKEN", `surplus ${c.reserveSurplus}`, solvent ? "ok" : "alarm") +
+      stat("CLAM in circulation", fmt(c.clamSupply, 0), "uncapped - mints 1:1 against mUSDG reserve") +
+      stat("protocol revenue", fmt(c.treasury, 0) + " CLAM", "ops treasury (fees + sale)") +
+      stat("leaderboard pot", fmt(c.leaderboardPot, 0) + " CLAM", "pays top 20% each season") +
+      stat("voyages", c.voyages, `${c.doubloonsEarned} doubloons earned`);
+    drawPool(s.fleet.poolHistory ?? []);
+    document.getElementById("players").innerHTML = playersTable(s.fleet.players ?? []);
+    document.getElementById("status").textContent = `live - updated ${new Date().toLocaleTimeString()}`;
+  } catch (e) {
+    document.getElementById("status").textContent = "dashboard server unreachable: " + e.message;
+  }
+}
+refresh();
+setInterval(refresh, 10_000);
+</script>
+</body>
+</html>

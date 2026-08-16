@@ -1,0 +1,10 @@
+{
+  "name": "@pearlstreet/indexer",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Pearl Street event indexer and leaderboard API. Placeholder until its ticket starts.",
+  "scripts": {
+    "build": "echo '@pearlstreet/indexer: placeholder, no build yet'",
+    "test": "echo '@pearlstreet/indexer: placeholder, no tests yet'"
+  }
+}

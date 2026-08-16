@@ -1,0 +1,26 @@
+{
+  "name": "@pearlstreet/sdk",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Shared chain constants, addresses, and the Chainlink feed registry for Pearl Street.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

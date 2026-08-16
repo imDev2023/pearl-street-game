@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: contracts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
+      - name: Install forge-std if absent
+        run: test -d lib/forge-std/src || forge install foundry-rs/forge-std
+      - name: Check formatting
+        run: forge fmt --check
+      - name: Build
+        run: forge build --sizes
+      - name: Test
+        run: forge test -vvv
+
+  sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install
+        run: npm ci
+      - name: Typecheck and test workspaces
+        run: npm test

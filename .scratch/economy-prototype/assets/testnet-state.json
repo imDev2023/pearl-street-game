@@ -1,0 +1,456 @@
+{
+  "poolHistory": [
+    {
+      "t": 1786771139313,
+      "day": 1,
+      "pool": "4778753044",
+      "surplus": "0"
+    },
+    {
+      "t": 1786771497526,
+      "day": 2,
+      "pool": "4707071749",
+      "surplus": "0"
+    },
+    {
+      "t": 1786772282475,
+      "day": 3,
+      "pool": "4636655091",
+      "surplus": "0"
+    },
+    {
+      "t": 1786772984000,
+      "day": 4,
+      "pool": "4567274943",
+      "surplus": "0"
+    },
+    {
+      "t": 1786773482142,
+      "day": 5,
+      "pool": "4498934811",
+      "surplus": "0"
+    },
+    {
+      "t": 1786774633974,
+      "day": 7,
+      "pool": "4431450789",
+      "surplus": "0"
+    },
+    {
+      "t": 1786775100823,
+      "day": 8,
+      "pool": "4364979028",
+      "surplus": "0"
+    },
+    {
+      "t": 1786776016829,
+      "day": 9,
+      "pool": "4299662832",
+      "surplus": "0"
+    },
+    {
+      "t": 1786776584069,
+      "day": 10,
+      "pool": "4235308985",
+      "surplus": "0"
+    },
+    {
+      "t": 1786777055811,
+      "day": 11,
+      "pool": "4171917375",
+      "surplus": "0"
+    },
+    {
+      "t": 1786777710445,
+      "day": 12,
+      "pool": "4109497866",
+      "surplus": "0"
+    },
+    {
+      "t": 1786778301499,
+      "day": 13,
+      "pool": "4049383465",
+      "surplus": "0"
+    },
+    {
+      "t": 1786778880453,
+      "day": 14,
+      "pool": "4044435683",
+      "surplus": "0"
+    },
+    {
+      "t": 1786779466050,
+      "day": 15,
+      "pool": "4038726410",
+      "surplus": "0"
+    },
+    {
+      "t": 1786780069724,
+      "day": 16,
+      "pool": "3978293975",
+      "surplus": "0"
+    },
+    {
+      "t": 1786780682185,
+      "day": 17,
+      "pool": "3918767821",
+      "surplus": "0"
+    },
+    {
+      "t": 1786781279781,
+      "day": 18,
+      "pool": "3860133091",
+      "surplus": "0"
+    },
+    {
+      "t": 1786781885145,
+      "day": 19,
+      "pool": "3802376794",
+      "surplus": "0"
+    },
+    {
+      "t": 1786782479406,
+      "day": 20,
+      "pool": "3745485202",
+      "surplus": "0"
+    },
+    {
+      "t": 1786783091320,
+      "day": 21,
+      "pool": "3689444674",
+      "surplus": "0"
+    },
+    {
+      "t": 1786783668862,
+      "day": 22,
+      "pool": "3634242127",
+      "surplus": "0"
+    },
+    {
+      "t": 1786784285445,
+      "day": 23,
+      "pool": "3579866447",
+      "surplus": "0"
+    },
+    {
+      "t": 1786784876076,
+      "day": 24,
+      "pool": "3526303172",
+      "surplus": "0"
+    },
+    {
+      "t": 1786785477987,
+      "day": 25,
+      "pool": "3473541189",
+      "surplus": "0"
+    }
+  ],
+  "claimedByPlayer": {
+    "WALLET_TEST_PK_5": "120327760",
+    "WALLET_TEST_PK_4": "39136415",
+    "WALLET_TEST_PK_3": "37862551",
+    "BOT_24": "118176323",
+    "BOT_23": "119979874",
+    "BOT_22": "42307900",
+    "BOT_21": "42055073",
+    "BOT_20": "43696408",
+    "BOT_19": "41667655",
+    "BOT_18": "44380291",
+    "BOT_17": "12258188",
+    "BOT_16": "12452624",
+    "BOT_15": "12129811",
+    "BOT_11": "12426430",
+    "BOT_10": "11727759",
+    "BOT_9": "12008123",
+    "BOT_8": "12060065",
+    "BOT_6": "12158272",
+    "BOT_4": "12364921",
+    "BOT_3": "12221446",
+    "BOT_1": "11726746",
+    "WALLET_TEST_PK_6": "121206176",
+    "WALLET_TEST_PK_2": "11807371",
+    "BOT_14": "11117891",
+    "BOT_13": "11622122",
+    "BOT_12": "11959359",
+    "BOT_7": "11321513",
+    "BOT_5": "11184068",
+    "BOT_2": "11039294",
+    "WALLET_TEST_PK_1": "11794470"
+  },
+  "doubloonSeasonBase": {},
+  "lastSettledSeason": 0,
+  "startedAt": "2026-08-15T05:05:56.279Z",
+  "players": [
+    {
+      "name": "WALLET_TEST_PK_1",
+      "archetype": "casual",
+      "address": "0x614eEBC41a2EED1De461d86e3cfe6901d66b747C",
+      "creatures": 3,
+      "clam": "11794470",
+      "doubloons": "690",
+      "claimed": "11794470"
+    },
+    {
+      "name": "WALLET_TEST_PK_2",
+      "archetype": "casual",
+      "address": "0x68793f133F7Bb955226fc43D9Dbc9B045C6f575D",
+      "creatures": 3,
+      "clam": "11807371",
+      "doubloons": "690",
+      "claimed": "11807371"
+    },
+    {
+      "name": "WALLET_TEST_PK_3",
+      "archetype": "skilled",
+      "address": "0x226623db3FB34b6d2E42CDAC5b337DF7Ce4CBbf8",
+      "creatures": 6,
+      "clam": "18931277",
+      "doubloons": "2040",
+      "claimed": "37862551"
+    },
+    {
+      "name": "WALLET_TEST_PK_4",
+      "archetype": "skilled",
+      "address": "0x35cBaA536AFFDB19ee6B4c43190D5B7Eec8BDeF2",
+      "creatures": 6,
+      "clam": "19568209",
+      "doubloons": "2100",
+      "claimed": "39136415"
+    },
+    {
+      "name": "WALLET_TEST_PK_5",
+      "archetype": "bot",
+      "address": "0x886Dfe32624Cd6bAd0759449a6e126b90390a742",
+      "creatures": 15,
+      "clam": "6016391",
+      "doubloons": "6450",
+      "claimed": "120327760"
+    },
+    {
+      "name": "WALLET_TEST_PK_6",
+      "archetype": "bot",
+      "address": "0x2786E0C94C8418379013323eDDaC4CE224C63E68",
+      "creatures": 15,
+      "clam": "6060313",
+      "doubloons": "6420",
+      "claimed": "121206176"
+    },
+    {
+      "name": "BOT_1",
+      "archetype": "casual",
+      "address": "0x6D2a0DDBA93186702f888cE4CFdDA6BB4D4CB0aE",
+      "creatures": 3,
+      "clam": "11726746",
+      "doubloons": "660",
+      "claimed": "11726746"
+    },
+    {
+      "name": "BOT_2",
+      "archetype": "casual",
+      "address": "0x074AF5bD3904F060480a5fAA71B3BCD9b3eE899f",
+      "creatures": 3,
+      "clam": "11039294",
+      "doubloons": "660",
+      "claimed": "11039294"
+    },
+    {
+      "name": "BOT_3",
+      "archetype": "casual",
+      "address": "0x42B8D0D595c9c9Da081D712e17208dEAE3eE3882",
+      "creatures": 3,
+      "clam": "12221446",
+      "doubloons": "690",
+      "claimed": "12221446"
+    },
+    {
+      "name": "BOT_4",
+      "archetype": "casual",
+      "address": "0x7E3eF156AA5Fc1Ea3D10dB9d66FF0f902117A316",
+      "creatures": 3,
+      "clam": "12364921",
+      "doubloons": "720",
+      "claimed": "12364921"
+    },
+    {
+      "name": "BOT_5",
+      "archetype": "casual",
+      "address": "0xFfa082E9fE6e72aCad2b398e7d338446A67535d4",
+      "creatures": 3,
+      "clam": "11184068",
+      "doubloons": "660",
+      "claimed": "11184068"
+    },
+    {
+      "name": "BOT_6",
+      "archetype": "casual",
+      "address": "0x01801C13fF1Ed372Ba0701F12Ead48f4De89a254",
+      "creatures": 3,
+      "clam": "12158272",
+      "doubloons": "720",
+      "claimed": "12158272"
+    },
+    {
+      "name": "BOT_7",
+      "archetype": "casual",
+      "address": "0x44AED973896871B7AD13c6094a3dB891D8818263",
+      "creatures": 3,
+      "clam": "11321513",
+      "doubloons": "660",
+      "claimed": "11321513"
+    },
+    {
+      "name": "BOT_8",
+      "archetype": "casual",
+      "address": "0x928Ee721ADd3cCf45B609c2a0c1C7dd8727f08Cd",
+      "creatures": 3,
+      "clam": "12060065",
+      "doubloons": "690",
+      "claimed": "12060065"
+    },
+    {
+      "name": "BOT_9",
+      "archetype": "casual",
+      "address": "0xAC4050370aAE779CE527B4488bD67efD4794Ed0D",
+      "creatures": 3,
+      "clam": "12008123",
+      "doubloons": "690",
+      "claimed": "12008123"
+    },
+    {
+      "name": "BOT_10",
+      "archetype": "casual",
+      "address": "0x9E7D954CB81E3fc08EEBB854DC79919CF6cB8287",
+      "creatures": 3,
+      "clam": "11727759",
+      "doubloons": "690",
+      "claimed": "11727759"
+    },
+    {
+      "name": "BOT_11",
+      "archetype": "casual",
+      "address": "0xafC67f207C4AC967473Eb0899cd6e97E0c017AD7",
+      "creatures": 3,
+      "clam": "12426430",
+      "doubloons": "720",
+      "claimed": "12426430"
+    },
+    {
+      "name": "BOT_12",
+      "archetype": "casual",
+      "address": "0xAaDf8bd2BAEa5219858CcD74A38C555E67091fE6",
+      "creatures": 3,
+      "clam": "11959359",
+      "doubloons": "690",
+      "claimed": "11959359"
+    },
+    {
+      "name": "BOT_13",
+      "archetype": "casual",
+      "address": "0x257f8428DE5c952321a8BbE410B90aEFfd978D1E",
+      "creatures": 3,
+      "clam": "11622122",
+      "doubloons": "690",
+      "claimed": "11622122"
+    },
+    {
+      "name": "BOT_14",
+      "archetype": "casual",
+      "address": "0xC3C296c2F2229c88949e1dB14b6a3Fb0CC3ddC36",
+      "creatures": 3,
+      "clam": "11117891",
+      "doubloons": "660",
+      "claimed": "11117891"
+    },
+    {
+      "name": "BOT_15",
+      "archetype": "casual",
+      "address": "0x51edee05BDBD2782Fbf8F2dCD5b5Cacf4cE07Af8",
+      "creatures": 3,
+      "clam": "12129811",
+      "doubloons": "690",
+      "claimed": "12129811"
+    },
+    {
+      "name": "BOT_16",
+      "archetype": "casual",
+      "address": "0x7D388AA4f7927Fd9c3D83f00e1D9866a50477548",
+      "creatures": 3,
+      "clam": "12452624",
+      "doubloons": "720",
+      "claimed": "12452624"
+    },
+    {
+      "name": "BOT_17",
+      "archetype": "casual",
+      "address": "0x78634b55a4fCb96dE58f9D4c2aa59000A173d999",
+      "creatures": 3,
+      "clam": "12258188",
+      "doubloons": "720",
+      "claimed": "12258188"
+    },
+    {
+      "name": "BOT_18",
+      "archetype": "skilled",
+      "address": "0xbf27F5F2afb2ba4fa1F03B61aD288EA1F759ae6C",
+      "creatures": 6,
+      "clam": "22190152",
+      "doubloons": "2340",
+      "claimed": "44380291"
+    },
+    {
+      "name": "BOT_19",
+      "archetype": "skilled",
+      "address": "0xC2235Feb88617Ee063F17cbD9c7FB127C4f97008",
+      "creatures": 6,
+      "clam": "20833830",
+      "doubloons": "2220",
+      "claimed": "41667655"
+    },
+    {
+      "name": "BOT_20",
+      "archetype": "skilled",
+      "address": "0xAAafd7AfDC47c7317187EA18AdA6Ed6fe87e82B9",
+      "creatures": 6,
+      "clam": "21848205",
+      "doubloons": "2340",
+      "claimed": "43696408"
+    },
+    {
+      "name": "BOT_21",
+      "archetype": "skilled",
+      "address": "0xC4e6cA462FEE9946D8f59Cf79B6D6845767cE0c9",
+      "creatures": 6,
+      "clam": "21027538",
+      "doubloons": "2250",
+      "claimed": "42055073"
+    },
+    {
+      "name": "BOT_22",
+      "archetype": "skilled",
+      "address": "0x9fE11815BF8FcC90522D7088381182F43cc2b3cE",
+      "creatures": 6,
+      "clam": "21153952",
+      "doubloons": "2280",
+      "claimed": "42307900"
+    },
+    {
+      "name": "BOT_23",
+      "archetype": "bot",
+      "address": "0x0Fa263F29E5bBB66ef91d8d60409fA5a4B78782D",
+      "creatures": 15,
+      "clam": "5999003",
+      "doubloons": "6420",
+      "claimed": "119979874"
+    },
+    {
+      "name": "BOT_24",
+      "archetype": "bot",
+      "address": "0x3693a752a6B262687e030f828d143eA817926671",
+      "creatures": 15,
+      "clam": "5908819",
+      "doubloons": "6360",
+      "claimed": "118176323"
+    }
+  ],
+  "day": 25
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@pearlstreet/sim",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic off-chain economy simulator and stress-scenario suite for Pearl Street (T-018).",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "report": "npm run build && node scripts/report.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

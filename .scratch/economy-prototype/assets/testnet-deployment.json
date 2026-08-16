@@ -1,0 +1,29 @@
+{
+  "chainId": 46630,
+  "treasury": "0x8Ec5f1e04531416d337E61733DfC5d1685D9A80C",
+  "dayLength": 600,
+  "staleAfter": 1800,
+  "genesis": 1786770271,
+  "deployedAt": "2026-08-15T05:05:38.381Z",
+  "addresses": {
+    "feeds": [
+      "0x243e1b859a3e629f74f6247f169fc482c68b4e7d",
+      "0x1e0076788a0ced05dc67c7fb6d49ada499da9838",
+      "0x0f42bd8cca1b37ea1107aa5ba723f8e2bffd36c8",
+      "0x0aaaf0f21f59b79adf787ca0a5724dd0aac596ef",
+      "0x5bfa0acdaa2c013e54f4324272a9be03e3b8890a",
+      "0x9fdb209bfec49a6479932d6ce90b0335fccc8c7e",
+      "0x9bb18be243766fcddb14c7157ef378740fcb97ce",
+      "0x5610953555583306c897c507b29e415ac81a80e2"
+    ],
+    "MockUSDG": "0x78b6ed7211666820ab383c6a2317ad80a2aa0f80",
+    "ClamToken": "0x40bb6a73d17d8477c05f256f15a11a6a7a8c811e",
+    "Doubloons": "0x4d7a2e137998dc83864733112d53cc346f0a4a80",
+    "PearlCreatures": "0xfa7252474af2c5db5000740213974caf99e85a09",
+    "VoyageGame": "0x2a4113e765d5c75a8a95e03f8727301aa68c399d",
+    "LeaderboardPot": "0x12609da7eeb79fb264ab3fefb37c5dd0db442c05",
+    "PrizePool": "0xa433d617f7227e99c1b1ed866f201162173663ae",
+    "FeeRouter": "0x500a1be898ecd8608e6f4972dc7f72e5ebb613bc",
+    "ClamVault": "0xcce920d719f9fa3d1f5ff0ec41ae3c64e9a81e06"
+  }
+}

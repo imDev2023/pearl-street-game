@@ -1,0 +1,10 @@
+{
+  "name": "@pearlstreet/web",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Pearl Street game client (Next.js + wagmi/viem + account abstraction). Placeholder until T-006.",
+  "scripts": {
+    "build": "echo '@pearlstreet/web: placeholder, no build yet'",
+    "test": "echo '@pearlstreet/web: placeholder, no tests yet'"
+  }
+}
