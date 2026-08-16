@@ -6,7 +6,8 @@ Successor in spirit to Crabada, with an economy designed so the TUS-style death 
 ## Current status (2026-08-16, launch-readiness map open)
 
 - **Decision layer:** `.scratch/launch-readiness/map.md` (wayfinder map) holds every open launch decision and the audit findings; work its frontier before or alongside T-002. Resolved decisions are mirrored into ADRs (`docs/adr/`) and the build tickets.
-- **Next unit: T-002 CLAM vault** (`docs/tickets/T-002-clam-vault.md`); the ticket index (`docs/tickets/README.md`) is the frontier and names what is next and why.
+- Whitepaper + site are a first-class launch asset (user, 2026-08-16): dedicated pass planned near T-016; PEARL has no fee share/floor (all fees to the pool).
+- **Next unit: T-003 Gen-0 creature mint** (`docs/tickets/T-003-creature-mint.md`); T-002 done 2026-08-16 (testnet vault `0xAF8e9A558C70b6F66724F4fCEaef34310798B759`, addresses in `packages/sdk/src/addresses.ts`). The ticket index (`docs/tickets/README.md`) is the frontier.
   User decision 2026-08-15: economy modeling is closed; launch Gen-0, read real volume, iterate. Do not reopen it unless asked.
 - `docs/ARCHITECTURE.md` is the system map: which prototype contract each ticket starts from (they are the starting point, not throwaway), money flows, the launch sequence, frozen decisions, and the user's open decisions. Read it before code.
 - Economy phase outputs: `docs/ECONOMY-STRESS-REPORT.md`, `docs/ECONOMY-PROTOTYPE-REPORT.md`, `docs/PEARL-TOKENOMICS.md` (incl. the pre-sale matrix), `docs/BURN-CAP-DESIGN.md` (ideas + sim results; not decided, not in scope).
@@ -22,7 +23,9 @@ Successor in spirit to Crabada, with an economy designed so the TUS-style death 
 - Local nodes: never bind Anvil to 8545 - other projects on this machine run their own nodes there (a run once deployed onto a stranger's chain-97 node). `packages/proto` uses port 9556 and refuses to start if it is taken.
 - viem on Anvil: default receipt polling (4s) makes multi-thousand-tx replays crawl and time out; set `pollingInterval` low and put a timeout + retry on every send.
 - Public testnet: a slow leg of 30 wallets can straddle a game-day boundary; the contract correctly enforced the claim window against a driver that mis-attributed the day. Trust the chain's day (from events), never the driver's clock.
-- Testnet 46630 has NO USDG and NO Chainlink feeds; anything realistic needs the mocks in `contracts/src/mocks/`.
+- Testnet 46630 has NO USDG and NO Chainlink feeds; anything realistic needs the mocks in `contracts/src/mocks/`. `DeployClam.s.sol` refuses mocks on 4663.
+- The proto drivers compute gross deposits from the sim's `VAULT_MINT_FEE_BPS`; they silently under-funded players for a day when the fee changed and the constant was hard-coded. Never hard-code an economic constant in a driver.
+- Foundry `forge fmt --check` is a CI gate; run `forge fmt` before committing Solidity.
 - The 4x burn cap can never fire under the documented pool math (pool pays ~30% of entry, max); do not build a retirement mechanic on a promised multiple.
 
 ## Start here, every session
@@ -56,9 +59,9 @@ Successor in spirit to Crabada, with an economy designed so the TUS-style death 
 ## Layout
 
 - `contracts/` Foundry (Solidity).
-- `apps/web/` Next.js + wagmi/viem, account abstraction via Alchemy.
+- `apps/web/` Next.js 16 + wagmi 3/viem (port 3100), account abstraction via Alchemy later (T-007); `/` proof of reserve, `/vault` wrap/redeem.
 - `apps/indexer/` event indexer + leaderboard API.
-- `packages/sdk/` shared addresses, ABIs, feed registry.
+- `packages/sdk/` shared addresses (`clamDeployment(chainId)`), ABIs (`npm run sync-abis` after `forge build`), feed registry.
 - `packages/sim/` deterministic economy simulator (doc-syncs to ECONOMY.md; runs in CI).
 - `packages/proto/` Anvil full-horizon replay (regression harness for contract changes), testnet bot fleet, local dashboard.
 - `docs/` PRD, ARCHITECTURE (system map), tokenomics, PEARL-TOKENOMICS, tickets, ADRs, chain reference, economy reports.

@@ -10,7 +10,7 @@ import {join} from "node:path";
 import {createPublicClient, createTestClient, createWalletClient, decodeEventLog, http, parseEther} from "viem";
 import {mnemonicToAccount} from "viem/accounts";
 import {foundry} from "viem/chains";
-import {makeMarketDay, mulberry32, runScenario} from "@pearlstreet/sim";
+import {makeMarketDay, mulberry32, runScenario, VAULT_MINT_FEE_BPS} from "@pearlstreet/sim";
 import {
   addressesFromBroadcast,
   archetypePlan,
@@ -108,7 +108,7 @@ await send(opsWallet, addr.PearlCreatures, abis.PearlCreatures, "setAllowlisted"
 const PRICE = 80n * CLAM; // allowlist price, matching the sim (first tranche is allowlisted)
 for (const p of players) {
   const total = PRICE * BigInt(p.creatures);
-  const gross = (total * BPS) / (BPS - 100n) + 1n;
+  const gross = (total * BPS) / (BPS - VAULT_MINT_FEE_BPS) + 1n; // gross USDG so the net CLAM covers the price
   p.spentUsdg = gross;
   await send(p.wallet, addr.MockUSDG, abis.MockUSDG, "faucet", [gross]);
   await send(p.wallet, addr.MockUSDG, abis.MockUSDG, "approve", [addr.ClamVault, gross]);

@@ -2,9 +2,27 @@
   "name": "@pearlstreet/web",
   "version": "0.0.1",
   "private": true,
-  "description": "Pearl Street game client (Next.js + wagmi/viem + account abstraction). Placeholder until T-006.",
+  "description": "Pearl Street game client (Next.js + wagmi/viem). T-002: proof-of-reserve and CLAM vault pages.",
   "scripts": {
-    "build": "echo '@pearlstreet/web: placeholder, no build yet'",
-    "test": "echo '@pearlstreet/web: placeholder, no tests yet'"
+    "dev": "next dev -p 3100",
+    "build": "next build",
+    "start": "next start -p 3100",
+    "check": "tsc --noEmit",
+    "test": "tsc --noEmit && tsc lib/format.ts --outDir dist-test --module nodenext --moduleResolution nodenext --target es2022 && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@pearlstreet/sdk": "*",
+    "@tanstack/react-query": "^5.101.4",
+    "next": "^16.3.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "viem": "^2.55.16",
+    "wagmi": "^3.7.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.6.0"
   }
 }

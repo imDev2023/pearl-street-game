@@ -1,4 +1,4 @@
-# Map: Launch Readiness (wayfinder:map) - charted 2026-08-16
+# Map: Launch Readiness (wayfinder:map) - charted 2026-08-16; frontier empty 2026-08-16, build started at T-002
 
 ## Destination
 
@@ -30,6 +30,7 @@ Every decision and external dependency that could cause a contract failure or a 
 - [ETH-to-CLAM swap](issues/16-eth-to-clam-swap.md) - Uniswap v3 live on 4663 with ~$9M WETH/USDG depth; keep ETH-via-swap plus direct USDG; addresses in the ticket.
 - [Doc reconciliation](issues/20-doc-reconciliation.md) - PRD/TOKENOMICS/ECONOMY/CONTEXT/contract comments/reports/site copy brought to the decided values; whitepaper PEARL chapter left for T-016.
 - [GitHub remote](issues/11-github-remote.md) - github.com/imDev2023/pearl-street-game, first commit pushed, CI green.
+- [PEARL revenue utilities](issues/22-pearl-revenue-utilities.md) - fee share and revenue-fed floor dropped; PEARL = throttled rewards + protocol-owned LP + Founder claims.
 - [Equity feeds: weekends and tickers](issues/13-equity-feeds-at-launch.md) - voyages run 24/7, stale feed = base haul ("calm seas"); 35 tickers, timelocked changes (default).
 - [Off-chain operations](issues/14-offchain-operations.md) - Cloudflare Worker cron keeper + revealer + alerts, anyone-can-poke fallback (default).
 - [Leaderboard settlement](issues/15-leaderboard-settlement.md) - one capped merkle root per season, claim-based; ops-posted lists removed (default).
@@ -41,7 +42,7 @@ Every decision and external dependency that could cause a contract failure or a 
 
 - Domains (pearlstreet.game / .gg / playpearlstreet.com) and web hosting choice: near launch, operator's call.
 - Indexer framework choice for the merkle builder and leaderboard API (T-006).
-- PEARL fee-share and floor-reserve funding now that all fees go to the pool: ticket 22.
+- Whitepaper + site: a dedicated design/copy pass is required before Gen-0 opens (operator, 2026-08-16); scoped as its own effort when T-016 nears.
 - Bug bounty programme shape (platform, scope, rewards) once the review depth decision is applied to T-008.
 - Season Two content (Gen-1 via breeding, new mechanics, new NFTs): explicitly after launch, will be a fresh map.
 

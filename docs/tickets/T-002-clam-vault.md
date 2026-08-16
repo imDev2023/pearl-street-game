@@ -1,6 +1,6 @@
 # T-002: CLAM token and vault, end to end
 
-Status: ready - START HERE; open questions below were resolved 2026-08-16 (6 decimals ADR-0001, no pause ADR-0002, hardware EOA treasury) in `.scratch/launch-readiness/`
+Status: done 2026-08-16 (contracts hardened, 46 tests incl. ABI-surface + weird-token suite, testnet deploy verified, real-wallet round trip, proof-of-reserve + vault pages, replay parity); open questions below were resolved 2026-08-16 (6 decimals ADR-0001, no pause ADR-0002, hardware EOA treasury) in `.scratch/launch-readiness/`
 Blocked by: T-001 (done); the economy prototype gate is passed (user decision 2026-08-15: launch Gen-0 and learn from real numbers)
 
 ## Starting point
@@ -25,16 +25,25 @@ Includes: unit + fuzz + the Foundry invariant campaign (reserve == supply under 
 
 ## Acceptance criteria
 
-- [ ] Mint and redeem work on testnet 46630 with a real wallet (real USDG on mainnet; MockUSDG on testnet since none exists there)
-- [ ] Invariant suite passes: vault USDG balance == CLAM totalSupply after arbitrary sequences (the prototype's `invariant_vaultReserveEqualsSupply` carried forward)
-- [ ] No code path can pause redemption or withdraw reserve, asserted by a test over the full ABI
-- [ ] Fee math exact at boundaries (1-unit deposits, tiny redemptions) with protocol-favoring rounding; 2%/5% asserted against `docs/ECONOMY.md`
-- [ ] Proof-of-reserve page shows live numbers from testnet
-- [ ] Contracts verified on Blockscout (`--verifier blockscout --verifier-url https://explorer.testnet.chain.robinhood.com/api/`)
-- [ ] `packages/proto` Anvil replay still matches the simulator after the change
+- [x] Mint and redeem work on testnet 46630 with a real wallet (deposit 1,000 USDG -> 980 CLAM, redeem 500 CLAM -> 475 USDG; vault `0xAF8e9A558C70b6F66724F4fCEaef34310798B759`)
+- [x] Invariant suite passes (4 stateful invariants incl. reserve == supply; 46/46 tests)
+- [x] No code path can pause redemption or withdraw reserve, asserted over the full ABI (`test/AbiSurface.t.sol`: exact function allowlists for ClamVault/ClamToken/FeeRouter, only `deposit`/`redeem` mutate the vault)
+- [x] Fee math exact at boundaries with protocol-favoring rounding (`test/ClamVaultHardening.t.sol`, fuzz + 1-unit cases + dust extraction); 2%/5% and 100% routing asserted against `docs/ECONOMY.md`
+- [x] Proof-of-reserve page shows live numbers from testnet (`apps/web`, Next 16 + wagmi 3; plus `/vault` wrap/redeem with 45s receipt timeout and retry)
+- [x] Contracts verified on Blockscout (ClamVault, ClamToken, FeeRouter, MockUSDG on 46630; record in `contracts/deployments/46630.json`)
+- [x] `packages/proto` Anvil replay still matches the simulator (fixed a latent 1%-fee assumption in the drivers' gross-deposit math)
 
 ## Open questions for the operator
 
 - CLAM decimals: the prototype uses 6 (matching USDG, no scaling seam); older docs said 18. Confirm 6, or say 18 and this ticket adds the scaling.
 - Guardian mint-pause: the prototype vault has no pause of any kind. Confirm none, or ask for a mint-only pause (redeem stays unpausable regardless).
 - Treasury address for the FeeRouter and ops split on testnet: the deployer wallet, or a multisig you will provide?
+
+## Built (2026-08-16)
+
+- `ClamVault`: safe token calls (`lib/SafeERC20Minimal.sol`), balance-delta deposits under a reentrancy guard, `reserve()`, `previewDeposit/Redeem`, public fee constants; still no owner, no pause, no upgrade.
+- `FeeRouter`: safe transfers; split from `GameConstants.FEES_TO_POOL_BPS` (100% pool).
+- Tests: `ClamVaultHardening.t.sol` (fuzz, boundaries, no-return/false-return/fee-on-transfer/reentrant reserve tokens, token permissions), `AbiSurface.t.sol`, plus the carried-forward suites.
+- `script/DeployClam.s.sol`: chain-guarded, wallet from CLI flags (`--trezor`), writes `deployments/<chainId>.json`.
+- `packages/sdk`: `abis.ts` (synced by `tools/sync-abis.mjs`), `addresses.ts` (`clamDeployment(chainId)`).
+- `apps/web`: proof-of-reserve (`/`) and vault (`/vault`) pages.

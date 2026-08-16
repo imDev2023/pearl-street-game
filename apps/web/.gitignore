@@ -1,0 +1,4 @@
+dist-test/
+.next/
+next-env.d.ts
+tsconfig.tsbuildinfo

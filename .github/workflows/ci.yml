@@ -38,3 +38,5 @@ jobs:
         run: npm ci
       - name: Typecheck and test workspaces
         run: npm test
+      - name: Build web app
+        run: npm run build -w @pearlstreet/web

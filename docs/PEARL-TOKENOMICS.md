@@ -32,7 +32,7 @@ Insiders (team + advisors) hold 15%; players and public (rewards + pre-sale + Fo
 
 - The un-cappable prestige layer: CLAM income per creature may be capped by retirement (see BURN-CAP-DESIGN.md); PEARL earnings are not.
 - Founder's Wake: Gen-0 creatures earn +20% on play-earned PEARL, plus the dedicated 5% Founder allocation above.
-- Staking yields fee share and Doubloons; later, PEARL seats gate Berths, and staked PEARL can extend a creature's retirement cap.
+- No fee share and no revenue-fed floor (dropped 2026-08-16: all protocol fees go to the prize pool); PEARL utility is throttled play rewards, protocol-owned locked liquidity, and Founder claim-through-play. Later, PEARL seats may gate Berths (T-017).
 - Floor: 30% of post-launch revenue accrues to a reserve; anyone can burn PEARL for `reserve / circulating` USDG.
 
 ## Revenue that drives emission

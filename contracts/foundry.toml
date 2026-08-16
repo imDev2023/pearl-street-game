@@ -6,7 +6,7 @@ solc_version = "0.8.30"
 evm_version = "cancun"
 optimizer = true
 optimizer_runs = 10_000
-fs_permissions = [{ access = "read", path = "./" }]
+fs_permissions = [{ access = "read", path = "./" }, { access = "read-write", path = "./deployments" }]
 
 # Robinhood Chain is Arbitrum Nitro: never use block.number for game logic
 # (use ArbSys(0x64).arbBlockNumber() or timestamps), and there is no VRF -

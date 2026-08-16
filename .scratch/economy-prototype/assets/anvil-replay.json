@@ -7,7 +7,7 @@
       "day": 0,
       "regime": "flat",
       "poolStart": "3240000000",
-      "poolEnd": "3245945462",
+      "poolEnd": "3411808185",
       "released": "48600000",
       "tranche": "38880000",
       "voyages": 105,
@@ -16,1893 +16,1893 @@
     {
       "day": 1,
       "regime": "flat",
-      "poolStart": "3245945462",
-      "poolEnd": "3197256281",
-      "released": "48689181",
-      "tranche": "38951344",
+      "poolStart": "3411808185",
+      "poolEnd": "3360631063",
+      "released": "51177122",
+      "tranche": "40941697",
       "voyages": 105,
       "claimedToday": "0"
     },
     {
       "day": 2,
       "regime": "flat",
-      "poolStart": "3197256281",
-      "poolEnd": "3149389193",
-      "released": "47958844",
-      "tranche": "38367075",
+      "poolStart": "3360631063",
+      "poolEnd": "3311139148",
+      "released": "50409465",
+      "tranche": "40327572",
       "voyages": 101,
       "claimedToday": "38879940"
     },
     {
       "day": 3,
       "regime": "flat",
-      "poolStart": "3149389193",
-      "poolEnd": "3102238095",
-      "released": "47240837",
-      "tranche": "37792669",
+      "poolStart": "3311139148",
+      "poolEnd": "3262415293",
+      "released": "49667087",
+      "tranche": "39733669",
       "voyages": 96,
-      "claimedToday": "38951295"
+      "claimedToday": "40941644"
     },
     {
       "day": 4,
       "regime": "flat",
-      "poolStart": "3102238095",
-      "poolEnd": "3055795529",
-      "released": "46533571",
-      "tranche": "37226856",
+      "poolStart": "3262415293",
+      "poolEnd": "3214435603",
+      "released": "48936229",
+      "tranche": "39148983",
       "voyages": 99,
-      "claimedToday": "38367029"
+      "claimedToday": "40327526"
     },
     {
       "day": 5,
       "regime": "flat",
-      "poolStart": "3055795529",
-      "poolEnd": "3010049021",
-      "released": "45836932",
-      "tranche": "36669545",
+      "poolStart": "3214435603",
+      "poolEnd": "3167169741",
+      "released": "48216534",
+      "tranche": "38573227",
       "voyages": 101,
-      "claimedToday": "37792631"
+      "claimedToday": "39733620"
     },
     {
       "day": 6,
       "regime": "flat",
-      "poolStart": "3010049021",
-      "poolEnd": "2964989033",
-      "released": "45150735",
-      "tranche": "36120588",
+      "poolStart": "3167169741",
+      "poolEnd": "3120616510",
+      "released": "47507546",
+      "tranche": "38006036",
       "voyages": 103,
-      "claimedToday": "37226802"
+      "claimedToday": "39148930"
     },
     {
       "day": 7,
       "regime": "bull",
-      "poolStart": "2964989033",
-      "poolEnd": "2920601475",
-      "released": "44474835",
-      "tranche": "35579868",
+      "poolStart": "3120616510",
+      "poolEnd": "3074725324",
+      "released": "46809247",
+      "tranche": "37447397",
       "voyages": 105,
-      "claimedToday": "36669496"
+      "claimedToday": "38573175"
     },
     {
       "day": 8,
       "regime": "bull",
-      "poolStart": "2920601475",
-      "poolEnd": "2876875500",
-      "released": "43809022",
-      "tranche": "35047217",
+      "poolStart": "3074725324",
+      "poolEnd": "3029478247",
+      "released": "46120879",
+      "tranche": "36896703",
       "voyages": 106,
-      "claimedToday": "36120534"
+      "claimedToday": "38005991"
     },
     {
       "day": 9,
       "regime": "bull",
-      "poolStart": "2876875500",
-      "poolEnd": "2833803890",
-      "released": "43153132",
-      "tranche": "34522505",
+      "poolStart": "3029478247",
+      "poolEnd": "2984894060",
+      "released": "45442173",
+      "tranche": "36353738",
       "voyages": 103,
-      "claimedToday": "35579812"
+      "claimedToday": "37447345"
     },
     {
       "day": 10,
       "regime": "flat",
-      "poolStart": "2833803890",
-      "poolEnd": "2791377724",
-      "released": "42507058",
-      "tranche": "34005646",
+      "poolStart": "2984894060",
+      "poolEnd": "2940971669",
+      "released": "44773410",
+      "tranche": "35818728",
       "voyages": 103,
-      "claimedToday": "35047156"
+      "claimedToday": "36896653"
     },
     {
       "day": 11,
       "regime": "flat",
-      "poolStart": "2791377724",
-      "poolEnd": "2749589535",
-      "released": "41870665",
-      "tranche": "33496532",
+      "poolStart": "2940971669",
+      "poolEnd": "2897725124",
+      "released": "44114575",
+      "tranche": "35291660",
       "voyages": 98,
-      "claimedToday": "34522452"
+      "claimedToday": "36353690"
     },
     {
       "day": 12,
       "regime": "flat",
-      "poolStart": "2749589535",
-      "poolEnd": "2708425323",
-      "released": "41243843",
-      "tranche": "32995074",
+      "poolStart": "2897725124",
+      "poolEnd": "2855097568",
+      "released": "43465876",
+      "tranche": "34772700",
       "voyages": 104,
-      "claimedToday": "34005592"
+      "claimedToday": "35818667"
     },
     {
       "day": 13,
       "regime": "flat",
-      "poolStart": "2708425323",
-      "poolEnd": "2667877858",
-      "released": "40626379",
-      "tranche": "32501103",
+      "poolStart": "2855097568",
+      "poolEnd": "2813102165",
+      "released": "42826463",
+      "tranche": "34261170",
       "voyages": 101,
-      "claimedToday": "33496479"
+      "claimedToday": "35291603"
     },
     {
       "day": 14,
       "regime": "flat",
-      "poolStart": "2667877858",
-      "poolEnd": "2627938138",
-      "released": "40018167",
-      "tranche": "32014533",
+      "poolStart": "2813102165",
+      "poolEnd": "2771731845",
+      "released": "42196532",
+      "tranche": "33757225",
       "voyages": 106,
-      "claimedToday": "32995013"
+      "claimedToday": "34772650"
     },
     {
       "day": 15,
       "regime": "flat",
-      "poolStart": "2627938138",
-      "poolEnd": "2588596361",
-      "released": "39419072",
-      "tranche": "31535257",
+      "poolStart": "2771731845",
+      "poolEnd": "2730970187",
+      "released": "41575977",
+      "tranche": "33260781",
       "voyages": 103,
-      "claimedToday": "32501050"
+      "claimedToday": "34261117"
     },
     {
       "day": 16,
       "regime": "flat",
-      "poolStart": "2588596361",
-      "poolEnd": "2549841914",
-      "released": "38828945",
-      "tranche": "31063156",
+      "poolStart": "2730970187",
+      "poolEnd": "2690790634",
+      "released": "40964552",
+      "tranche": "32771641",
       "voyages": 103,
-      "claimedToday": "32014489"
+      "claimedToday": "33757174"
     },
     {
       "day": 17,
       "regime": "bull",
-      "poolStart": "2549841914",
-      "poolEnd": "2511667670",
-      "released": "38247628",
-      "tranche": "30598102",
+      "poolStart": "2690790634",
+      "poolEnd": "2651202221",
+      "released": "40361859",
+      "tranche": "32289487",
       "voyages": 102,
-      "claimedToday": "31535212"
+      "claimedToday": "33260725"
     },
     {
       "day": 18,
       "regime": "bull",
-      "poolStart": "2511667670",
-      "poolEnd": "2474065091",
-      "released": "37675015",
-      "tranche": "30140012",
+      "poolStart": "2651202221",
+      "poolEnd": "2612197770",
+      "released": "39768033",
+      "tranche": "31814426",
       "voyages": 95,
-      "claimedToday": "31063109"
+      "claimedToday": "32771593"
     },
     {
       "day": 19,
       "regime": "bull",
-      "poolStart": "2474065091",
-      "poolEnd": "2437024500",
-      "released": "37110976",
-      "tranche": "29688780",
+      "poolStart": "2612197770",
+      "poolEnd": "2573757025",
+      "released": "39182966",
+      "tranche": "31346372",
       "voyages": 101,
-      "claimedToday": "30598046"
+      "claimedToday": "32289430"
     },
     {
       "day": 20,
       "regime": "flat",
-      "poolStart": "2437024500",
-      "poolEnd": "2400546044",
-      "released": "36555367",
-      "tranche": "29244293",
+      "poolStart": "2573757025",
+      "poolEnd": "2535961981",
+      "released": "38606355",
+      "tranche": "30885084",
       "voyages": 104,
-      "claimedToday": "30139967"
+      "claimedToday": "31814369"
     },
     {
       "day": 21,
       "regime": "flat",
-      "poolStart": "2400546044",
-      "poolEnd": "2364608365",
-      "released": "36008190",
-      "tranche": "28806552",
+      "poolStart": "2535961981",
+      "poolEnd": "2498666510",
+      "released": "38039429",
+      "tranche": "30431543",
       "voyages": 99,
-      "claimedToday": "29688731"
+      "claimedToday": "31346325"
     },
     {
       "day": 22,
       "regime": "flat",
-      "poolStart": "2364608365",
-      "poolEnd": "2329208768",
-      "released": "35469125",
-      "tranche": "28375300",
+      "poolStart": "2498666510",
+      "poolEnd": "2461920189",
+      "released": "37479997",
+      "tranche": "29983997",
       "voyages": 103,
-      "claimedToday": "29244237"
+      "claimedToday": "30885036"
     },
     {
       "day": 23,
       "regime": "flat",
-      "poolStart": "2329208768",
-      "poolEnd": "2294339192",
-      "released": "34938131",
-      "tranche": "27950504",
+      "poolStart": "2461920189",
+      "poolEnd": "2425715083",
+      "released": "36928802",
+      "tranche": "29543041",
       "voyages": 103,
-      "claimedToday": "28806505"
+      "claimedToday": "30431491"
     },
     {
       "day": 24,
       "regime": "flat",
-      "poolStart": "2294339192",
-      "poolEnd": "2259989792",
-      "released": "34415087",
-      "tranche": "27532069",
+      "poolStart": "2425715083",
+      "poolEnd": "2390023040",
+      "released": "36385726",
+      "tranche": "29108580",
       "voyages": 101,
-      "claimedToday": "28375242"
+      "claimedToday": "29983939"
     },
     {
       "day": 25,
       "regime": "flat",
-      "poolStart": "2259989792",
-      "poolEnd": "2226155610",
-      "released": "33899846",
-      "tranche": "27119876",
+      "poolStart": "2390023040",
+      "poolEnd": "2354866308",
+      "released": "35850345",
+      "tranche": "28680276",
       "voyages": 101,
-      "claimedToday": "27950445"
+      "claimedToday": "29542988"
     },
     {
       "day": 26,
       "regime": "flat",
-      "poolStart": "2226155610",
-      "poolEnd": "2192829315",
-      "released": "33392334",
-      "tranche": "26713867",
+      "poolStart": "2354866308",
+      "poolEnd": "2320241056",
+      "released": "35322994",
+      "tranche": "28258395",
       "voyages": 105,
-      "claimedToday": "27532018"
+      "claimedToday": "29108529"
     },
     {
       "day": 27,
       "regime": "bull",
-      "poolStart": "2192829315",
-      "poolEnd": "2160001183",
-      "released": "32892439",
-      "tranche": "26313951",
+      "poolStart": "2320241056",
+      "poolEnd": "2286116965",
+      "released": "34803615",
+      "tranche": "27842892",
       "voyages": 107,
-      "claimedToday": "27119823"
+      "claimedToday": "28680227"
     },
     {
       "day": 28,
       "regime": "bull",
-      "poolStart": "2160001183",
-      "poolEnd": "2127663301",
-      "released": "32400017",
-      "tranche": "25920013",
+      "poolStart": "2286116965",
+      "poolEnd": "2252482055",
+      "released": "34291754",
+      "tranche": "27433403",
       "voyages": 100,
-      "claimedToday": "26713808"
+      "claimedToday": "28258338"
     },
     {
       "day": 29,
       "regime": "bull",
-      "poolStart": "2127663301",
-      "poolEnd": "2095809557",
-      "released": "31914949",
-      "tranche": "25531959",
+      "poolStart": "2252482055",
+      "poolEnd": "2219341949",
+      "released": "33787230",
+      "tranche": "27029784",
       "voyages": 104,
-      "claimedToday": "26313891"
+      "claimedToday": "27842829"
     },
     {
       "day": 30,
       "regime": "flat",
-      "poolStart": "2095809557",
-      "poolEnd": "2064434581",
-      "released": "31437143",
-      "tranche": "25149714",
+      "poolStart": "2219341949",
+      "poolEnd": "2186709226",
+      "released": "33290129",
+      "tranche": "26632103",
       "voyages": 100,
-      "claimedToday": "25919976"
+      "claimedToday": "27433348"
     },
     {
       "day": 31,
       "regime": "flat",
-      "poolStart": "2064434581",
-      "poolEnd": "2033526983",
-      "released": "30966518",
-      "tranche": "24773214",
+      "poolStart": "2186709226",
+      "poolEnd": "2154531890",
+      "released": "32800638",
+      "tranche": "26240510",
       "voyages": 105,
-      "claimedToday": "25531915"
+      "claimedToday": "27029730"
     },
     {
       "day": 32,
       "regime": "flat",
-      "poolStart": "2033526983",
-      "poolEnd": "2003083090",
-      "released": "30502904",
-      "tranche": "24402323",
+      "poolStart": "2154531890",
+      "poolEnd": "2122838230",
+      "released": "32317978",
+      "tranche": "25854382",
       "voyages": 103,
-      "claimedToday": "25149656"
+      "claimedToday": "26632046"
     },
     {
       "day": 33,
       "regime": "flat",
-      "poolStart": "2003083090",
-      "poolEnd": "1973093556",
-      "released": "30046246",
-      "tranche": "24036996",
+      "poolStart": "2122838230",
+      "poolEnd": "2091595784",
+      "released": "31842573",
+      "tranche": "25474058",
       "voyages": 101,
-      "claimedToday": "24773166"
+      "claimedToday": "26240460"
     },
     {
       "day": 34,
       "regime": "flat",
-      "poolStart": "1973093556",
-      "poolEnd": "1943554753",
-      "released": "29596403",
-      "tranche": "23677122",
+      "poolStart": "2091595784",
+      "poolEnd": "2060831613",
+      "released": "31373936",
+      "tranche": "25099148",
       "voyages": 101,
-      "claimedToday": "24402269"
+      "claimedToday": "25854324"
     },
     {
       "day": 35,
       "regime": "flat",
-      "poolStart": "1943554753",
-      "poolEnd": "1914460283",
-      "released": "29153321",
-      "tranche": "23322656",
+      "poolStart": "2060831613",
+      "poolEnd": "2030542294",
+      "released": "30912474",
+      "tranche": "24729979",
       "voyages": 100,
-      "claimedToday": "24036941"
+      "claimedToday": "25474007"
     },
     {
       "day": 36,
       "regime": "flat",
-      "poolStart": "1914460283",
-      "poolEnd": "1885799541",
-      "released": "28716904",
-      "tranche": "22973523",
+      "poolStart": "2030542294",
+      "poolEnd": "2000678929",
+      "released": "30458134",
+      "tranche": "24366507",
       "voyages": 101,
-      "claimedToday": "23677078"
+      "claimedToday": "25099100"
     },
     {
       "day": 37,
       "regime": "bull",
-      "poolStart": "1885799541",
-      "poolEnd": "1857567216",
-      "released": "28286993",
-      "tranche": "22629594",
+      "poolStart": "2000678929",
+      "poolEnd": "1971247819",
+      "released": "30010183",
+      "tranche": "24008146",
       "voyages": 102,
-      "claimedToday": "23322605"
+      "claimedToday": "24729925"
     },
     {
       "day": 38,
       "regime": "bull",
-      "poolStart": "1857567216",
-      "poolEnd": "1829758385",
-      "released": "27863508",
-      "tranche": "22290806",
+      "poolStart": "1971247819",
+      "poolEnd": "1942258665",
+      "released": "29568717",
+      "tranche": "23654973",
       "voyages": 104,
-      "claimedToday": "22973478"
+      "claimedToday": "24366462"
     },
     {
       "day": 39,
       "regime": "bull",
-      "poolStart": "1829758385",
-      "poolEnd": "1802366771",
-      "released": "27446375",
-      "tranche": "21957100",
+      "poolStart": "1942258665",
+      "poolEnd": "1913705321",
+      "released": "29133879",
+      "tranche": "23307103",
       "voyages": 104,
-      "claimedToday": "22629545"
+      "claimedToday": "24008093"
     },
     {
       "day": 40,
       "regime": "flat",
-      "poolStart": "1802366771",
-      "poolEnd": "1775383414",
-      "released": "27035501",
-      "tranche": "21628400",
+      "poolStart": "1913705321",
+      "poolEnd": "1885552522",
+      "released": "28705579",
+      "tranche": "22964463",
       "voyages": 100,
-      "claimedToday": "22290767"
+      "claimedToday": "23654927"
     },
     {
       "day": 41,
       "regime": "flat",
-      "poolStart": "1775383414",
-      "poolEnd": "1748804679",
-      "released": "26630751",
-      "tranche": "21304600",
+      "poolStart": "1885552522",
+      "poolEnd": "1857820908",
+      "released": "28283287",
+      "tranche": "22626629",
       "voyages": 102,
-      "claimedToday": "21957044"
+      "claimedToday": "23307046"
     },
     {
       "day": 42,
       "regime": "flat",
-      "poolStart": "1748804679",
-      "poolEnd": "1722625138",
-      "released": "26232070",
-      "tranche": "20985656",
+      "poolStart": "1857820908",
+      "poolEnd": "1830510797",
+      "released": "27867313",
+      "tranche": "22293850",
       "voyages": 101,
-      "claimedToday": "21628355"
+      "claimedToday": "22964406"
     },
     {
       "day": 43,
       "regime": "flat",
-      "poolStart": "1722625138",
-      "poolEnd": "1696836968",
-      "released": "25839377",
-      "tranche": "20671501",
+      "poolStart": "1830510797",
+      "poolEnd": "1803596429",
+      "released": "27457661",
+      "tranche": "21966128",
       "voyages": 100,
-      "claimedToday": "21304538"
+      "claimedToday": "22626576"
     },
     {
       "day": 44,
       "regime": "flat",
-      "poolStart": "1696836968",
-      "poolEnd": "1671433950",
-      "released": "25452554",
-      "tranche": "20362043",
+      "poolStart": "1803596429",
+      "poolEnd": "1777068290",
+      "released": "27053946",
+      "tranche": "21643156",
       "voyages": 97,
-      "claimedToday": "20985607"
+      "claimedToday": "22293797"
     },
     {
       "day": 45,
       "regime": "flat",
-      "poolStart": "1671433950",
-      "poolEnd": "1646411091",
-      "released": "25071509",
-      "tranche": "20057207",
+      "poolStart": "1777068290",
+      "poolEnd": "1750928738",
+      "released": "26656024",
+      "tranche": "21324819",
       "voyages": 104,
-      "claimedToday": "20671449"
+      "claimedToday": "21966075"
     },
     {
       "day": 46,
       "regime": "flat",
-      "poolStart": "1646411091",
-      "poolEnd": "1621764669",
-      "released": "24696166",
-      "tranche": "19756932",
+      "poolStart": "1750928738",
+      "poolEnd": "1725193096",
+      "released": "26263931",
+      "tranche": "21011144",
       "voyages": 101,
-      "claimedToday": "20361999"
+      "claimedToday": "21643117"
     },
     {
       "day": 47,
       "regime": "bull",
-      "poolStart": "1621764669",
-      "poolEnd": "1597485601",
-      "released": "24326470",
-      "tranche": "19461176",
+      "poolStart": "1725193096",
+      "poolEnd": "1699818694",
+      "released": "25877896",
+      "tranche": "20702316",
       "voyages": 104,
-      "claimedToday": "20057157"
+      "claimedToday": "21324790"
     },
     {
       "day": 48,
       "regime": "bull",
-      "poolStart": "1597485601",
-      "poolEnd": "1573570114",
-      "released": "23962284",
-      "tranche": "19169827",
+      "poolStart": "1699818694",
+      "poolEnd": "1674818715",
+      "released": "25497280",
+      "tranche": "20397824",
       "voyages": 101,
-      "claimedToday": "19756889"
+      "claimedToday": "21011091"
     },
     {
       "day": 49,
       "regime": "bull",
-      "poolStart": "1573570114",
-      "poolEnd": "1550011594",
-      "released": "23603551",
-      "tranche": "18882840",
+      "poolStart": "1674818715",
+      "poolEnd": "1650174908",
+      "released": "25122280",
+      "tranche": "20097824",
       "voyages": 103,
-      "claimedToday": "19461125"
+      "claimedToday": "20702263"
     },
     {
       "day": 50,
       "regime": "flat",
-      "poolStart": "1550011594",
-      "poolEnd": "1526806268",
-      "released": "23250173",
-      "tranche": "18600138",
+      "poolStart": "1650174908",
+      "poolEnd": "1625899050",
+      "released": "24752623",
+      "tranche": "19802098",
       "voyages": 101,
-      "claimedToday": "19169788"
+      "claimedToday": "20397785"
     },
     {
       "day": 51,
       "regime": "flat",
-      "poolStart": "1526806268",
-      "poolEnd": "1503948166",
-      "released": "22902094",
-      "tranche": "18321675",
+      "poolStart": "1625899050",
+      "poolEnd": "1601978165",
+      "released": "24388485",
+      "tranche": "19510788",
       "voyages": 101,
-      "claimedToday": "18882782"
+      "claimedToday": "20097773"
     },
     {
       "day": 52,
       "regime": "flat",
-      "poolStart": "1503948166",
-      "poolEnd": "1481433074",
-      "released": "22559222",
-      "tranche": "18047377",
+      "poolStart": "1601978165",
+      "poolEnd": "1578417828",
+      "released": "24029672",
+      "tranche": "19223737",
       "voyages": 107,
-      "claimedToday": "18600096"
+      "claimedToday": "19802052"
     },
     {
       "day": 53,
       "regime": "flat",
-      "poolStart": "1481433074",
-      "poolEnd": "1459254789",
-      "released": "22221496",
-      "tranche": "17777196",
+      "poolStart": "1578417828",
+      "poolEnd": "1555201197",
+      "released": "23676267",
+      "tranche": "18941013",
       "voyages": 102,
-      "claimedToday": "18321635"
+      "claimedToday": "19510736"
     },
     {
       "day": 54,
       "regime": "flat",
-      "poolStart": "1459254789",
-      "poolEnd": "1437407888",
-      "released": "21888821",
-      "tranche": "17511056",
+      "poolStart": "1555201197",
+      "poolEnd": "1532319269",
+      "released": "23328017",
+      "tranche": "18662413",
       "voyages": 103,
-      "claimedToday": "18047330"
+      "claimedToday": "19223684"
     },
     {
       "day": 55,
       "regime": "flat",
-      "poolStart": "1437407888",
-      "poolEnd": "1415889294",
-      "released": "21561118",
-      "tranche": "17248894",
+      "poolStart": "1532319269",
+      "poolEnd": "1509787040",
+      "released": "22984789",
+      "tranche": "18387831",
       "voyages": 96,
-      "claimedToday": "17777150"
+      "claimedToday": "18940970"
     },
     {
       "day": 56,
       "regime": "flat",
-      "poolStart": "1415889294",
-      "poolEnd": "1394692212",
-      "released": "21238339",
-      "tranche": "16990671",
+      "poolStart": "1509787040",
+      "poolEnd": "1487579513",
+      "released": "22646805",
+      "tranche": "18117444",
       "voyages": 105,
-      "claimedToday": "17511003"
+      "claimedToday": "18662360"
     },
     {
       "day": 57,
       "regime": "bull",
-      "poolStart": "1394692212",
-      "poolEnd": "1373814380",
-      "released": "20920383",
-      "tranche": "16736306",
+      "poolStart": "1487579513",
+      "poolEnd": "1465718916",
+      "released": "22313692",
+      "tranche": "17850953",
       "voyages": 97,
-      "claimedToday": "17248845"
+      "claimedToday": "18387780"
     },
     {
       "day": 58,
       "regime": "bull",
-      "poolStart": "1373814380",
-      "poolEnd": "1353246571",
-      "released": "20607215",
-      "tranche": "16485772",
+      "poolStart": "1465718916",
+      "poolEnd": "1444152930",
+      "released": "21985783",
+      "tranche": "17588626",
       "voyages": 105,
-      "claimedToday": "16990612"
+      "claimedToday": "18117395"
     },
     {
       "day": 59,
       "regime": "bull",
-      "poolStart": "1353246571",
-      "poolEnd": "1332989159",
-      "released": "20298698",
-      "tranche": "16238958",
+      "poolStart": "1444152930",
+      "poolEnd": "1422930422",
+      "released": "21662293",
+      "tranche": "17329834",
       "voyages": 105,
-      "claimedToday": "16736257"
+      "claimedToday": "17850906"
     },
     {
       "day": 60,
       "regime": "crash",
-      "poolStart": "1332989159",
-      "poolEnd": "1313033307",
-      "released": "19994837",
-      "tranche": "15995869",
+      "poolStart": "1422930422",
+      "poolEnd": "1402001978",
+      "released": "21343956",
+      "tranche": "17075164",
       "voyages": 100,
-      "claimedToday": "16485710"
+      "claimedToday": "17588579"
     },
     {
       "day": 61,
       "regime": "crash",
-      "poolStart": "1313033307",
-      "poolEnd": "1293375146",
-      "released": "19695499",
-      "tranche": "15756399",
+      "poolStart": "1402001978",
+      "poolEnd": "1381370016",
+      "released": "21030029",
+      "tranche": "16824023",
       "voyages": 106,
-      "claimedToday": "16238907"
+      "claimedToday": "17329778"
     },
     {
       "day": 62,
       "regime": "crash",
-      "poolStart": "1293375146",
-      "poolEnd": "1274012029",
-      "released": "19400627",
-      "tranche": "15520501",
+      "poolStart": "1381370016",
+      "poolEnd": "1361049413",
+      "released": "20720550",
+      "tranche": "16576440",
       "voyages": 103,
-      "claimedToday": "15995821"
+      "claimedToday": "17075107"
     },
     {
       "day": 63,
       "regime": "crash",
-      "poolStart": "1274012029",
-      "poolEnd": "1254937330",
-      "released": "19110180",
-      "tranche": "15288144",
+      "poolStart": "1361049413",
+      "poolEnd": "1341012050",
+      "released": "20415741",
+      "tranche": "16332592",
       "voyages": 102,
-      "claimedToday": "15756355"
+      "claimedToday": "16823964"
     },
     {
       "day": 64,
       "regime": "crash",
-      "poolStart": "1254937330",
-      "poolEnd": "1236149130",
-      "released": "18824059",
-      "tranche": "15059247",
+      "poolStart": "1341012050",
+      "poolEnd": "1321279330",
+      "released": "20115180",
+      "tranche": "16092144",
       "voyages": 100,
-      "claimedToday": "15520458"
+      "claimedToday": "16576393"
     },
     {
       "day": 65,
       "regime": "crash",
-      "poolStart": "1236149130",
-      "poolEnd": "1217642907",
-      "released": "18542236",
-      "tranche": "14833788",
+      "poolStart": "1321279330",
+      "poolEnd": "1301844386",
+      "released": "19819189",
+      "tranche": "15855351",
       "voyages": 104,
-      "claimedToday": "15288087"
+      "claimedToday": "16332543"
     },
     {
       "day": 66,
       "regime": "crash",
-      "poolStart": "1217642907",
-      "poolEnd": "1199414102",
-      "released": "18264643",
-      "tranche": "14611714",
+      "poolStart": "1301844386",
+      "poolEnd": "1282699084",
+      "released": "19527665",
+      "tranche": "15622132",
       "voyages": 103,
-      "claimedToday": "15059207"
+      "claimedToday": "16092087"
     },
     {
       "day": 67,
       "regime": "crash",
-      "poolStart": "1199414102",
-      "poolEnd": "1181457736",
-      "released": "17991211",
-      "tranche": "14392968",
+      "poolStart": "1282699084",
+      "poolEnd": "1263830560",
+      "released": "19240486",
+      "tranche": "15392388",
       "voyages": 102,
-      "claimedToday": "14833730"
+      "claimedToday": "15855294"
     },
     {
       "day": 68,
       "regime": "crash",
-      "poolStart": "1181457736",
-      "poolEnd": "1163770467",
-      "released": "17721866",
-      "tranche": "14177492",
+      "poolStart": "1263830560",
+      "poolEnd": "1245242356",
+      "released": "18957458",
+      "tranche": "15165966",
       "voyages": 104,
-      "claimedToday": "14611653"
+      "claimedToday": "15622076"
     },
     {
       "day": 69,
       "regime": "crash",
-      "poolStart": "1163770467",
-      "poolEnd": "1146346791",
-      "released": "17456557",
-      "tranche": "13965245",
+      "poolStart": "1245242356",
+      "poolEnd": "1226914853",
+      "released": "18678635",
+      "tranche": "14942908",
       "voyages": 100,
-      "claimedToday": "14392925"
+      "claimedToday": "15392341"
     },
     {
       "day": 70,
       "regime": "crash",
-      "poolStart": "1146346791",
-      "poolEnd": "1129185465",
-      "released": "17195201",
-      "tranche": "13756160",
+      "poolStart": "1226914853",
+      "poolEnd": "1208873025",
+      "released": "18403722",
+      "tranche": "14722977",
       "voyages": 100,
-      "claimedToday": "14177442"
+      "claimedToday": "15165915"
     },
     {
       "day": 71,
       "regime": "crash",
-      "poolStart": "1129185465",
-      "poolEnd": "1112280830",
-      "released": "16937781",
-      "tranche": "13550224",
+      "poolStart": "1208873025",
+      "poolEnd": "1191094175",
+      "released": "18133095",
+      "tranche": "14506476",
       "voyages": 102,
-      "claimedToday": "13965198"
+      "claimedToday": "14942861"
     },
     {
       "day": 72,
       "regime": "crash",
-      "poolStart": "1112280830",
-      "poolEnd": "1095629075",
-      "released": "16684212",
-      "tranche": "13347369",
+      "poolStart": "1191094175",
+      "poolEnd": "1173574721",
+      "released": "17866412",
+      "tranche": "14293129",
       "voyages": 100,
-      "claimedToday": "13756104"
+      "claimedToday": "14722917"
     },
     {
       "day": 73,
       "regime": "crash",
-      "poolStart": "1095629075",
-      "poolEnd": "1079225462",
-      "released": "16434436",
-      "tranche": "13147548",
+      "poolStart": "1173574721",
+      "poolEnd": "1156300514",
+      "released": "17603620",
+      "tranche": "14082896",
       "voyages": 97,
-      "claimedToday": "13550177"
+      "claimedToday": "14506420"
     },
     {
       "day": 74,
       "regime": "crash",
-      "poolStart": "1079225462",
-      "poolEnd": "1063069486",
-      "released": "16188381",
-      "tranche": "12950704",
+      "poolStart": "1156300514",
+      "poolEnd": "1139302629",
+      "released": "17344507",
+      "tranche": "13875605",
       "voyages": 104,
-      "claimedToday": "13347317"
+      "claimedToday": "14293082"
     },
     {
       "day": 75,
       "regime": "whipsaw",
-      "poolStart": "1063069486",
-      "poolEnd": "1047155626",
-      "released": "15946042",
-      "tranche": "12756833",
+      "poolStart": "1139302629",
+      "poolEnd": "1122557225",
+      "released": "17089539",
+      "tranche": "13671631",
       "voyages": 104,
-      "claimedToday": "13147509"
+      "claimedToday": "14082854"
     },
     {
       "day": 76,
       "regime": "whipsaw",
-      "poolStart": "1047155626",
-      "poolEnd": "1031478160",
-      "released": "15707334",
-      "tranche": "12565867",
+      "poolStart": "1122557225",
+      "poolEnd": "1106038273",
+      "released": "16838358",
+      "tranche": "13470686",
       "voyages": 103,
-      "claimedToday": "12950664"
+      "claimedToday": "13875552"
     },
     {
       "day": 77,
       "regime": "whipsaw",
-      "poolStart": "1031478160",
-      "poolEnd": "1016035231",
-      "released": "15472172",
-      "tranche": "12377737",
+      "poolStart": "1106038273",
+      "poolEnd": "1089760675",
+      "released": "16590574",
+      "tranche": "13272459",
       "voyages": 101,
-      "claimedToday": "12756763"
+      "claimedToday": "13671584"
     },
     {
       "day": 78,
       "regime": "whipsaw",
-      "poolStart": "1016035231",
-      "poolEnd": "1000824574",
-      "released": "15240528",
-      "tranche": "12192422",
+      "poolStart": "1089760675",
+      "poolEnd": "1073733990",
+      "released": "16346410",
+      "tranche": "13077128",
       "voyages": 109,
-      "claimedToday": "12565808"
+      "claimedToday": "13470645"
     },
     {
       "day": 79,
       "regime": "whipsaw",
-      "poolStart": "1000824574",
-      "poolEnd": "985841359",
-      "released": "15012368",
-      "tranche": "12009894",
+      "poolStart": "1073733990",
+      "poolEnd": "1057940095",
+      "released": "16106009",
+      "tranche": "12884807",
       "voyages": 99,
-      "claimedToday": "12377683"
+      "claimedToday": "13272403"
     },
     {
       "day": 80,
       "regime": "whipsaw",
-      "poolStart": "985841359",
-      "poolEnd": "971081879",
-      "released": "14787620",
-      "tranche": "11830096",
+      "poolStart": "1057940095",
+      "poolEnd": "1042372263",
+      "released": "15869101",
+      "tranche": "12695280",
       "voyages": 102,
-      "claimedToday": "12192372"
+      "claimedToday": "13077067"
     },
     {
       "day": 81,
       "regime": "whipsaw",
-      "poolStart": "971081879",
-      "poolEnd": "956544678",
-      "released": "14566228",
-      "tranche": "11652982",
+      "poolStart": "1042372263",
+      "poolEnd": "1027047626",
+      "released": "15635583",
+      "tranche": "12508466",
       "voyages": 105,
-      "claimedToday": "12009836"
+      "claimedToday": "12884754"
     },
     {
       "day": 82,
       "regime": "whipsaw",
-      "poolStart": "956544678",
-      "poolEnd": "942224512",
-      "released": "14348170",
-      "tranche": "11478536",
+      "poolStart": "1027047626",
+      "poolEnd": "1011941909",
+      "released": "15405714",
+      "tranche": "12324571",
       "voyages": 100,
-      "claimedToday": "11830042"
+      "claimedToday": "12695224"
     },
     {
       "day": 83,
       "regime": "whipsaw",
-      "poolStart": "942224512",
-      "poolEnd": "928119093",
-      "released": "14133367",
-      "tranche": "11306693",
+      "poolStart": "1011941909",
+      "poolEnd": "997062380",
+      "released": "15179128",
+      "tranche": "12143302",
       "voyages": 105,
-      "claimedToday": "11652932"
+      "claimedToday": "12508410"
     },
     {
       "day": 84,
       "regime": "whipsaw",
-      "poolStart": "928119093",
-      "poolEnd": "914224937",
-      "released": "13921786",
-      "tranche": "11137428",
+      "poolStart": "997062380",
+      "poolEnd": "982402718",
+      "released": "14955935",
+      "tranche": "11964748",
       "voyages": 103,
-      "claimedToday": "11478485"
+      "claimedToday": "12324527"
     },
     {
       "day": 85,
       "regime": "whipsaw",
-      "poolStart": "914224937",
-      "poolEnd": "900537760",
-      "released": "13713374",
-      "tranche": "10970699",
+      "poolStart": "982402718",
+      "poolEnd": "967947305",
+      "released": "14736040",
+      "tranche": "11788832",
       "voyages": 104,
-      "claimedToday": "11306658"
+      "claimedToday": "12143244"
     },
     {
       "day": 86,
       "regime": "whipsaw",
-      "poolStart": "900537760",
-      "poolEnd": "887056072",
-      "released": "13508066",
-      "tranche": "10806452",
+      "poolStart": "967947305",
+      "poolEnd": "953710866",
+      "released": "14519209",
+      "tranche": "11615367",
       "voyages": 105,
-      "claimedToday": "11137386"
+      "claimedToday": "11964699"
     },
     {
       "day": 87,
       "regime": "whipsaw",
-      "poolStart": "887056072",
-      "poolEnd": "873775481",
-      "released": "13305841",
-      "tranche": "10644672",
+      "poolStart": "953710866",
+      "poolEnd": "939675989",
+      "released": "14305662",
+      "tranche": "11444529",
       "voyages": 104,
-      "claimedToday": "10970646"
+      "claimedToday": "11788778"
     },
     {
       "day": 88,
       "regime": "whipsaw",
-      "poolStart": "873775481",
-      "poolEnd": "860693764",
-      "released": "13106632",
-      "tranche": "10485305",
+      "poolStart": "939675989",
+      "poolEnd": "925848163",
+      "released": "14095139",
+      "tranche": "11276111",
       "voyages": 105,
-      "claimedToday": "10806411"
+      "claimedToday": "11615317"
     },
     {
       "day": 89,
       "regime": "whipsaw",
-      "poolStart": "860693764",
-      "poolEnd": "847808541",
-      "released": "12910406",
-      "tranche": "10328324",
+      "poolStart": "925848163",
+      "poolEnd": "912230610",
+      "released": "13887722",
+      "tranche": "11110177",
       "voyages": 103,
-      "claimedToday": "10644611"
+      "claimedToday": "11444469"
     },
     {
       "day": 90,
       "regime": "flat",
-      "poolStart": "847808541",
-      "poolEnd": "835115848",
-      "released": "12717128",
-      "tranche": "10173702",
+      "poolStart": "912230610",
+      "poolEnd": "898809384",
+      "released": "13683459",
+      "tranche": "10946767",
       "voyages": 100,
-      "claimedToday": "10485252"
+      "claimedToday": "11276052"
     },
     {
       "day": 91,
       "regime": "flat",
-      "poolStart": "835115848",
-      "poolEnd": "822612878",
-      "released": "12526737",
-      "tranche": "10021389",
+      "poolStart": "898809384",
+      "poolEnd": "885582408",
+      "released": "13482140",
+      "tranche": "10785712",
       "voyages": 104,
-      "claimedToday": "10328271"
+      "claimedToday": "11110137"
     },
     {
       "day": 92,
       "regime": "flat",
-      "poolStart": "822612878",
-      "poolEnd": "810298096",
-      "released": "12339193",
-      "tranche": "9871354",
+      "poolStart": "885582408",
+      "poolEnd": "872560813",
+      "released": "13283736",
+      "tranche": "10626988",
       "voyages": 106,
-      "claimedToday": "10173657"
+      "claimedToday": "10946714"
     },
     {
       "day": 93,
       "regime": "flat",
-      "poolStart": "810298096",
-      "poolEnd": "798166711",
-      "released": "12154471",
-      "tranche": "9723576",
+      "poolStart": "872560813",
+      "poolEnd": "859720535",
+      "released": "13088412",
+      "tranche": "10470729",
       "voyages": 98,
-      "claimedToday": "10021325"
+      "claimedToday": "10785662"
     },
     {
       "day": 94,
       "regime": "flat",
-      "poolStart": "798166711",
-      "poolEnd": "786216593",
-      "released": "11972500",
-      "tranche": "9578000",
+      "poolStart": "859720535",
+      "poolEnd": "847065260",
+      "released": "12895808",
+      "tranche": "10316646",
       "voyages": 104,
-      "claimedToday": "9871298"
+      "claimedToday": "10626936"
     },
     {
       "day": 95,
       "regime": "flat",
-      "poolStart": "786216593",
-      "poolEnd": "774446435",
-      "released": "11793248",
-      "tranche": "9434598",
+      "poolStart": "847065260",
+      "poolEnd": "834607386",
+      "released": "12705978",
+      "tranche": "10164782",
       "voyages": 99,
-      "claimedToday": "9723524"
+      "claimedToday": "10470676"
     },
     {
       "day": 96,
       "regime": "flat",
-      "poolStart": "774446435",
-      "poolEnd": "762851782",
-      "released": "11616696",
-      "tranche": "9293356",
+      "poolStart": "834607386",
+      "poolEnd": "822325304",
+      "released": "12519110",
+      "tranche": "10015288",
       "voyages": 101,
-      "claimedToday": "9577954"
+      "claimedToday": "10316582"
     },
     {
       "day": 97,
       "regime": "bull",
-      "poolStart": "762851782",
-      "poolEnd": "751431703",
-      "released": "11442776",
-      "tranche": "9154220",
+      "poolStart": "822325304",
+      "poolEnd": "810234350",
+      "released": "12334879",
+      "tranche": "9867903",
       "voyages": 104,
-      "claimedToday": "9434547"
+      "claimedToday": "10164733"
     },
     {
       "day": 98,
       "regime": "bull",
-      "poolStart": "751431703",
-      "poolEnd": "740181698",
-      "released": "11271475",
-      "tranche": "9017180",
+      "poolStart": "810234350",
+      "poolEnd": "798311687",
+      "released": "12153515",
+      "tranche": "9722812",
       "voyages": 109,
-      "claimedToday": "9293302"
+      "claimedToday": "10015229"
     },
     {
       "day": 99,
       "regime": "bull",
-      "poolStart": "740181698",
-      "poolEnd": "729100832",
-      "released": "11102725",
-      "tranche": "8882180",
+      "poolStart": "798311687",
+      "poolEnd": "786572094",
+      "released": "11974675",
+      "tranche": "9579740",
       "voyages": 99,
-      "claimedToday": "9154167"
+      "claimedToday": "9867848"
     },
     {
       "day": 100,
       "regime": "flat",
-      "poolStart": "729100832",
-      "poolEnd": "718184873",
-      "released": "10936512",
-      "tranche": "8749209",
+      "poolStart": "786572094",
+      "poolEnd": "774994674",
+      "released": "11798581",
+      "tranche": "9438864",
       "voyages": 102,
-      "claimedToday": "9017124"
+      "claimedToday": "9722767"
     },
     {
       "day": 101,
       "regime": "flat",
-      "poolStart": "718184873",
-      "poolEnd": "707433544",
-      "released": "10772773",
-      "tranche": "8618218",
+      "poolStart": "774994674",
+      "poolEnd": "763600381",
+      "released": "11624920",
+      "tranche": "9299936",
       "voyages": 101,
-      "claimedToday": "8882130"
+      "claimedToday": "9579680"
     },
     {
       "day": 102,
       "regime": "flat",
-      "poolStart": "707433544",
-      "poolEnd": "696842886",
-      "released": "10611503",
-      "tranche": "8489202",
+      "poolStart": "763600381",
+      "poolEnd": "752370685",
+      "released": "11454005",
+      "tranche": "9163204",
       "voyages": 101,
-      "claimedToday": "8749156"
+      "claimedToday": "9438827"
     },
     {
       "day": 103,
       "regime": "flat",
-      "poolStart": "696842886",
-      "poolEnd": "686410908",
-      "released": "10452643",
-      "tranche": "8362114",
+      "poolStart": "752370685",
+      "poolEnd": "741307582",
+      "released": "11285560",
+      "tranche": "9028448",
       "voyages": 102,
-      "claimedToday": "8618174"
+      "claimedToday": "9299878"
     },
     {
       "day": 104,
       "regime": "flat",
-      "poolStart": "686410908",
-      "poolEnd": "676134793",
-      "released": "10296163",
-      "tranche": "8236930",
+      "poolStart": "741307582",
+      "poolEnd": "730403916",
+      "released": "11119613",
+      "tranche": "8895690",
       "voyages": 101,
-      "claimedToday": "8489154"
+      "claimedToday": "9163145"
     },
     {
       "day": 105,
       "regime": "flat",
-      "poolStart": "676134793",
-      "poolEnd": "666012617",
-      "released": "10142021",
-      "tranche": "8113616",
+      "poolStart": "730403916",
+      "poolEnd": "719661605",
+      "released": "10956058",
+      "tranche": "8764846",
       "voyages": 98,
-      "claimedToday": "8362060"
+      "claimedToday": "9028402"
     },
     {
       "day": 106,
       "regime": "flat",
-      "poolStart": "666012617",
-      "poolEnd": "656042508",
-      "released": "9990189",
-      "tranche": "7992151",
+      "poolStart": "719661605",
+      "poolEnd": "709083005",
+      "released": "10794924",
+      "tranche": "8635939",
       "voyages": 105,
-      "claimedToday": "8236871"
+      "claimedToday": "8895640"
     },
     {
       "day": 107,
       "regime": "bull",
-      "poolStart": "656042508",
-      "poolEnd": "646221468",
-      "released": "9840637",
-      "tranche": "7872509",
+      "poolStart": "709083005",
+      "poolEnd": "698657928",
+      "released": "10636245",
+      "tranche": "8508996",
       "voyages": 110,
-      "claimedToday": "8113564"
+      "claimedToday": "8764791"
     },
     {
       "day": 108,
       "regime": "bull",
-      "poolStart": "646221468",
-      "poolEnd": "636547002",
-      "released": "9693322",
-      "tranche": "7754657",
+      "poolStart": "698657928",
+      "poolEnd": "688381238",
+      "released": "10479868",
+      "tranche": "8383894",
       "voyages": 102,
-      "claimedToday": "7992098"
+      "claimedToday": "8635885"
     },
     {
       "day": 109,
       "regime": "bull",
-      "poolStart": "636547002",
-      "poolEnd": "627016321",
-      "released": "9548205",
-      "tranche": "7638564",
+      "poolStart": "688381238",
+      "poolEnd": "678244416",
+      "released": "10325718",
+      "tranche": "8260574",
       "voyages": 98,
-      "claimedToday": "7872459"
+      "claimedToday": "8508937"
     },
     {
       "day": 110,
       "regime": "flat",
-      "poolStart": "627016321",
-      "poolEnd": "617629786",
-      "released": "9405244",
-      "tranche": "7524195",
+      "poolStart": "678244416",
+      "poolEnd": "668272476",
+      "released": "10173666",
+      "tranche": "8138932",
       "voyages": 106,
-      "claimedToday": "7754604"
+      "claimedToday": "8383849"
     },
     {
       "day": 111,
       "regime": "flat",
-      "poolStart": "617629786",
-      "poolEnd": "608384324",
-      "released": "9264446",
-      "tranche": "7411556",
+      "poolStart": "668272476",
+      "poolEnd": "658453266",
+      "released": "10024087",
+      "tranche": "8019269",
       "voyages": 102,
-      "claimedToday": "7638508"
+      "claimedToday": "8260523"
     },
     {
       "day": 112,
       "regime": "flat",
-      "poolStart": "608384324",
-      "poolEnd": "599276013",
-      "released": "9125764",
-      "tranche": "7300611",
+      "poolStart": "658453266",
+      "poolEnd": "648764779",
+      "released": "9876798",
+      "tranche": "7901438",
       "voyages": 102,
-      "claimedToday": "7524143"
+      "claimedToday": "8138891"
     },
     {
       "day": 113,
       "regime": "flat",
-      "poolStart": "599276013",
-      "poolEnd": "590304623",
-      "released": "8989140",
-      "tranche": "7191312",
+      "poolStart": "648764779",
+      "poolEnd": "639224805",
+      "released": "9731471",
+      "tranche": "7785176",
       "voyages": 104,
-      "claimedToday": "7411507"
+      "claimedToday": "8019213"
     },
     {
       "day": 114,
       "regime": "flat",
-      "poolStart": "590304623",
-      "poolEnd": "581467769",
-      "released": "8854569",
-      "tranche": "7083655",
+      "poolStart": "639224805",
+      "poolEnd": "629827557",
+      "released": "9588372",
+      "tranche": "7670697",
       "voyages": 98,
-      "claimedToday": "7300569"
+      "claimedToday": "7901387"
     },
     {
       "day": 115,
       "regime": "flat",
-      "poolStart": "581467769",
-      "poolEnd": "572762575",
-      "released": "8722016",
-      "tranche": "6977612",
+      "poolStart": "629827557",
+      "poolEnd": "620561728",
+      "released": "9447413",
+      "tranche": "7557930",
       "voyages": 104,
-      "claimedToday": "7191257"
+      "claimedToday": "7785127"
     },
     {
       "day": 116,
       "regime": "flat",
-      "poolStart": "572762575",
-      "poolEnd": "564188554",
-      "released": "8591438",
-      "tranche": "6873150",
+      "poolStart": "620561728",
+      "poolEnd": "611441377",
+      "released": "9308425",
+      "tranche": "7446740",
       "voyages": 100,
-      "claimedToday": "7083601"
+      "claimedToday": "7670655"
     },
     {
       "day": 117,
       "regime": "bull",
-      "poolStart": "564188554",
-      "poolEnd": "555742028",
-      "released": "8462828",
-      "tranche": "6770262",
+      "poolStart": "611441377",
+      "poolEnd": "602445828",
+      "released": "9171620",
+      "tranche": "7337296",
       "voyages": 102,
-      "claimedToday": "6977550"
+      "claimedToday": "7557882"
     },
     {
       "day": 118,
       "regime": "bull",
-      "poolStart": "555742028",
-      "poolEnd": "547422397",
-      "released": "8336130",
-      "tranche": "6668904",
+      "poolStart": "602445828",
+      "poolEnd": "593587356",
+      "released": "9036687",
+      "tranche": "7229349",
       "voyages": 104,
-      "claimedToday": "6873108"
+      "claimedToday": "7446696"
     },
     {
       "day": 119,
       "regime": "bull",
-      "poolStart": "547422397",
-      "poolEnd": "539227233",
-      "released": "8211335",
-      "tranche": "6569068",
+      "poolStart": "593587356",
+      "poolEnd": "584858226",
+      "released": "8903810",
+      "tranche": "7123048",
       "voyages": 108,
-      "claimedToday": "6770200"
+      "claimedToday": "7337243"
     }
   ],
   "finalState": {
-    "pool": "539227233",
-    "leaderboardPot": "552100035",
-    "treasury": "7619721616",
-    "clamSupply": "9884270876",
+    "pool": "584858226",
+    "leaderboardPot": "586099033",
+    "treasury": "7560000000",
+    "clamSupply": "9976572300",
     "doubloonsEarned": "378435",
     "players": [
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "34856014",
-        "spentUsdg": "242424243",
+        "claimed": "36984602",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "35212923",
-        "spentUsdg": "242424243",
+        "claimed": "37376010",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "33910957",
-        "spentUsdg": "242424243",
+        "claimed": "35989004",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "35006827",
-        "spentUsdg": "242424243",
+        "claimed": "37169365",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "34188562",
-        "spentUsdg": "242424243",
+        "claimed": "36302033",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "35164264",
-        "spentUsdg": "242424243",
+        "claimed": "37323084",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "35631341",
-        "spentUsdg": "242424243",
+        "claimed": "37825498",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "35005615",
-        "spentUsdg": "242424243",
+        "claimed": "37155581",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "31349395",
-        "spentUsdg": "242424243",
+        "claimed": "33281466",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "34868599",
-        "spentUsdg": "242424243",
+        "claimed": "37004607",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "36703977",
-        "spentUsdg": "242424243",
+        "claimed": "38949339",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "32834274",
-        "spentUsdg": "242424243",
+        "claimed": "34871614",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "33727823",
-        "spentUsdg": "242424243",
+        "claimed": "35795349",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "33918138",
-        "spentUsdg": "242424243",
+        "claimed": "35998762",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "33939321",
-        "spentUsdg": "242424243",
+        "claimed": "36037248",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "33431796",
-        "spentUsdg": "242424243",
+        "claimed": "35461660",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "32531497",
-        "spentUsdg": "242424243",
+        "claimed": "34524120",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "32924277",
-        "spentUsdg": "242424243",
+        "claimed": "34950909",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "32844044",
-        "spentUsdg": "242424243",
+        "claimed": "34883771",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "35808364",
-        "spentUsdg": "242424243",
+        "claimed": "37996337",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "casual",
         "creatures": 3,
-        "claimed": "32957909",
-        "spentUsdg": "242424243",
+        "claimed": "34992916",
+        "spentUsdg": "244897960",
         "redeemedUsdg": "0"
       },
       {
         "archetype": "skilled",
         "creatures": 6,
-        "claimed": "116482155",
-        "spentUsdg": "484848485",
-        "redeemedUsdg": "57658580"
+        "claimed": "123646428",
+        "spentUsdg": "489795919",
+        "redeemedUsdg": "61204896"
       },
       {
         "archetype": "skilled",
         "creatures": 6,
-        "claimed": "117667435",
-        "spentUsdg": "484848485",
-        "redeemedUsdg": "58245312"
+        "claimed": "124891269",
+        "spentUsdg": "489795919",
+        "redeemedUsdg": "61821105"
       },
       {
         "archetype": "skilled",
         "creatures": 6,
-        "claimed": "117364563",
-        "spentUsdg": "484848485",
-        "redeemedUsdg": "58095362"
+        "claimed": "124564497",
+        "spentUsdg": "489795919",
+        "redeemedUsdg": "61659336"
       },
       {
         "archetype": "skilled",
         "creatures": 6,
-        "claimed": "118688174",
-        "spentUsdg": "484848485",
-        "redeemedUsdg": "58750555"
+        "claimed": "125951549",
+        "spentUsdg": "489795919",
+        "redeemedUsdg": "62345922"
       },
       {
         "archetype": "skilled",
         "creatures": 6,
-        "claimed": "114615152",
-        "spentUsdg": "484848485",
-        "redeemedUsdg": "56734414"
+        "claimed": "121668166",
+        "spentUsdg": "489795919",
+        "redeemedUsdg": "60225654"
       },
       {
         "archetype": "skilled",
         "creatures": 6,
-        "claimed": "115289745",
-        "spentUsdg": "484848485",
-        "redeemedUsdg": "57068334"
+        "claimed": "122378815",
+        "spentUsdg": "489795919",
+        "redeemedUsdg": "60577422"
       },
       {
         "archetype": "skilled",
         "creatures": 6,
-        "claimed": "120449165",
-        "spentUsdg": "484848485",
-        "redeemedUsdg": "59622249"
+        "claimed": "127855882",
+        "spentUsdg": "489795919",
+        "redeemedUsdg": "63288572"
       },
       {
         "archetype": "bot",
         "creatures": 15,
-        "claimed": "328883034",
-        "spentUsdg": "1212121213",
-        "redeemedUsdg": "309314384"
+        "claimed": "349093231",
+        "spentUsdg": "1224489796",
+        "redeemedUsdg": "328322068"
       },
       {
         "archetype": "bot",
         "creatures": 15,
-        "claimed": "328900552",
-        "spentUsdg": "1212121213",
-        "redeemedUsdg": "309330858"
+        "claimed": "349114327",
+        "spentUsdg": "1224489796",
+        "redeemedUsdg": "328341913"
       }
     ]
   },
   "simMetrics": [
     {
       "day": 0,
-      "pool": "3245220751"
+      "pool": "3409484435"
     },
     {
       "day": 1,
-      "pool": "3196634410"
+      "pool": "3359308314"
     },
     {
       "day": 2,
-      "pool": "3148776450"
+      "pool": "3309880680"
     },
     {
       "day": 3,
-      "pool": "3101634320"
+      "pool": "3261173311"
     },
     {
       "day": 4,
-      "pool": "3055197877"
+      "pool": "3213181572"
     },
     {
       "day": 5,
-      "pool": "3009456949"
+      "pool": "3165899126"
     },
     {
       "day": 6,
-      "pool": "2964400741"
+      "pool": "3119311483"
     },
     {
       "day": 7,
-      "pool": "2920019161"
+      "pool": "3073410095"
     },
     {
       "day": 8,
-      "pool": "2876301870"
+      "pool": "3028182328"
     },
     {
       "day": 9,
-      "pool": "2833238794"
+      "pool": "2983616990"
     },
     {
       "day": 10,
-      "pool": "2790820364"
+      "pool": "2939706662"
     },
     {
       "day": 11,
-      "pool": "2749037059"
+      "pool": "2896443100"
     },
     {
       "day": 12,
-      "pool": "2707879255"
+      "pool": "2853815509"
     },
     {
       "day": 13,
-      "pool": "2667338394"
+      "pool": "2811823068"
     },
     {
       "day": 14,
-      "pool": "2627403898"
+      "pool": "2770442308"
     },
     {
       "day": 15,
-      "pool": "2588067902"
+      "pool": "2729677007"
     },
     {
       "day": 16,
-      "pool": "2549320546"
+      "pool": "2689508624"
     },
     {
       "day": 17,
-      "pool": "2511153164"
+      "pool": "2649929942"
     },
     {
       "day": 18,
-      "pool": "2473556956"
+      "pool": "2610931006"
     },
     {
       "day": 19,
-      "pool": "2436524114"
+      "pool": "2572511184"
     },
     {
       "day": 20,
-      "pool": "2400045729"
+      "pool": "2534656907"
     },
     {
       "day": 21,
-      "pool": "2364113135"
+      "pool": "2497356037"
     },
     {
       "day": 22,
-      "pool": "2328718237"
+      "pool": "2460601190"
     },
     {
       "day": 23,
-      "pool": "2293853810"
+      "pool": "2424393094"
     },
     {
       "day": 24,
-      "pool": "2259511164"
+      "pool": "2388715753"
     },
     {
       "day": 25,
-      "pool": "2225682079"
+      "pool": "2353557069"
     },
     {
       "day": 26,
-      "pool": "2192359912"
+      "pool": "2318920441"
     },
     {
       "day": 27,
-      "pool": "2159536809"
+      "pool": "2284795434"
     },
     {
       "day": 28,
-      "pool": "2127205024"
+      "pool": "2251171567"
     },
     {
       "day": 29,
-      "pool": "2095357322"
+      "pool": "2218042784"
     },
     {
       "day": 30,
-      "pool": "2063986163"
+      "pool": "2185398682"
     },
     {
       "day": 31,
-      "pool": "2033084925"
+      "pool": "2153237546"
     },
     {
       "day": 32,
-      "pool": "2002646185"
+      "pool": "2121548205"
     },
     {
       "day": 33,
-      "pool": "1972663282"
+      "pool": "2090326452"
     },
     {
       "day": 34,
-      "pool": "1943129069"
+      "pool": "2059562011"
     },
     {
       "day": 35,
-      "pool": "1914037328"
+      "pool": "2029253452"
     },
     {
       "day": 36,
-      "pool": "1885381061"
+      "pool": "1999390130"
     },
     {
       "day": 37,
-      "pool": "1857153674"
+      "pool": "1969964668"
     },
     {
       "day": 38,
-      "pool": "1829349432"
+      "pool": "1940977922"
     },
     {
       "day": 39,
-      "pool": "1801961866"
+      "pool": "1912422033"
     },
     {
       "day": 40,
-      "pool": "1774983888"
+      "pool": "1884281616"
     },
     {
       "day": 41,
-      "pool": "1748409618"
+      "pool": "1856553196"
     },
     {
       "day": 42,
-      "pool": "1722233132"
+      "pool": "1829232048"
     },
     {
       "day": 43,
-      "pool": "1696448504"
+      "pool": "1802312467"
     },
     {
       "day": 44,
-      "pool": "1671049759"
+      "pool": "1775787405"
     },
     {
       "day": 45,
-      "pool": "1646031389"
+      "pool": "1749653910"
     },
     {
       "day": 46,
-      "pool": "1621387431"
+      "pool": "1723903351"
     },
     {
       "day": 47,
-      "pool": "1597113262"
+      "pool": "1698540532"
     },
     {
       "day": 48,
-      "pool": "1573202385"
+      "pool": "1673549610"
     },
     {
       "day": 49,
-      "pool": "1549649273"
+      "pool": "1648924092"
     },
     {
       "day": 50,
-      "pool": "1526448647"
+      "pool": "1624659446"
     },
     {
       "day": 51,
-      "pool": "1503595188"
+      "pool": "1600749954"
     },
     {
       "day": 52,
-      "pool": "1481083859"
+      "pool": "1577192039"
     },
     {
       "day": 53,
-      "pool": "1458909689"
+      "pool": "1553982203"
     },
     {
       "day": 54,
-      "pool": "1437067461"
+      "pool": "1531113480"
     },
     {
       "day": 55,
-      "pool": "1415552200"
+      "pool": "1508580816"
     },
     {
       "day": 56,
-      "pool": "1394359470"
+      "pool": "1486384115"
     },
     {
       "day": 57,
-      "pool": "1373484040"
+      "pool": "1464514178"
     },
     {
       "day": 58,
-      "pool": "1352920739"
+      "pool": "1442961779"
     },
     {
       "day": 59,
-      "pool": "1332665580"
+      "pool": "1421729444"
     },
     {
       "day": 60,
-      "pool": "1312713210"
+      "pool": "1400804635"
     },
     {
       "day": 61,
-      "pool": "1293059871"
+      "pool": "1380191090"
     },
     {
       "day": 62,
-      "pool": "1273700803"
+      "pool": "1359881184"
     },
     {
       "day": 63,
-      "pool": "1254630908"
+      "pool": "1339863128"
     },
     {
       "day": 64,
-      "pool": "1235847352"
+      "pool": "1320148512"
     },
     {
       "day": 65,
-      "pool": "1217344316"
+      "pool": "1300716542"
     },
     {
       "day": 66,
-      "pool": "1199118236"
+      "pool": "1281569813"
     },
     {
       "day": 67,
-      "pool": "1181165650"
+      "pool": "1262711482"
     },
     {
       "day": 68,
-      "pool": "1163481606"
+      "pool": "1244128159"
     },
     {
       "day": 69,
-      "pool": "1146061932"
+      "pool": "1225814165"
     },
     {
       "day": 70,
-      "pool": "1128903848"
+      "pool": "1207778089"
     },
     {
       "day": 71,
-      "pool": "1112002447"
+      "pool": "1190005302"
     },
     {
       "day": 72,
-      "pool": "1095354131"
+      "pool": "1172494532"
     },
     {
       "day": 73,
-      "pool": "1078955237"
+      "pool": "1155243278"
     },
     {
       "day": 74,
-      "pool": "1062801835"
+      "pool": "1138245598"
     },
     {
       "day": 75,
-      "pool": "1046890032"
+      "pool": "1121495464"
     },
     {
       "day": 76,
-      "pool": "1031216329"
+      "pool": "1104990512"
     },
     {
       "day": 77,
-      "pool": "1015777599"
+      "pool": "1088731759"
     },
     {
       "day": 78,
-      "pool": "1000570042"
+      "pool": "1072712594"
     },
     {
       "day": 79,
-      "pool": "985589676"
+      "pool": "1056923930"
     },
     {
       "day": 80,
-      "pool": "970833222"
+      "pool": "1041363657"
     },
     {
       "day": 81,
-      "pool": "956297980"
+      "pool": "1026035418"
     },
     {
       "day": 82,
-      "pool": "941980626"
+      "pool": "1010935627"
     },
     {
       "day": 83,
-      "pool": "927877272"
+      "pool": "996054277"
     },
     {
       "day": 84,
-      "pool": "913985579"
+      "pool": "981397418"
     },
     {
       "day": 85,
-      "pool": "900301714"
+      "pool": "966954616"
     },
     {
       "day": 86,
-      "pool": "886822566"
+      "pool": "952722717"
     },
     {
       "day": 87,
-      "pool": "873545622"
+      "pool": "938704559"
     },
     {
       "day": 88,
-      "pool": "860467122"
+      "pool": "924889084"
     },
     {
       "day": 89,
-      "pool": "847584876"
+      "pool": "911281769"
     },
     {
       "day": 90,
-      "pool": "834895191"
+      "pool": "897871382"
     },
     {
       "day": 91,
-      "pool": "822395560"
+      "pool": "884659095"
     },
     {
       "day": 92,
-      "pool": "810082960"
+      "pool": "871640020"
     },
     {
       "day": 93,
-      "pool": "797954680"
+      "pool": "858812357"
     },
     {
       "day": 94,
-      "pool": "786007971"
+      "pool": "846173409"
     },
     {
       "day": 95,
-      "pool": "774240211"
+      "pool": "833721325"
     },
     {
       "day": 96,
-      "pool": "762648622"
+      "pool": "821452385"
     },
     {
       "day": 97,
-      "pool": "751230585"
+      "pool": "809364117"
     },
     {
       "day": 98,
-      "pool": "739983283"
+      "pool": "797451453"
     },
     {
       "day": 99,
-      "pool": "728904756"
+      "pool": "785718206"
     },
     {
       "day": 100,
-      "pool": "717991836"
+      "pool": "774154842"
     },
     {
       "day": 101,
-      "pool": "707242377"
+      "pool": "762762529"
     },
     {
       "day": 102,
-      "pool": "696653754"
+      "pool": "751536808"
     },
     {
       "day": 103,
-      "pool": "686223750"
+      "pool": "740477265"
     },
     {
       "day": 104,
-      "pool": "675950040"
+      "pool": "729581962"
     },
     {
       "day": 105,
-      "pool": "665829940"
+      "pool": "718844764"
     },
     {
       "day": 106,
-      "pool": "655861657"
+      "pool": "708268869"
     },
     {
       "day": 107,
-      "pool": "646042217"
+      "pool": "697844304"
     },
     {
       "day": 108,
-      "pool": "636369841"
+      "pool": "687573731"
     },
     {
       "day": 109,
-      "pool": "626842251"
+      "pool": "677454058"
     },
     {
       "day": 110,
-      "pool": "617457353"
+      "pool": "667483810"
     },
     {
       "day": 111,
-      "pool": "608212970"
+      "pool": "657660355"
     },
     {
       "day": 112,
-      "pool": "599107202"
+      "pool": "647983705"
     },
     {
       "day": 113,
-      "pool": "590137593"
+      "pool": "638447649"
     },
     {
       "day": 114,
-      "pool": "581302221"
+      "pool": "629051373"
     },
     {
       "day": 115,
-      "pool": "572599148"
+      "pool": "619793584"
     },
     {
       "day": 116,
-      "pool": "564026463"
+      "pool": "610672969"
     },
     {
       "day": 117,
-      "pool": "555582246"
+      "pool": "601687899"
     },
     {
       "day": 118,
-      "pool": "547264536"
+      "pool": "592835948"
     },
     {
       "day": 119,
-      "pool": "539071040"
+      "pool": "584110862"
     }
   ],
   "invariantFailures": []

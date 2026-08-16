@@ -1,0 +1,89 @@
+:root {
+  --water0: #bfe9f5;
+  --water1: #7fcbe0;
+  --card: #fdf8ec;
+  --card-deep: #f5ecd8;
+  --ink: #22303c;
+  --muted: #5d7180;
+  --outline: #22303c;
+  --sand: #f0dfae;
+  --gold: #ffb020;
+  --teal: #0e8fa8;
+  --green: #2e9e57;
+  --coral: #ff5e6c;
+  --chunky: 0 6px 0 rgba(34, 48, 60, 0.22);
+  --round: ui-rounded, "Hiragino Maru Gothic ProN", "Arial Rounded MT Bold", "Trebuchet MS", -apple-system, sans-serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--sans);
+  background: linear-gradient(180deg, var(--water0), var(--water1) 60%, #5bb5cf);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--teal); }
+h1, h2, h3 { font-family: var(--round); font-weight: 800; letter-spacing: -0.01em; text-wrap: balance; }
+h1 { font-size: 2.2rem; margin: 0 0 .25rem; }
+h1 em, h2 em { font-style: normal; color: var(--coral); }
+h2 { font-size: 1.25rem; margin: 0 0 .75rem; }
+.muted { color: var(--muted); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+.shell { max-width: 960px; margin: 0 auto; padding: 28px 20px 64px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand .logo { width: 40px; height: 40px; border-radius: 50%; background: var(--coral); border: 3px solid var(--outline); box-shadow: var(--chunky); }
+.brand b { font-family: var(--round); font-size: 1.15rem; }
+nav { display: flex; gap: 8px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--round); font-weight: 800; font-size: 13px;
+  padding: 8px 14px; border-radius: 999px; text-decoration: none;
+  background: var(--card); color: var(--ink); border: 3px solid var(--outline); box-shadow: var(--chunky);
+}
+.pill.active { background: var(--gold); }
+.pill.chain { background: var(--sand); }
+
+.card {
+  background: var(--card); border: 3px solid var(--outline); border-radius: 22px;
+  box-shadow: var(--chunky); padding: 22px 24px; margin-bottom: 18px;
+}
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 720px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .grid, .grid.two { grid-template-columns: 1fr; } }
+.stat { background: var(--card-deep); border: 3px solid var(--outline); border-radius: 18px; padding: 14px 16px; }
+.stat .k { font-family: var(--round); font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.stat .v { font-family: var(--mono); font-weight: 700; font-size: 1.35rem; margin-top: 4px; overflow-wrap: anywhere; }
+.stat .d { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.ok { color: var(--green); }
+.bad { color: var(--coral); }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 2px solid rgba(34,48,60,.12); }
+th { font-family: var(--round); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+td.mono { font-family: var(--mono); }
+
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+input[type="text"] {
+  font: 600 1.05rem var(--mono); padding: 10px 12px; border-radius: 12px;
+  border: 3px solid var(--outline); background: #fff; color: var(--ink); min-width: 200px; flex: 1;
+}
+button {
+  font-family: var(--round); font-weight: 800; font-size: 14px; cursor: pointer;
+  padding: 10px 16px; border-radius: 999px; border: 3px solid var(--outline);
+  background: var(--gold); color: var(--ink); box-shadow: var(--chunky);
+}
+button.secondary { background: var(--card-deep); }
+button.danger { background: var(--coral); color: #fff; }
+button:disabled { opacity: .55; cursor: not-allowed; box-shadow: none; }
+.preview { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.status { margin-top: 10px; padding: 10px 12px; border-radius: 12px; border: 2px dashed rgba(34,48,60,.35); font-size: 13px; }
+.status.err { border-color: var(--coral); color: var(--coral); }
+.status.ok { border-color: var(--green); color: var(--green); }
+.footer { font-size: 12px; color: var(--muted); margin-top: 24px; }
+code { font-family: var(--mono); font-size: .92em; }

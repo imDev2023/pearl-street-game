@@ -3,7 +3,7 @@
 Tickets are tracer-bullet vertical slices: each one cuts through contracts, tests, indexer, and UI, and is demoable on its own.
 Work them in dependency order.
 Read `docs/ARCHITECTURE.md` first: it maps the prototype contracts each ticket starts from and the decisions frozen on 2026-08-15.
-Next unit: **T-002 CLAM vault** - the economy prototype gate is passed (user decision 2026-08-15) and the launch decisions are recorded in `.scratch/launch-readiness/map.md` (2026-08-16); build starts with the doc reconciliation task there, then T-002.
+Next unit: **T-003 Gen-0 creature mint** (T-002 done 2026-08-16; launch decisions in `.scratch/launch-readiness/map.md`).
 Update the Status line inside each ticket as work progresses (ready / in progress / done / backlog).
 
 ## Launch scope (Gen-0 sale, live game, PEARL pre-sale)
@@ -12,7 +12,7 @@ Update the Status line inside each ticket as work progresses (ready / in progres
 | --- | --- | --- |
 | T-001 | Repo and CI bootstrap (done 2026-08-15) | - |
 | T-018 | Economy stress test + on-chain prototype (done 2026-08-15; reports in docs/) | T-001 |
-| T-002 | CLAM token and vault (START HERE) | T-018 |
+| T-002 | CLAM token and vault (done 2026-08-16) | T-018 |
 | T-003 | Gen-0 creature mint (commit-reveal, 7% in-token royalty, dormant operator allowlist) | T-002 |
 | T-004 | Trading voyages | T-003 |
 | T-005 | Doubloons and energy | T-004 |

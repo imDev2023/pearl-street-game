@@ -37,3 +37,8 @@ Economic model: `packages/sim` (`pearl-scenarios.ts`, `scripts/pearl-report.mjs`
 - [ ] Founder accrual matches play records from game-live day one; claim-only, no transfer to a wallet without a claim transaction
 - [ ] Tokenomics paper (`PEARL-TOKENOMICS.md`) published before the pre-sale; whitepaper pledge language matches
 - [ ] Legal review complete for the pre-sale and the Founder allocation
+
+## Decisions from the launch-readiness map (2026-08-16)
+
+- No fee share, no revenue-fed floor reserve (`.scratch/launch-readiness/issues/22`); rewrite the whitepaper PEARL chapter accordingly.
+- The whitepaper and its site are a first-class launch asset for Gen-0 and pre-sale buyers: plan a dedicated design and copy pass (operator: 'best whitepaper, all the bells and whistles'); the current `website/index.html` is the base.

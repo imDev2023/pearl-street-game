@@ -9,7 +9,7 @@ import {mkdirSync, readFileSync, writeFileSync, existsSync} from "node:fs";
 import {join} from "node:path";
 import {createPublicClient, decodeEventLog, defineChain, http} from "viem";
 import {EQUITY_FEEDS} from "@pearlstreet/sdk";
-import {mulberry32} from "@pearlstreet/sim";
+import {mulberry32, VAULT_MINT_FEE_BPS} from "@pearlstreet/sim";
 import {loadAbis, REDEEM_PROPENSITY, SCRATCH_ASSETS, voyagesToday} from "../lib/common.mjs";
 import {loadBotKeys, loadEnvKeys, makeClients, publicClient, sendRobust} from "../lib/testnet.mjs";
 
@@ -74,7 +74,7 @@ async function onboard(p) {
   const want = BigInt(p.creatures) - minted;
   if (want > 0n) {
     const total = PRICE * want;
-    const gross = (total * BPS) / (BPS - 100n) + 1n;
+    const gross = (total * BPS) / (BPS - VAULT_MINT_FEE_BPS) + 1n; // gross USDG so the net CLAM covers the price
     await sendRobust(p.wallet, {address: addr.MockUSDG, abi: abis.MockUSDG, functionName: "faucet", args: [gross]});
     await sendRobust(p.wallet, {address: addr.MockUSDG, abi: abis.MockUSDG, functionName: "approve", args: [addr.ClamVault, gross]});
     await sendRobust(p.wallet, {address: addr.ClamVault, abi: abis.ClamVault, functionName: "deposit", args: [gross]});

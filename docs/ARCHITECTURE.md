@@ -42,7 +42,7 @@ MockAggregator x8 (testnet) / Chainlink proxies x35 (mainnet) --latestRoundData-
 Per contract, what it owns and what is frozen:
 
 - `GameConstants.sol`: every economic constant, asserted against `docs/ECONOMY.md` by `test/GameConstants.t.sol`; the simulator doc-syncs to the same document. Change the doc first, then this file, then the sim; the tests fail until all three agree.
-- `ClamToken` + `ClamVault`: reserve == supply at all times; no owner, no pause, no withdraw path; fees skimmed in CLAM at the edges only; rounding favors the protocol. `reserveSurplus()` is the on-chain proof of reserve. Frozen by user decision; do not add admin surface.
+- `ClamToken` + `ClamVault` (production since T-002, 2026-08-16): reserve == supply at all times; no owner, no pause, no withdraw path; fees skimmed in CLAM at the edges only; rounding favors the protocol; deposits mint against the USDG actually received under a reentrancy guard; safe token calls via `lib/SafeERC20Minimal.sol`. `reserveSurplus()` is the on-chain proof of reserve; `test/AbiSurface.t.sol` pins the exact function surface. Frozen by user decision; do not add admin surface.
 - `FeeRouter`: single sink for all fee CLAM; immutable split from GameConstants (100% PrizePool); anyone can `flush()`.
 - `PrizePool`: game-only `release()`, once per game day, at most 1.5% of current balance, 80/20 to VoyageGame/LeaderboardPot; no other outflow. Timestamp clock, never `block.number`.
 - `PearlCreatures`: Gen-0 sale (7,500; 100 CLAM / 80 allowlist; 15 per wallet; 30/70 split); species by id, sector by hash. Launch additions (T-003): commit-reveal stats, the 7% in-token royalty on operator transfers, and the dormant timelocked operator allowlist. Non-upgradeable, so all three must ship at mint.
@@ -51,7 +51,8 @@ Per contract, what it owns and what is frozen:
 - `LeaderboardPot`: ops-posted season payout in the prototype; production wants indexer-computed merkle distribution (T-006).
 - Mocks: `MockUSDG`, `MockAggregator` exist because testnet 46630 has neither USDG nor Chainlink feeds; mainnet uses the real ones.
 
-Contracts still to write (launch scope): `Marketplace` (T-012a: list/buy/cancel escrow, fee via FeeRouter), `PearlToken` + `PearlPresale` + `PearlVesting`/claim + emission controller + floor reserve (T-016), the timelock for the operator allowlist and other ops actions, and the AA/paymaster wiring (T-007).
+Deployed: testnet 46630 CLAM set (`contracts/deployments/46630.json`, `packages/sdk/src/addresses.ts`).
+Contracts still to write (launch scope): `Marketplace` (T-012a: list/buy/cancel escrow, fee via FeeRouter), `PearlToken` + `PearlPresale` + `PearlVesting`/claim + emission controller (T-016; the floor reserve was dropped 2026-08-16), the timelock for the operator allowlist and other ops actions, and the AA/paymaster wiring (T-007).
 
 ## Money flows (the economic circuit)
 

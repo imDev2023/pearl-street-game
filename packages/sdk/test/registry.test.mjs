@@ -33,3 +33,13 @@ test("chain constants match the verified reference", () => {
   assert.equal(USDG_ADDRESS, "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168");
   assert.equal(USDG_DECIMALS, 6);
 });
+
+test("CLAM testnet deployment is exported with the vault ABI", async () => {
+  const sdk = await import("../dist/index.js");
+  const d = sdk.clamDeployment(46630);
+  assert.match(d.vault, /^0x[0-9a-fA-F]{40}$/);
+  assert.equal(d.usdgIsMock, true);
+  const names = sdk.ClamVaultAbi.filter((e) => e.type === "function").map((e) => e.name);
+  assert.deepEqual(names.filter((n) => ["deposit", "redeem", "reserveSurplus"].includes(n)).sort(), ["deposit", "redeem", "reserveSurplus"]);
+  assert.throws(() => sdk.clamDeployment(1));
+});
