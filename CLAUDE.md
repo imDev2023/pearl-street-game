@@ -25,7 +25,7 @@ Successor in spirit to Crabada, with an economy designed so the TUS-style death 
 - Public testnet: a slow leg of 30 wallets can straddle a game-day boundary; the contract correctly enforced the claim window against a driver that mis-attributed the day. Trust the chain's day (from events), never the driver's clock.
 - Testnet 46630 has NO USDG and NO Chainlink feeds; anything realistic needs the mocks in `contracts/src/mocks/`. `DeployClam.s.sol` refuses mocks on 4663.
 - The proto drivers compute gross deposits from the sim's `VAULT_MINT_FEE_BPS`; they silently under-funded players for a day when the fee changed and the constant was hard-coded. Never hard-code an economic constant in a driver.
-- Foundry `forge fmt --check` is a CI gate; run `forge fmt` before committing Solidity.
+- Foundry `forge fmt --check` is a CI gate; run `forge fmt` before committing Solidity. Fuzz tests must handle the all-fee dust case (a 1-unit deposit mints 0 CLAM to the player); a `% balance` on a zero balance was the first remote CI failure.
 - The 4x burn cap can never fire under the documented pool math (pool pays ~30% of entry, max); do not build a retirement mechanic on a promised multiple.
 
 ## Start here, every session
