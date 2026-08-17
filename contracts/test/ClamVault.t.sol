@@ -78,8 +78,11 @@ contract ClamVaultTest is EconomyBase {
         vault.deposit(depositA);
         vault.deposit(depositB);
         uint256 bal = clam.balanceOf(alice);
-        uint256 toRedeem = uint256(redeemA) % bal + 1;
-        vault.redeem(toRedeem);
+        // Tiny deposits (1-2 units) are all fee, so alice may hold nothing; the invariant still holds.
+        if (bal > 0) {
+            uint256 toRedeem = uint256(redeemA) % bal + 1;
+            vault.redeem(toRedeem);
+        }
         vm.stopPrank();
         assertEq(vault.reserveSurplus(), 0);
     }
